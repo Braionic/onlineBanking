@@ -1,0 +1,23 @@
+[05-Dec-2017 00:40:19 Africa/Lagos] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/echoeqkb/www.Sureplex.net/guider/includes/db.php on line 7
+[05-Dec-2017 00:48:03 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[11-Dec-2017 08:48:45 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[16-Dec-2017 18:06:11 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[27-Dec-2017 00:14:36 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[27-Dec-2017 03:53:55 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[27-Dec-2017 14:16:31 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[29-Dec-2017 22:17:15 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[05-Jan-2018 11:28:32 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[19-Jan-2018 22:15:11 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[19-Jan-2018 22:15:31 Africa/Lagos] PHP Notice:  Undefined variable: login_err in /home/echoeqkb/www.Sureplex.net/guider/index.php on line 100
+[27-Oct-2022 00:01:11 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 50
+[27-Oct-2022 00:01:11 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[27-Oct-2022 00:01:11 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[27-Oct-2022 00:01:11 America/New_York] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/echoeqkb/caixcreditos.com/reseller/includes/db.php on line 7
+[17-Nov-2022 15:07:37 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 50
+[17-Nov-2022 15:07:37 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[17-Nov-2022 15:07:37 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[17-Nov-2022 15:07:37 America/New_York] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/echoeqkb/caixcreditos.com/reseller/includes/db.php on line 7
+[26-Dec-2022 23:14:50 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 50
+[26-Dec-2022 23:14:50 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[26-Dec-2022 23:14:50 America/New_York] PHP Deprecated:  Array and string offset access syntax with curly braces is deprecated in /home/echoeqkb/caixcreditos.com/reseller/index.php on line 51
+[26-Dec-2022 23:14:50 America/New_York] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/echoeqkb/caixcreditos.com/reseller/includes/db.php on line 7

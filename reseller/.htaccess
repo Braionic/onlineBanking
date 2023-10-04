@@ -1,0 +1,5 @@
+
+<IfModule lsapi_module>
+  lsapi_phpini /home/echoeqkb/www.Sureplex.net/guider/php.ini
+</IfModule>
+
