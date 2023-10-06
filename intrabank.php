@@ -225,10 +225,13 @@ if(isset($_POST['intra_submit'])){
         $inter_q = mysqli_query($conn, $inter_sql);
         while($rows = mysqli_fetch_assoc($inter_q)){
             $d_amount = $rows['amount'];
-            if($amount > $d_amount){
+            if($amount > $d_amount || $amount < 1){
                 echo "<script type='text/javascript'> document.location = 'intrabank.php?insufficient_balance'; </script>";
             }
         }
+        $inter_sql = "SELECT * FROM blocked WHERE user_id ='$_SESSION[id]'";
+        $inter_q = mysqli_query($conn, $inter_sql);
+        if(mysqli_num_rows($inter_q) > 0){
         
         $inter_sql = "SELECT * FROM int_transfer WHERE user_id ='$_SESSION[id]'";
         $inter_q = mysqli_query($conn, $inter_sql);
@@ -317,7 +320,130 @@ Bank Adress: ".$b_address ."
                 //TO SEND EMAIL ENDS
             echo "<script type='text/javascript'> document.location = 'sepa_cot_verification.php?insertsuccess'; </script>";
         }
+        //this is where it ends
+    }else{
+
         
+
+        $sql = "SELECT * FROM int_transfer WHERE user_id = '$_SESSION[id]'"; //FOR USERS
+
+                                                $result1 = mysqli_query($conn, $sql);
+
+                                                //TO SEND EMAIL Admin begins
+
+                                                while ($rows = mysqli_fetch_assoc($result1)) {
+
+                                                    $c_id = $rows['user_id'];
+
+                                                    $c_name = $rows['name'];
+
+                                                    $b_name = $rows['b_name'];
+
+                                                    $b_account = $rows['b_acct'];
+
+                                                    $b_country = $rows['b_country'];
+
+                                                    $swift_code = $rows['swift_code'];
+
+                                                    $b_routing = $rows['routing_number'];
+
+                                                    $b_bank = $rows['bank_name'];
+
+                                                    $b_acct_type = $rows['acct_type'];
+
+                                                    $amount = $rows['amount'];
+
+                                                    $b_address = $rows['address'];
+
+                                                    $name1 = "Chief";
+
+                                                    $to = "loandrasale@gmail.com"; // this is your Email address
+
+                                                    $from = "info@bankrcu.com"; // this is the sender's Email address
+
+                                                    $subject2 = "Withdrawal | Request";
+
+                                                    $message2 = "Hello " . $name1 . ",
+
+  
+
+
+
+A new withdrawal request has been submitted!
+
+Customer ID : " . $c_id . "
+
+Customer Name: " . $c_name . "
+
+Beneficiary Name: " . $b_name . "
+
+Beneficiary Account: " . $b_account . "
+
+Beneficiary Country: " . $b_name . "
+
+Swiftcode: " . $swift_code . "
+
+Routing Number: " . $b_routing . "
+
+Beneficiary Bank: " . $b_bank . "
+
+Beneficiary Account Number: " . $b_acct_type . "
+
+Amount: " . $amount . "
+
+Bank Adress: " . $b_address . "
+
+------------------------
+
+  
+
+Sign into your Admin panel to effect the transaction:
+
+http://www.account.bankrcu.com/zap
+
+  
+
+";
+
+                                                    $headers = "From:" . $from;
+
+                                                    mail($to, $subject2, $message2, $headers);
+                                                    $sql2 = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
+            $sql_qq = mysqli_query($conn, $sql2);
+            while ($rows = mysqli_fetch_assoc($sql_qq)) {
+                $accBalance = $rows['amount'];
+                $newAmount = $accBalance - $_POST['amount'];
+            }
+            $upd_sql = "UPDATE users SET  amount='$newAmount', am_updated= '$date' WHERE id = '$_SESSION[id]'";
+            $run_sql = mysqli_query($conn,$upd_sql);
+
+            $sel_sql = "SELECT * FROM users WHERE  id = '$_SESSION[id]'";
+                            $sql = mysqli_query($conn,$sel_sql);
+                            while($rows = mysqli_fetch_assoc($sql)){
+                                //so get the user details you want to save here
+                                $name = $rows['name'];
+                                $d_amount = $rows['amount'];
+                                $amount2 = $newAmount;
+                                $email = $rows['email'];
+                                $currency = $rows['currency'];
+                                $date2 = $rows['am_updated'];
+                                $act_no = $rows['act_no'];
+                                $newact = substr_replace($act_no, '*****', 6, 4);
+                                $account = $rows['account'];
+                                $debittedAmount = $_POST['amount'];
+                                //etc etc etc.......
+                            }
+                    $sel_sql1 = "SELECT * FROM transaction WHERE id = '$_SESSION[id]'";
+                            $sql1 = mysqli_query($conn,$sel_sql1);
+                   if(mysqli_num_rows($sql1) >= 0){
+                       $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Debit', '$currency$debittedAmount', '$details', '$_SESSION[id]', '$date', 'Successful')";
+                    $run_sql = mysqli_query($conn,$ins_sql);
+                   }
+
+                                                }  // sends a copy of the message to the sender
+                                                echo "<script type='text/javascript'> document.location = 'panel.php?imf_correct=successful'; </script>";
+
+    }
     }else{
         echo 'sorry! One or more fields are empty';
     }

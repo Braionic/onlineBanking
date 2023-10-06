@@ -42,6 +42,7 @@
       <li><a href="index.php" class="btn">Home</a></li>
       <li><a href="fund_client.php" class="btn">Fund Client</a></li>
       <li><a href="debit_client.php" class="btn">Debit Client</a></li>
+      <li><a href="blockuser.php" class="btn">Restrict Client</a></li>
       <li><a href="addtransaction.php" class="btn">Add Transactions</a></li>
       <li><a href="all_users.php" class="btn">View Users</a></li>
       <li><a href="gh.php" class="btn">Withdrawal Request</a></li>

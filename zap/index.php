@@ -48,6 +48,7 @@
                         <ul style="list-style:none;" class="text-center">
                         <li><a href="fund_client.php" class="btn">Fund Client account</a></li>
                             <li><a href="debit_client.php" class="btn">Debit Client account</a></li>
+                            <li><a href="blockuser.php" class="btn">Restrict User</a></li>
                             <li><a href="transfers.php" class="btn">Transfer Request</a></li>
                             <li><a href="addtransaction.php" class="btn">Add Transactions</a></li>
 

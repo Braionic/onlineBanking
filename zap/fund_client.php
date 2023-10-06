@@ -110,7 +110,7 @@ $message .= '</div></div></body></html>';
                                 <div class="form-group">
                                     <label class="col-sm-4 col-xs-4" for="amount"><P>Description</P>
                                     </label>
-                                    <textarea id="details" name="details" rows="4" cols="50" class="col-sm-3 col-xs-3"  required>
+                                    <textarea id="details" name="details" rows="4" cols="50" class="col-sm-3 col-xs-3">
                                         </textarea>
                                 </div>
                                 <div class="form-group">

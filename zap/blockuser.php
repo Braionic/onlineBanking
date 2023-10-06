@@ -36,19 +36,19 @@
                     
                 }
         ?>
-                        <h3 class="text-center">Block user</h3>
+                        <h3 class="text-center">Restrict Customer to COT Interface</h3>
                         <div ng-app="">
                             <form method="POST" action="blockuser.php" class="form-horizontal well text-center" enctype="multipart/form-data" role="form" name="myForm">
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" style="color: white;" for="user_id">Receiver
+                                    <label class="col-sm-6 col-xs-6" style="color: black;" for="user_id">customer ID
                                     </label>
-                                    <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" class="col-sm-3 col-xs-3" ng-model="user_id" required>
+                                    <input type="text" name="user_id" id="user_id" placeholder="Customer ID" class="col-sm-3 col-xs-3" ng-model="user_id" required>
                                     <span style="color:red" ng-show="myForm.user_id.$touched && myForm.user_id.$invalid">
                                 <span ng-show="myForm.user_id.$error.required">Receiver Id is required.</span>
                                     </span>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" style="color: white;" for="status">Status
+                                    <label class="col-sm-6 col-xs-6" style="color: black;" for="status">Status
                                     </label>
                                     <input type="text" name="status" id="status" placeholder="enter Status" class="col-sm-3 col-xs-3" ng-model="status" required>
                                     <span style="color:red" ng-show="myForm.status.$touched && myForm.status.$invalid">
@@ -58,9 +58,39 @@
                                 <div class="form-group">
                                     <label class="col-sm-6" for="match_status">
                                     </label>
-                                    <input type="submit" name="block_user" id="block_user" value="block_user" class="btn btn-primary cc" class="col-sm-6 col-xs-6">
+                                    <input type="submit" name="block_user" id="block_user" value="Restrict User" class="btn btn-primary cc" class="col-sm-6 col-xs-6">
                                 </div>
                             </form>
                         </div>
+                        <div class="container">
+<h2 class="">Customers</h2>
+<table class="table table-striped">
+  <tr class="table-success">
+    <td style= "background-color: #fdc600;">No.</td>
+    <td style= "background-color: #fdc600;">Full Name</td>
+      <td style= "background-color: #fdc600;">Customer ID</td>
+      <td style= "background-color: #fdc600;">Status</td>
+  </tr>
+
+<?php
+
+
+$records = mysqli_query($conn,"Select * from blocked ORDER BY id DESC"); // fetch data from database
+$i = 1;
+while($data = mysqli_fetch_array($records))
+{ $i++;
+?>
+  <tr>
+      
+    <td><?php echo $i; ?></td>
+    <td><?php echo $data['firstname']; ?></td>
+      <td><?php echo $data['user_id']; ?></td>
+      <td><?php echo $data['status']; ?></td>
+  </tr>	
+<?php
+}
+?>
+</table>
+</div>
                         <?php include 'footer.php' ?>
     </body>
