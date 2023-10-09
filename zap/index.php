@@ -43,31 +43,59 @@
 
                     <div class="container">
                         <div class="dashboard-container">
-                            <div class="div div1 divall">
+                            <div class="div div1 divall"><a href="../zap/all_users.php">
                                 <div class="details">
-                                    <h5 class="earning" style="color: green">Earning(Monthly)</h5>
-                                    <h3>$40,000</h3>
-                                </div>
+                                    <h5 class="earning" style="color: green">Users (Total)</h5>
+                                 <?php   $sel_sql = "SELECT count(*) FROM users";
+                            $sql = mysqli_query($conn,$sel_sql);
+                            while($rows = mysqli_fetch_assoc($sql)){
+                                //so get the user details you want to save here
+                                echo "<h3>". $rows['count(*)'] ."</h3>"; 
+                                //etc etc etc.......
+                            }
+                            ?>
+                                </div></a>
                                 <h3>$</h3>
                             </div>
-                            <div class="div div2 divall">
+                            <div class="div div2 divall"><a href="../zap/blockuser.php">
                             <div class="details">
-                                    <h5 class="earning" style="color: red">Earning(Monthly)</h5>
-                                    <h3>$40,000</h3>
-                                </div>
+                                    <h5 class="earning" style="color: #36b9cc">Restricted Users (COT)</h5>
+                                    <?php   $sel_sql = "SELECT count(*) FROM blocked";
+                            $sql = mysqli_query($conn,$sel_sql);
+                            while($rows = mysqli_fetch_assoc($sql)){
+                                //so get the user details you want to save here
+                                echo "<h3>". $rows['count(*)'] ."</h3>"; 
+                                //etc etc etc.......
+                            }
+                            ?>
+                                </div></a>
                                 <h3>$</h3>
                             </div>
-                            <div class="div div3 divall">
+                            <div class="div div3 divall"><a href="../zap/transfers.php">
                             <div class="details">
-                                    <h5 class="earning" style="color: orange">Earning(Monthly)</h5>
-                                    <h3>$40,000</h3>
-                                </div>
+                                    <h5 class="earning" style="color: orange">Transfers (users)</h5>
+                                    <?php   $sel_sql = "SELECT count(*) FROM int_transfer";
+                            $sql = mysqli_query($conn,$sel_sql);
+                            while($rows = mysqli_fetch_assoc($sql)){
+                                //so get the user details you want to save here
+                                echo "<h3>". $rows['count(*)'] ."</h3>"; 
+                                //etc etc etc.......
+                            }
+                            ?>
+                                </div></a>
                                 <h3>$</h3>
                             </div>
                             <div class="div div4 divall">
                             <div class="details">
-                                    <h5 class="earning" style="color: blueviolet">Earning(Monthly)</h5>
-                                    <h3>$40,000</h3>
+                                    <h5 class="earning" style="color: blueviolet">Admins(Active)</h5>
+                                    <?php   $sel_sql = "SELECT count(*) FROM admins";
+                            $sql = mysqli_query($conn,$sel_sql);
+                            while($rows = mysqli_fetch_assoc($sql)){
+                                //so get the user details you want to save here
+                                echo "<h3>". $rows['count(*)'] ."</h3>"; 
+                                //etc etc etc.......
+                            }
+                            ?>
                                 </div>
                                 <h3>$</h3>
                             </div>

@@ -144,7 +144,7 @@
             while($rows = mysqli_fetch_assoc($sql)){
                 
                 if($rows['image'] == ''){
-                    echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img"></td>';
+                    echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
                  }else{
                     echo '<td><img src="../uploaded_img/'.$rows['image'].'" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
                  }

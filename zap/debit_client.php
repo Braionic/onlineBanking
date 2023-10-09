@@ -120,6 +120,7 @@ $message .= '</div></div></body></html>';
 <table class="table table-striped">
   <tr class="table-success">
     <td style= "background-color: #2B60DE;">No.</td>
+    <td style= "background-color: #fdc600;">Profile</td>
     <td style= "background-color: #2B60DE;">Full Name</td>
       <td style= "background-color: #2B60DE;">Email</td>
       <td style= "background-color: #2B60DE;">Account Type</td>
@@ -139,6 +140,13 @@ while($data = mysqli_fetch_array($records))
   <tr>
       
     <td><?php echo $i; ?></td>
+    <?php
+    if($data['image'] == ''){
+                    echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
+                 }else{
+                    echo '<td><img src="../uploaded_img/'.$data['image'].'" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
+                 }
+                 ?>
     <td><?php echo $data['name']; ?></td>
       <td><?php echo $data['email']; ?></td>
       <td><?php echo $data['account']; ?></td>

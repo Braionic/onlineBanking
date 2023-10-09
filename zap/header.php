@@ -139,14 +139,18 @@ div .pgd{
   margin-top: 10px;
 }
 .details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  
 
 }
 .earning{
  margin-bottom: 5px;
+}
+h5 {
+  font-weight: 600;
+}
+a:hover {
+  text-decoration: none;
+  color: blue;
 }
 </style>
 
