@@ -37,28 +37,16 @@
                 }
         ?>
                         <h3 class="text-center">Restrict Customer to COT Interface</h3>
-                        <div ng-app="">
+                        <div class="form">
                             <form method="POST" action="blockuser.php" class="form-horizontal well text-center" enctype="multipart/form-data" role="form" name="myForm">
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" style="color: black;" for="user_id">customer ID
-                                    </label>
-                                    <input type="text" name="user_id" id="user_id" placeholder="Customer ID" class="col-sm-3 col-xs-3" ng-model="user_id" required>
-                                    <span style="color:red" ng-show="myForm.user_id.$touched && myForm.user_id.$invalid">
-                                <span ng-show="myForm.user_id.$error.required">Receiver Id is required.</span>
-                                    </span>
+                                    <input type="text" name="user_id" id="user_id" placeholder="Customer ID" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" style="color: black;" for="status">Status
-                                    </label>
-                                    <input type="text" name="status" id="status" placeholder="enter Status" class="col-sm-3 col-xs-3" ng-model="status" required>
-                                    <span style="color:red" ng-show="myForm.status.$touched && myForm.status.$invalid">
-                                <span ng-show="myForm.status.$error.required">status is required.</span>
-                                    </span>
+                                    <input type="text" name="status" id="status" placeholder="Enter Status" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6" for="match_status">
-                                    </label>
-                                    <input type="submit" name="block_user" id="block_user" value="Restrict User" class="btn btn-primary cc" class="col-sm-6 col-xs-6">
+                                    <input type="submit" name="block_user" id="block_user" value="Restrict User" class="btn btn-primary cc">
                                 </div>
                             </form>
                         </div>

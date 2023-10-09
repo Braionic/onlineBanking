@@ -22,9 +22,132 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <style>
+  * {
+    box-sizing: border-box;
+    margin: 0px;
+  }
     body{
         font-family: 'Roboto', sans-serif;
     }
+
+input[type=text], select{
+  width: 45%;
+  padding: 8px 20px;
+  margin: 8px 16px;
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 4px;
+  color: #45a049;
+  outline: none;
+}
+input[type=text]:focus{
+ background-color: #005eb8;
+ color: white;
+}
+textarea{
+  width: 45%;
+  height: 10%;
+  padding: 8px 20px;
+ 
+  display: inline-block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 4px;
+  
+  outline: none;
+}
+input[type=submit] {
+  width: 30%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div .form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+div .pgd{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    background-color: grey;
+    padding: 16px;
+    border-radius: 6px;
+    color: white;
+}
+.dashboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #f8f9fc;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+.div1, .div2, .div3, .div4 {
+    width: 24%;
+    height: 100px;
+   padding: 12px;
+   background-color: white;
+   margin: 10px 5px;
+   border-radius: 6px;
+   text-align: center;
+   color: grey;
+   border-left: 4px solid blue;
+   box-shadow: 3px 3px 6px #858796;
+}
+
+@media only screen and (max-width: 700px){
+    .div1, .div2, .div3, .div4 {
+        width: 40%;
+        margin-right: 3px;
+    }
+    .dashboard-container {
+        flex-direction: row;
+    }
+}
+@media only screen and (max-width: 450px){
+    .div1, .div2, .div3, .div4 {
+        width: 100%;
+        margin-right: 3px;
+    }
+    .dashboard-container {
+        flex-direction: column;
+    }
+}
+.divall {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.earning{
+ margin-bottom: 5px;
+}
 </style>
 
 <body>

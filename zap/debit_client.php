@@ -91,29 +91,24 @@ $message .= '</div></div></body></html>';
                         <div ng-app="">
                             <form method="POST" action="debit_client.php" class="form-horizontal well text-center" enctype="multipart/form-data" role="form" name="myForm">
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-4" for="user_id"><p>Customer ID</p>
+                                    <label for="user_id"><p>Customer ID</p>
                                     </label>
-                                    <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" class="col-sm-3 col-xs-3" ng-model="user_id" required>
-                                    <span style="color:red" ng-show="myForm.user_id.$touched && myForm.user_id.$invalid">
-                                <span ng-show="myForm.user_id.$error.required"><P>Receiver Id is required.</P></span>
-                                    </span>
+                                    <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" required>
+                                    
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-4" for="amount"><P>Amount</P>
+                                    <label for="amount"><P>Amount</P>
                                     </label>
-                                    <input type="text" name="amount" id="amount" placeholder="enter amount" class="col-sm-3 col-xs-3" ng-model="amount" required>
-                                    <span style="color:red" ng-show="myForm.amount.$touched && myForm.amount.$invalid">
-                                <span ng-show="myForm.amount.$error.required">Amount is required.</span>
-                                    </span>
+                                    <input type="text" name="amount" id="amount" placeholder="enter amount" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-xs-4" for="amount"><P>Description</P>
+                                    <label for="amount"><P>Description</P>
                                     </label>
-                                    <textarea id="details" name="details" rows="4" cols="50" class="col-sm-3 col-xs-3"  required>
+                                    <textarea id="details" name="details" rows="4" cols="50"  required>
                                         </textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6" for="match_amount">
+                                    <label for="match_amount">
                                     </label>
                                     <input type="submit" name="debit_client" id="debit_client" value="Debit" style= "background-color: #2B60DE; color: white" class="btn cc" class="col-sm-6 col-xs-6">
                                 </div>

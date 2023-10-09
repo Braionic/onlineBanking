@@ -42,6 +42,36 @@
                 <?php include 'header.php';  ?>
 
                     <div class="container">
+                        <div class="dashboard-container">
+                            <div class="div div1 divall">
+                                <div class="details">
+                                    <h5 class="earning" style="color: green">Earning(Monthly)</h5>
+                                    <h3>$40,000</h3>
+                                </div>
+                                <h3>$</h3>
+                            </div>
+                            <div class="div div2 divall">
+                            <div class="details">
+                                    <h5 class="earning" style="color: red">Earning(Monthly)</h5>
+                                    <h3>$40,000</h3>
+                                </div>
+                                <h3>$</h3>
+                            </div>
+                            <div class="div div3 divall">
+                            <div class="details">
+                                    <h5 class="earning" style="color: orange">Earning(Monthly)</h5>
+                                    <h3>$40,000</h3>
+                                </div>
+                                <h3>$</h3>
+                            </div>
+                            <div class="div div4 divall">
+                            <div class="details">
+                                    <h5 class="earning" style="color: blueviolet">Earning(Monthly)</h5>
+                                    <h3>$40,000</h3>
+                                </div>
+                                <h3>$</h3>
+                            </div>
+                        </div>
 
                         <h3 class="text-center">Welcome to the Admin Dashboard</h3>
 

@@ -118,36 +118,43 @@
                             ?>
                                         <!--AFTER CLICKING SEARCH ENDS-->
                                         <!--SSEARCH USERS BEGINS-->
-                                        <form class="form-horizontal" action="user_search.php" role="form">
+                                       <!-- <form class="form-horizontal" action="user_search.php" role="form">
                                             <div class="input-group ">
                                                 <input style="cursor:text;" type="search" name="search" class="form-control btn btn-link" placeholder="Search Something......">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-default btn-link" name="search_submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form>-->
                                         <!--SEARCH USERS ENDS-->
-                                        <h3 class="text-center">List of all users</h3>
+                                        <h3 class="text-center">All existing Customers</h3>
                                         <table class="table table-hover table-responsive">
                                             <thead>
                                                 <tr>
-                                                    <th>User</th>
+                                                    <th>Profile</th>
+                                                    <th>Full Name</th>
                                                     <th>Delete</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
                                             <?php
+                                               
             $sel_sql= "SELECT * FROM users ORDER BY id DESC";
             $sql= mysqli_query($conn,$sel_sql);
             while($rows = mysqli_fetch_assoc($sql)){
+                
+                if($rows['image'] == ''){
+                    echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img"></td>';
+                 }else{
+                    echo '<td><img src="../uploaded_img/'.$rows['image'].'" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
+                 }
                 echo '
-                    <tbody>
+                 
                     <td><a href="user_profile.php?person_id='.$rows['id'].'">'.$rows['name'].' (<b style="color:orange">'.$rows['id'].'</b>)</a></td>
                     <td class="btn btn-warning"><a href="deleteuser.php?id='.$rows['id'].'">Delete</a></td>
-                   
+        ';}?>
                     </tbody>
-                ';
-            }
-        ?>
+        
                                         </table>
                                 </div>
 

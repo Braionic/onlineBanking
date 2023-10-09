@@ -46,60 +46,54 @@
                         <div ng-app="">
                             <form method="POST" action="addtransaction.php" class="form-horizontal well text-center" enctype="multipart/form-data" role="form" name="myForm">
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="user_id"><p>User ID</p>
+                                    <label for="user_id"><p>User ID</p>
                                     </label>
-                                    <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" class="col-sm-3 col-xs-3" ng-model="user_id" required>
-                                    <span style="color:red" ng-show="myForm.user_id.$touched && myForm.user_id.$invalid">
-                                <span ng-show="myForm.user_id.$error.required"><P>Receiver Id is required.</P></span>
-                                    </span>
+                                    <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" required>
+                                    
+                               
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="sender"><P>Sender</P>
+                                    <label for="sender"><P>Sender</P>
                                     </label>
-                                    <input type="text" name="sender" id="sender" placeholder="Sender" class="col-sm-3 col-xs-3" ng-model="sender" required>
-                                    <span style="color:red" ng-show="myForm.status.$touched && myForm.mavro.$invalid">
-                                    </span>
+                                    <input type="text" name="sender" id="sender" placeholder="Sender" required>
+                                    
+                                   
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="mavro"><P>Transaction</P>
+                                    <label for="mavro"><P>Transaction</P>
                                     </label>
                                    <!-- <input type="text" name="transaction" id="transaction" placeholder="transaction type" class="col-sm-3 col-xs-3" ng-model="transaction" required>-->
-                                    <select name="transaction" id="transaction" class="col-sm-3 col-xs-3" required>
+                                    <select name="transaction" id="transaction" required>
                                           <option value="Credit Transaction">Credit</option>
                                           <option value="Debit Transaction">Debit</option>
                                     </select>
-                                    <span style="color:red" ng-show="myForm.mavro.$touched && myForm.mavro.$invalid">
-                                <span ng-show="myForm.transaction.$error.required">Amount is required.</span>
-                                    </span>
+                                    <span style="color:red">
+                               
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="mavro"><P>Amount</P>
+                                    <label for="mavro"><P>Amount</P>
                                     </label>
-                                    <input type="text" name="amount" id="mavro" placeholder="enter amount($)" class="col-sm-3 col-xs-3" ng-model="amount" required>
-                                    <span style="color:red" ng-show="myForm.amount.$touched && myForm.amount.$invalid">
-                                <span ng-show="myForm.amount.$error.required">Amount is required.</span>
-                                    </span>
+                                    <input type="text" name="amount" id="mavro" placeholder="enter amount($)" required>
+                              
+                                
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="mavro"><P>Status</P>
+                                    <label for="mavro"><P>Status</P>
                                     </label>
-                                    <input type="text" name="status" id="status" placeholder="status of transaction" class="col-sm-3 col-xs-3" ng-model="status" required>
-                                    <span style="color:red" ng-show="myForm.status.$touched && myForm.mavro.$invalid">
-                                <span ng-show="myForm.status.$error.required">status is required.</span>
-                                    </span>
+                                    <input type="text" name="status" id="status" placeholder="status of transaction" required>
+                                    <span style="color:red">
+                               
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6 col-xs-6" for="date"><P>Date</P>
+                                    <label for="date"><P>Date</P>
                                     </label>
-                                   <input placeholder="Select date" type="datetime-local" id="date" name="date" class="col-sm-3 col-xs-3" ng-model="date" required>
-                                    <span style="color:red" ng-show="myForm.date.$touched && myForm.date.$invalid">
-                                <span ng-show="myForm.date.$error.required">Date is required.</span>
-                                    </span>
+                                   <input placeholder="Select date" type="datetime-local" id="date" name="date" required>
+                            
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-6" for="match_mavro">
+                                    <label for="match_mavro">
                                     </label>
-                                    <input type="submit" name="add_transastion" id="add_transastion" value="add_transastion" class="btn btn-primary cc" class="col-sm-6 col-xs-6">
+                                    <input type="submit" name="add_transastion" id="add_transastion" value="Add" class="btn btn-primary cc">
                                 </div>
                             </form>
                         </div>
