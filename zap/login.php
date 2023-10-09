@@ -71,41 +71,55 @@ if(isset($_POST['login_submit'])){ //IF LOGIN BTN HAS BEEN CLICKED
 }
    echo $login_err;    
 ?>
-                            <!--LOGIN INTRO-->
-                            <h3 class="text-center" style="text-decoration:underline;">Admin Login</h3>
-                            <!--FORM FOR LOGIN STARTS HERE-->
-                            <div class="container-fluid">
-                                <div ng-app="">
-                                    <form method="POST" action="login.php" class="form-horizontal well text-center" enctype="multipart/form-data" role="form" name="myForm">
-                                        <div class="form-group">
-                                            <label class="col-sm-6 col-xs-6" for="admin_email">Email
-                                            </label>
-                                            <input type="email" name="admin_email" id="admin_email" placeholder="Enter Email" class="col-sm-5 col-xs-5 focbk" ng-model="admin_email" required>
-                                            <span style="color:red" ng-show="myForm.admin_email.$dirty && myForm.admin_email.$invalid">
-                                <span ng-show="myForm.admin_email.$error.required">Email is required.</span>
-                                            <span ng-show="myForm.admin_email.$error.email">Invalid email address.</span>
-                                            </span>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-6 col-xs-6" for="admin_email">Password
-                                            </label>
-                                            <input type="password" name="admin_password" id="admin_password" placeholder="Enter Password" class="col-sm-5 col-xs-5" ng-model="admin_password" required>
-                                            <span style="color:red" ng-show="myForm.admin_password.$touched && myForm.admin_password.$invalid">
-                                <span ng-show="myForm.admin_password.$error.required">Password is required.</span>
-                                            </span>
+                           <!-- Outer Row -->
+        <div class="row justify-content-center">
 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-6" for="login_submit">
-                                            </label>
-                                            <input type="submit" name="login_submit" id="login_submit" value="Login" class="btn btn-primary cc" class="col-sm-6 col-xs-6">
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- <a href="registration.php">Register</a> -->
-                                <br/>
-                                <a href="forgot_password.php">Forgot Password?</a>
+<div class="col-xl-10 col-lg-12 col-md-9">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div class="col-lg-6">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Welcome Backk!</h1>
+                        </div>
+                        <form method="POST" action="login.php" class="user" enctype="multipart/form-data" role="form">
+                            <div class="form-group">
+                                <input type="email" name="admin_email" class="form-control form-control-user"
+                                    id="exampleInputEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter Email Address...">
                             </div>
+                            <div class="form-group">
+                                <input type="password" name="admin_password" class="form-control form-control-user"
+                                    id="exampleInputPassword" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox small">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck">
+                                    <label class="custom-control-label" for="customCheck">Remember
+                                        Me</label>
+                                </div>
+                            </div>
+                            <input type="submit" name="login_submit" id="login_submit" value="Login" class="btn btn-primary btn-user btn-block">
+                            <hr>
+                        </form>
+                        <hr>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
                 </div>
                 <?php include 'footer.php' ?>
 </body>

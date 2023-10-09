@@ -37,7 +37,7 @@ $(document).ready(function(){
                             $run_sql = mysqli_query($conn,$sel_sql);
                             while($rows = mysqli_fetch_assoc($run_sql)){
                              echo '
-                                    <p class="alert text-center" style="background-color: #005eb8; color: white;">Hi, <strong> '.$rows['name'].' Welcome back</strong></p>
+                                    <p class="alert text-center" style="background-color: #005eb8; color: white;  border-bottom: 5px solid red">Hi, <strong> '.$rows['name'].' Welcome back</strong></p>
                              ';
                             }
                              ?></div>
@@ -103,21 +103,21 @@ $(document).ready(function(){
         <div class="col-sm-12">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-xs-6">
-                <div class="well" style="background-color: #005eb8;">
+                <div class="well" style="background-color: #005eb8; border-left: 5px solid red">
                  <h5 style="color: white;"> <b>Main Balance</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  '.$rows['amount'].' </span><p class="donationmsg"></p></h5>
                 </div>
             </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;">
+        <div class="well" style="background-color: #005eb8;  border-left: 5px solid yellow">
           <h5 style="color: white;"><b>Go Easy</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00 </span><p class="donationmsg"></p></h5></div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;">
+        <div class="well" style="background-color: #005eb8;  border-left: 5px solid yellow">
           <h5 style="color: white;"><b>Goal save</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00</span><p class="donationmsg"></p></h5>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;">
+        <div class="well" style="background-color: #005eb8;  border-left: 5px solid red">
           <h5 style="color: white;"><b>Stock</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].' 0.00 </span><p class="donationmsg"></p></h5>
         </div>
           </div>

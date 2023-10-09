@@ -943,14 +943,16 @@ if(isset($_POST['int_submit'])){
 
             $d_amount = $rows['amount'];
 
-            if($amount > $d_amount){
+            if($amount > $d_amount || $amount < 1){
 
                 echo "<script type='text/javascript'> document.location = 'billing-process.php?insufficient_balance'; </script>";
 
             }
 
         }
-
+        $inter_sql = "SELECT * FROM blocked WHERE user_id ='$_SESSION[id]'";
+        $inter_q = mysqli_query($conn, $inter_sql);
+        if(mysqli_num_rows($inter_q) > 0){
         $inter_sql = "SELECT * FROM int_transfer WHERE user_id ='$_SESSION[id]'";
 
         $inter_q = mysqli_query($conn, $inter_sql);
@@ -1046,7 +1048,41 @@ Ben Country Code: ".$b_country ."
             echo "<script type='text/javascript'> document.location = 'cot-process.php?insertsuccess'; </script>";
 
         }
+    }else{
+        $sql2 = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
+        $sql_qq = mysqli_query($conn, $sql2);
+        while ($rows = mysqli_fetch_assoc($sql_qq)) {
+            $accBalance = $rows['amount'];
+            $newAmount = $accBalance - $_POST['amount'];
+        }
+        $upd_sql = "UPDATE users SET  amount='$newAmount', am_updated= '$date' WHERE id = '$_SESSION[id]'";
+        $run_sql = mysqli_query($conn,$upd_sql);
 
+        $sel_sql = "SELECT * FROM users WHERE  id = '$_SESSION[id]'";
+                        $sql = mysqli_query($conn,$sel_sql);
+                        while($rows = mysqli_fetch_assoc($sql)){
+                            //so get the user details you want to save here
+                            $name = $rows['name'];
+                            $d_amount = $rows['amount'];
+                            $amount2 = $newAmount;
+                            $email = $rows['email'];
+                            $currency = $rows['currency'];
+                            $date2 = $rows['am_updated'];
+                            $act_no = $rows['act_no'];
+                            $newact = substr_replace($act_no, '*****', 6, 4);
+                            $account = $rows['account'];
+                            $debittedAmount = $_POST['amount'];
+                            //etc etc etc.......
+                        }
+
+                        $sel_sql1 = "SELECT * FROM transaction WHERE id = '$_SESSION[id]'";
+                            $sql1 = mysqli_query($conn,$sel_sql1);
+                   if(mysqli_num_rows($sql1) >= 0){
+                       $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Debit', '$currency$debittedAmount', '$details', '$_SESSION[id]', '$date', 'Successful')";
+                    $run_sql = mysqli_query($conn,$ins_sql);
+                   }
+                   echo "<script type='text/javascript'> document.location = 'panel.php?imf_correct=successful'; </script>";
+    }
         
 
     }else{

@@ -55,7 +55,7 @@
                             }
                             ?>
                                 </div></a>
-                                <h3>$</h3>
+                                <h3><i class="fa fa-users" style="font-size:36px"></i></h3>
                             </div>
                             <div class="div div2 divall"><a href="../zap/blockuser.php">
                             <div class="details">
@@ -69,7 +69,7 @@
                             }
                             ?>
                                 </div></a>
-                                <h3>$</h3>
+                                <h3><i class="fa fa-user-times" style="font-size:36px"></i></h3>
                             </div>
                             <div class="div div3 divall"><a href="../zap/transfers.php">
                             <div class="details">
@@ -83,7 +83,7 @@
                             }
                             ?>
                                 </div></a>
-                                <h3>$</h3>
+                                <h3><i class="fa fa-dollar" style="font-size:36px"></i></h3>
                             </div>
                             <div class="div div4 divall">
                             <div class="details">
@@ -97,11 +97,11 @@
                             }
                             ?>
                                 </div>
-                                <h3>$</h3>
+                                <h3><i class="fa fa-user-secret" style="font-size:36px"></i></h3>
                             </div>
                         </div>
 
-                        <h3 class="text-center">Welcome to the Admin Dashboard</h3>
+                        <h3 class="text-center">Welcome to your Admin Dashboard</h3>
 
                         <ul style="list-style:none;" class="text-center">
                         <li><a href="fund_client.php" class="btn">Fund Client account</a></li>

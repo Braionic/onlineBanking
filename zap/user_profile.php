@@ -76,13 +76,14 @@
                              <h4>Phone: '.$rows['fone_no'].'</h4>
                              <h4>Country: '.$rows['state'].'</h4>
                              <h4>Reseller: '.$rows['nickname'].'</h4>
-                             
+                             <div class="profilebtns">
                              <form method="POST" action="all_users.php?user_id='.$rows['id'].'" enctype="multipart/form-data">
                         <input type="submit" onClick="return confirm(\'Delete User?\')" name="delete_submit" id="delete_submit" value="Delete User" class="btn btn-danger delete_acct">
                     </form>
                     <form method="POST" action="all_users.php?user_id='.$rows['id'].'" enctype="multipart/form-data">
                         <input type="submit" onClick="return confirm(\'Block User?\')" name="block_submit" id="block_submit" value="Block User" class="btn btn-warning delete_acct">
                     </form>
+                    </div>
                              </div>
                              <div class"images">
                              
