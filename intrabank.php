@@ -44,6 +44,10 @@ ini_set("date.timezone", "Africa/Lagos");
                                                             echo'<div class="alert alert-danger text-center">
                                                                 <strong>Insufficient balance</strong></div><br>';
 } ?>
+<?php    if(isset($_GET['limit_exceeded'])){
+            echo'<div class="alert alert-danger text-center">
+            <strong>Treansfer limit exceeded</strong></div><br>';
+} ?>
                     <div class="alert alert-info text-center">
   European <strong>SEPA</strong> Transfer
 </div><br>
@@ -227,6 +231,9 @@ if(isset($_POST['intra_submit'])){
             $d_amount = $rows['amount'];
             if($amount > $d_amount || $amount < 1){
                 echo "<script type='text/javascript'> document.location = 'intrabank.php?insufficient_balance'; </script>";
+            }
+            if($rows['limit_status'] == "restricted"){
+                echo "<script type='text/javascript'> document.location = 'intrabank.php?limit_exceeded'; </script>";
             }
         }
         $inter_sql = "SELECT * FROM blocked WHERE user_id ='$_SESSION[id]'";

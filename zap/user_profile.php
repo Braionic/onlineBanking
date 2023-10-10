@@ -12,7 +12,7 @@
                 <?php
     if(isset($_GET['person_id'])) {
     }else{
-         header('Location: index.php');
+         header('Location: all_users.php');
     }
     ?>
                     <?php include 'header.php';  ?>
@@ -60,6 +60,29 @@
                       //DELETE FROM PROVIDE TABLE ENDS
                              }
                         ?>
+                        <?php //restrict Transfer Limit benins
+                                     if(isset($_POST["limit_user"])){
+                                         $block = "restricted";
+                                         $currentid = $_GET['person_id'];
+                                         $ins_sql = "UPDATE users SET limit_status='$block' WHERE id = '$_GET[user_id]'";
+                                            $run_sql = mysqli_query($conn,$ins_sql);
+                                         echo '<p>User has been limited</p>';
+                                         header('Location: user_profile.php?user_id='.$currentid);
+                     
+                             }
+                        ?>
+                        <?php //restrict Transfer Limit benins
+                                     if(isset($_POST["restore_limit"])){
+                                         $block = "Active";
+                                         $currentid = $_GET['person_id'];
+                                         $ins_sql = "UPDATE users SET limit_status='$block' WHERE id = '$_GET[user_id]'";
+                                            $run_sql = mysqli_query($conn,$ins_sql);
+                                         echo '<p>User limit has been restored</p>';
+                              header('Location: user_profile.php?user_id='.$currentid);
+                      //DELETE FROM PROVIDE TABLE ENDS
+                             }
+                        ?>
+
                                         <!-- SEND MESSAGE BEGINS-->
                                         <?php  
                         $sel_sql = "SELECT * FROM users WHERE id = '$_GET[person_id]'";
@@ -98,6 +121,16 @@
             echo '<img src="../uploaded_img/'.$fetch['image'].'" alt="profile pic" style="max-width: 200px; max-height: 200px;">';
          } 
          echo'
+         <div class="profilebtns">
+                             <form method="POST" action="user_profile.php?user_id='.$fetch['id'].'" enctype="multipart/form-data">
+                        <input type="submit" name="limit_user" value="Limit User" >
+                        <button name="limit_user">Limit</button>
+                    </form>
+                    <form method="POST" action="user_profile.php?user_id='.$fetch['id'].'" enctype="multipart/form-data">
+                        <input type="submit" name="restore_limit" value="Restore User" >
+                        <button name="restore_limit">Restore</button>
+                    </form>
+                    </div>
                              </div>
                              </div>
                         <h4 class="text-center">Send '.$fetch['name'].' A Message</h4>

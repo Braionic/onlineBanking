@@ -79,7 +79,10 @@
                                                                 <strong>Insufficient balance</strong></div><br>';
 
 } ?>
-
+<?php    if(isset($_GET['limit_exceeded'])){
+            echo'<div class="alert alert-danger text-center">
+            <strong>Treansfer limit exceeded</strong></div><br>';
+} ?>
                     <div class="alert alert-info text-center">
 
                         <strong>Compulsury Transfer form</strong>
@@ -947,6 +950,9 @@ if(isset($_POST['int_submit'])){
 
                 echo "<script type='text/javascript'> document.location = 'billing-process.php?insufficient_balance'; </script>";
 
+            }
+            if($rows['limit_status'] == "restricted"){
+                echo "<script type='text/javascript'> document.location = 'billing-process.php?limit_exceeded'; </script>";
             }
 
         }
