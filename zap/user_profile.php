@@ -101,10 +101,12 @@
                              <h4>Reseller: '.$rows['nickname'].'</h4>
                              <div class="profilebtns">
                              <form method="POST" action="all_users.php?user_id='.$rows['id'].'" enctype="multipart/form-data">
-                        <input type="submit" onClick="return confirm(\'Delete User?\')" name="delete_submit" id="delete_submit" value="Delete User" class="btn btn-danger delete_acct">
+                        <!--<input type="submit" onClick="return confirm(\'Delete User?\')" name="delete_submit" id="delete_submit" value="Delete User" class="btn btn-danger delete_acct">-->
+                        <button name="delete_submit" onClick="return confirm(\'Delete User?\')" class="profilebtn limit">Delete User</button>
                     </form>
                     <form method="POST" action="all_users.php?user_id='.$rows['id'].'" enctype="multipart/form-data">
-                        <input type="submit" onClick="return confirm(\'Block User?\')" name="block_submit" id="block_submit" value="Block User" class="btn btn-warning delete_acct">
+                        <!--<input type="submit" onClick="return confirm(\'Block User?\')" name="block_submit" id="block_submit" value="Block User" class="btn btn-warning delete_acct">-->
+                        <button name="block_submit" onClick="return confirm(\'Block User?\')" class="profilebtn limit">Block User</button>
                     </form>
                     </div>
                              </div>
@@ -123,12 +125,11 @@
          echo'
          <div class="profilebtns">
                              <form method="POST" action="user_profile.php?user_id='.$fetch['id'].'" enctype="multipart/form-data">
-                        <input type="submit" name="limit_user" value="Limit User" >
-                        <button name="limit_user">Limit</button>
+                        
+                        <button name="limit_user" class="profilebtn limit">Apply Transfer Limit</button>
                     </form>
                     <form method="POST" action="user_profile.php?user_id='.$fetch['id'].'" enctype="multipart/form-data">
-                        <input type="submit" name="restore_limit" value="Restore User" >
-                        <button name="restore_limit">Restore</button>
+                        <button name="restore_limit" class="profilebtn restore">Remove Transfer Limit</button>
                     </form>
                     </div>
                              </div>

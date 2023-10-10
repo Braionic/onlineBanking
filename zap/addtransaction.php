@@ -97,8 +97,8 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="container">
-<h2 class="">Customers</h2>
+                        <h2 class="">Customers</h2>
+                        <div class="container" style="overflow: auto;">
 <table class="table table-striped">
   <tr class="table-success">
     <td style= "background-color: #fdc600;">No.</td>

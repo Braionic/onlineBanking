@@ -132,6 +132,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Profile</th>
+                                                    <th>Transfer Status</th>
                                                     <th>Full Name</th>
                                                     <th>Delete</th>
                                                 </tr>
@@ -147,6 +148,12 @@
                     echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
                  }else{
                     echo '<td><img src="../uploaded_img/'.$rows['image'].'" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
+                 }
+
+                 if($rows['limit_status'] == 'restricted'){
+                    echo '<td><div class="restricted">User Restricted</div></td>';
+                 }else{
+                    echo '<td><div class="allowed">Limit allowed</div></td>';
                  }
                 echo '
                  

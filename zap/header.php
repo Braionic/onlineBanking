@@ -167,7 +167,7 @@ a:hover {
   pad: 16px;
 }
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+ 
   background-position: center;
   background-size: cover;
 }
@@ -487,6 +487,34 @@ form.user .form-control-user {
 
 .custom-control-input:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+}
+
+.restricted {
+  color: red;
+}
+.allowed {
+  color: green;
+ 
+}
+.profilebtn {
+  margin: 10px;
+  padding: 4px 8px;
+}
+.profilebtn:hover {
+  background-color: grey;
+  box-shadow: 1px 1px 1px black;
+}
+.restore {
+  background-color: green;
+  color: white;
+  border-radius: 4px;
+  border: none;
+}
+.limit {
+  background-color: red;
+  color: white;
+  border-radius: 4px;
+  border: none;
 }
 </style>
 
