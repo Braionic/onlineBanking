@@ -51,24 +51,24 @@
                     $upd_sql = "UPDATE users SET  amount='$amount2', am_updated= '$date' WHERE id = '$_POST[user_id]'";
                     $run_sql = mysqli_query($conn,$upd_sql);
                       $to = $email; // this is your Email address
-                $from = "no-reply@mycdfb.com"; // this is the sender's Email address
+                $from = "no-reply@myfrdb.com"; // this is the sender's Email address
                 $first_name = $name;
            
                 $subject2 = "[Credit: ".$currency . $amount . "]";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset= ISO-8859-1' . "\r\n";
                 $message = '<html><body>';
-                    $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="cDFB" class="logo">';
-                       $message .= '<div  style="background-color: #f3f3f3;">';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img  src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+                       $message .= '<div  style="background-color: white;">';
                        $message .= '<h3 style="text-align: left;">Dear '.$first_name.'</h3>';
                        $message .= "<h4 style='color:#071d49;'>Your account has been credited with</4>";
                        $message .= '<h1 style="color:#080;font-size:18px;"> '.$currency .$amount.'.00</h1>';
                        $message .= '<h3>Transaction Summary</h3>';
-                       //$message .= '<p><b>IBAN:</b> '.$newact.' <br><b>Account type:</b> '.$account.'<br></p>';
-                       $message .= '<p><b>Account Name:</b> '. $name .'<br><b>Transaction Branch:</b> Head Office<br><b>Transaction Date:</b> ' .$date.'<br></p>';
-                      $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00<br><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
-                       $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing CDFBank</h4>';
-                       $message .= '<div style="background-color: #007eae; color: white;"><a href="https://www.mycdfb.com">CDFBank!</a> Always giving you extra. Get a little extra help from the <a href="https://www.mycdfb.com">CDFBank</a>.</div>';
+                       $message .= '<p><b>IBAN:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'<br></p>';
+                       $message .= '<p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date.'<br></p>';
+                      $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p><p><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
+                       $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing FRDBank</h4>';
+                       $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.myfrdb.com">FRDBank!</a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com">FRDBank</a>.</div>';
 $message .= '</div></div></body></html>';
                       $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

@@ -21,7 +21,7 @@
                         <div class="paymentWrap">
                             <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
                                <label class="btn paymentMethod">
-                                    <div class="method agent" pointer;" onclick="window.location='buy-stock.php';"></div>
+                                    <div class="method agent" pointer;" onclick="window.location='#';"></div>
                                 </label>
                                 <label class="btn paymentMethod">
                                     <div class="method pro" pointer;" onclick="window.location='#';"></div>
@@ -34,8 +34,8 @@
                             </div>        
                         </div>
                         <div class="footerNavWrap clearfix">
-                            <div class="btn pull-left btn-fyi" style="background-color: #fdc600;" pointer;" onclick="window.location='panel.php';"><span class="glyphicon glyphicon-chevron-left"></span> RETURN</div>
-                            <div class="btn pull-right btn-fyi" style="background-color: #fdc600;">PROCEED<span class="glyphicon glyphicon-chevron-right"></span></div>
+                            <div class="btn pull-left btn-fyi" style="background-color: #28a745; color: white" pointer;" onclick="window.location='panel.php';"><span class="glyphicon glyphicon-chevron-left"></span> RETURN</div>
+                            <div class="btn pull-right btn-fyi" style="background-color: #28a745; color: white">PROCEED<span class="glyphicon glyphicon-chevron-right"></span></div>
                         </div>
                     </div>
         

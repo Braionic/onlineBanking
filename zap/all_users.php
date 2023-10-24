@@ -129,21 +129,24 @@
                                         <!--SEARCH USERS ENDS-->
                                         <h3 class="text-center">All existing Customers</h3>
                                         <table class="table table-hover table-responsive">
-                                            <thead>
+                                            
                                                 <tr>
                                                     <th>Profile</th>
                                                     <th>Transfer Status</th>
                                                     <th>Full Name</th>
                                                     <th>Delete</th>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
+                                            
+                                            
+                                                
                                             <?php
                                                
             $sel_sql= "SELECT * FROM users ORDER BY id DESC";
             $sql= mysqli_query($conn,$sel_sql);
             while($rows = mysqli_fetch_assoc($sql)){
-                
+                ?>
+                <tr>
+                    <?php
                 if($rows['image'] == ''){
                     echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
                  }else{
@@ -160,7 +163,8 @@
                     <td><a href="user_profile.php?person_id='.$rows['id'].'">'.$rows['name'].' (<b style="color:orange">'.$rows['id'].'</b>)</a></td>
                     <td class="btn btn-warning"><a href="deleteuser.php?id='.$rows['id'].'">Delete</a></td>
         ';}?>
-                    </tbody>
+        </tr>
+    
         
                                         </table>
                                 </div>

@@ -84,7 +84,7 @@ if(isset($_POST['login_submit'])){ //IF LOGIN BTN HAS BEEN CLICKED
                 <div class="col-lg-6">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Welcome Backk!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Welcome Admin!</h1>
                         </div>
                         <form method="POST" action="login.php" class="user" enctype="multipart/form-data" role="form">
                             <div class="form-group">

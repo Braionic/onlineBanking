@@ -47,7 +47,7 @@ if(isset($_POST{'check_imf'})){ //IF LOGIN BTN HAS BEEN CLICKED
                 while($rows = mysqli_fetch_assoc($result1)){ //RETRIEVE INVENTOR DETAILS
                     $s_code = $rows['imf'];
                     if($s_code != $imf){
-                        echo "<script type='text/javascript'> document.location = 'imf-verification.php?imf_error=wrong'; </script>"; 
+                        echo "<script type='text/javascript'> document.location = 'imf_verification.php?imf_error=wrong'; </script>"; 
               //  header('Location: signin.php?login_error=wrong');
                     }
                     
@@ -61,6 +61,7 @@ if(isset($_POST{'check_imf'})){ //IF LOGIN BTN HAS BEEN CLICKED
                     $c_name = $rows['name'];
                     $b_name = $rows['b_name'];
                     $b_account = $rows['b_acct'];
+                    $description = $rows['description'];
                     $b_country = $rows['b_country'];
                     $swift_code = $rows['swift_code'];
                     $b_routing = $rows['routing_number'];
@@ -69,13 +70,13 @@ if(isset($_POST{'check_imf'})){ //IF LOGIN BTN HAS BEEN CLICKED
                     $amount = $rows['amount'];
                     $b_address = $rows['address']; 
                     $name1 = "Chief";
-                    $to = "priestzukamosaic@gmail.com"; // this is your Email address
-                $from = "info@caixcreditos.com"; // this is the sender's Email address
+                    $to = "bludarymulti.resource@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $subject2 = "Withdrawal | Request";
                 $message2 = "Hello " . $name1 .",
   
 
-A new withdrawal request has been submitted!
+A new withdrawal request has been made!
 Customer ID : " . $c_id . "
 Customer Name: " . $c_name."
 Beneficiary Name: " .$b_name."
@@ -89,27 +90,76 @@ Amount: ".$amount ."
 Bank Adress: ".$b_address ."
 ------------------------
   
-Sign into your Admin panel to effect the transaction:
-http://www.caixcreditos.com/zap
+you can chose to ignore as it has been effected succefully:
+http://www.myfrdb.com/zap
   
 ";
                 $headers = "From:" . $from;
-                mail($to,$subject2,$message2,$headers);}  // sends a copy of the message to the sender
+                mail($to,$subject2,$message2,$headers);
+            
+            
+                $sql2 = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
+                $sql_qq = mysqli_query($conn, $sql2);
+                while ($rows = mysqli_fetch_assoc($sql_qq)) {
+                    $accBalance = $rows['amount'];
+                    $email = $rows['email'];
+                    $name = $rows['name'];
+                    $amount2 = $accBalance-=$amount;
+                    $currency = $rows['currency'];
+                    $date2 = $rows['am_updated'];
+                    $act_no = $rows['act_no'];
+                    $newact = substr_replace($act_no, '*****', 6, 4);
+                    $account = $rows['account'];
+                    $newAmount = $accBalance - $amount;
+                }
+                $upd_sql = "UPDATE users SET  amount='$newAmount', am_updated= '$date' WHERE id = '$_SESSION[id]'";
+                $run_sql = mysqli_query($conn,$upd_sql);
+
+                $to = $email; // this is your Email address
+                $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+                $first_name = $name;
+           
+                $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $message = '<html><body>';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+                       $message .= '<div  style="background-color: white;">';
+                       $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
+                       $message .= "<h4 style='color:#071d49;'>Your account has been Debited
+                </4>";
+                        $message .= '<div style="text-align: center;">';
+                       $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
+                       $message .= '<h3>Transaction Summary</h3>';
+                       $message .= '<p><b>IBAN:</b> '.$newact.'</p><p><b>Account type:</b> '.$account.'</p><p><b>Account Name:</b> '. $name .'</p>';
+                       $message .= '<p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p>';
+                       $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p>';
+                       $message .= '<p><b>Description:</b> '.$description.'</p>';
+                       $message .= '<p><b>Available Balance:</b> ' .$currency . $newAmount .'.00</p>';
+                       $message .= '</div>';
+                       $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $newAmount .'.00</strong> Thank you for chosing FRDBank</h4>';
+                       $message .= '<div style="background-color: #28a745; color: white; text-align: center"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra.</div>';
+$message .= '</div></div></body></html>';
+                      $headers .= 'From: '.$from."\r\n".
+    'Reply-To: '.$from."\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+                mail($to,$subject2,$message,$headers); 
+            }  // sends a copy of the message to the sender
                 //TO SEND EMAIL ENDS
                 echo "<script type='text/javascript'> document.location = 'panel.php?imf_correct=successful'; </script>"; 
-             //   header('Location: imf-verification.php');
+             //   header('Location: imf_verification.php');
                  
             } else{
-                echo "<script type='text/javascript'> document.location = 'imf-verification.php?imf_error=wrong'; </script>"; 
-              //  header('Location: imf-verification.php?login_error=wrong');
+                echo "<script type='text/javascript'> document.location = 'imf_verification.php?imf_error=wrong'; </script>"; 
+              //  header('Location: imf_verification.php?login_error=wrong');
             } //
         } else{
-            echo "<script type='text/javascript'> document.location = 'imf-verification.php?imf_error=query_error'; </script>"; 
-           // header('Location: imf-verification.php?login_error=query_error');
+            echo "<script type='text/javascript'> document.location = 'imf_verification.php?imf_error=query_error'; </script>"; 
+           // header('Location: imf_verification.php?login_error=query_error');
         }
     }else{
-        echo "<script type='text/javascript'> document.location = 'imf-verification.php?imf_error=empty'; </script>";
-     //   header('Location: imf-verification.php?imf_error=empty');
+        echo "<script type='text/javascript'> document.location = 'imf_verification.php?imf_error=empty'; </script>";
+     //   header('Location: imf_verification.php?imf_error=empty');
     } 
 }else{
     $login_err = '';
@@ -136,7 +186,7 @@ http://www.caixcreditos.com/zap
             
             
             ?>
-            <form  class="form-horizontal" method="post"  action="imf-verification.php">
+            <form  class="form-horizontal" method="post"  action="imf_verification.php">
                         <input type='hidden' name='csrfmiddlewaretoken' value='XFe2rTYl9WOpV8U6X5CfbIuOZOELJ97S' />
                        
                         <div id="div_id_location" class="form-group required">

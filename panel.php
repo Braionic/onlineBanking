@@ -37,7 +37,7 @@ $(document).ready(function(){
                             $run_sql = mysqli_query($conn,$sel_sql);
                             while($rows = mysqli_fetch_assoc($run_sql)){
                              echo '
-                                    <p class="alert text-center" style="background-color: #005eb8; color: white;  border-bottom: 5px solid red">Hi, <strong> '.$rows['name'].' Welcome back</strong></p>
+                                    <p class="alert text-center" style="background-color: #28a745; color: white;  border-bottom: 5px solid red">Hi, <strong> '.$rows['name'].' Welcome back</strong></p>
                              ';
                             }
                              ?></div>
@@ -81,7 +81,7 @@ $(document).ready(function(){
                       if(isset($_GET['imf_correct=successful'])) {
                      echo '<div class="alert alert-success text-center alert-dismissable">
                      <button type="button" class="close" data-dismiss="alert">&times;</button>
-                     <strong>Request Received successfully!</strong><br> Thank you for chosing BankRCU</div>';
+                     <strong>Request Received successfully!</strong><br> Thank you for chosing First Royal Digital Bank</div>';
                         }
                         ?>
                     
@@ -97,27 +97,27 @@ $(document).ready(function(){
                         if(mysqli_num_rows($sql) == 1){ //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
                         while($rows = mysqli_fetch_assoc($sql)){
                              echo '
-                             <div class="panel panel-default style="background-color: #005eb8;">
+                             <div class="panel panel-default style="background-color: #28a745;">
 <div class="alert alert-info text-center"><strong>Account Status: '.$rows['account'].'</strong></div>
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="row">
               <div class="col-lg-6 col-md-6 col-xs-6">
-                <div class="well" style="background-color: #005eb8; border-left: 5px solid red">
+                <div class="well" style="background-color: #28a745; border-left: 5px solid red">
                  <h5 style="color: white;"> <b>Main Balance</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  '.$rows['amount'].' </span><p class="donationmsg"></p></h5>
                 </div>
             </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;  border-left: 5px solid yellow">
+        <div class="well" style="background-color: #28a745;  border-left: 5px solid yellow">
           <h5 style="color: white;"><b>Go Easy</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00 </span><p class="donationmsg"></p></h5></div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;  border-left: 5px solid yellow">
+        <div class="well" style="background-color: #28a745;  border-left: 5px solid yellow">
           <h5 style="color: white;"><b>Goal save</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00</span><p class="donationmsg"></p></h5>
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #005eb8;  border-left: 5px solid red">
+        <div class="well" style="background-color: #28a745;  border-left: 5px solid red">
           <h5 style="color: white;"><b>Stock</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].' 0.00 </span><p class="donationmsg"></p></h5>
         </div>
           </div>

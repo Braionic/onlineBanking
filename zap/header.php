@@ -530,7 +530,7 @@ form.user .form-control-user {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.php"><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="CDFB" class="logo"></a>
+      <a class="navbar-brand" href="index.php"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" width="100px" height="50px" style="margin-top: 0;" alt="CDFB" class="logo"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">

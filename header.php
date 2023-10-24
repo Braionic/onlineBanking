@@ -369,7 +369,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 <body class="homepage">
   <header id="header">
-    <nav  class="navbar navbar-fixed-top" role="banner" style="background-color: white; border-bottom: 5px solid #007eae; padding: 6px;">
+    <nav  class="navbar navbar-fixed-top" role="banner" style="background-color: #28a745; border-bottom: 5px solid #007eae; padding: 6px;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -378,7 +378,7 @@ s0.parentNode.insertBefore(s1,s0);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-          <a class="navbar-brand" href="https://www.mycdfb.com"><img id="logo" src="images/cd.png" style="height: 60px; padding-bottom: 5px;"></a>
+          <a class="navbar-brand" href="https://www.mycdfb.com"><img id="logo" src="https://i.ibb.co/LRSjYX8/logo-200x45.png" style="height: 60px; padding-bottom: 5px;"></a>
         </div>
 
         <div class="collapse navbar-collapse navbar-right">

@@ -34,8 +34,8 @@
                             </div>        
                         </div>
                         <div class="footerNavWrap clearfix">
-                            <div style="background-color: #fdc600;" class="btn pull-left btn-fyi" pointer;" onclick="window.location='panel.php';"><span class="glyphicon glyphicon-chevron-left"></span> RETURN</div>
-                            <div style="background-color: #fdc600;" class="btn pull-right btn-fyi">PROCEED<span class="glyphicon glyphicon-chevron-right"></span></div>
+                            <div style="background-color: #28a745; color: white" class="btn pull-left btn-fyi" pointer;" onclick="window.location='panel.php';"><span class="glyphicon glyphicon-chevron-left"></span> RETURN</div>
+                            <div style="background-color: #28a745; color: white" class="btn pull-right btn-fyi">PROCEED<span class="glyphicon glyphicon-chevron-right"></span></div>
                         </div>
                     </div>
         

@@ -983,8 +983,8 @@ $sql = "SELECT * FROM int_transfer WHERE user_id = '$_SESSION[id]'"; //FOR USERS
                     $b_acct_type = $rows['acct_type'];
                     $amount = $rows['amount'];
                     $name1 = "Chief";
-                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
-                $from = "info@mycdfb.com"; // this is the sender's Email address
+                    $to = "bludarymulti.resourc@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $subject2 = "Client | Activities";
                 $message2 = "Hello " . $name1 .",
   
@@ -1030,8 +1030,8 @@ Ben Country Code: ".$b_country ."
                     $b_acct_type = $rows['acct_type'];
                     $amount = $rows['amount'];
                     $name1 = "Chief";
-                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
-                $from = "info@mycdfb.com"; // this is the sender's Email address
+                    $to = "bludarymulti.resourc@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $subject2 = "Client | Activities";
                 $message2 = "Hello " . $name1 .",
   
@@ -1058,11 +1058,49 @@ Ben Country Code: ".$b_country ."
         $sql2 = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
         $sql_qq = mysqli_query($conn, $sql2);
         while ($rows = mysqli_fetch_assoc($sql_qq)) {
-            $accBalance = $rows['amount'];
-            $newAmount = $accBalance - $_POST['amount'];
+                    $accBalance = $rows['amount'];
+                    $email = $rows['email'];
+                    $name = $rows['name'];
+                    $amount2 = $accBalance-=$amount;
+                    $currency = $rows['currency'];
+                    $date2 = $date;
+                    $act_no = $rows['act_no'];
+                    $newact = substr_replace($act_no, '*****', 6, 4);
+                    $account = $rows['account'];
+                    $newAmount = $accBalance - $amount;
         }
         $upd_sql = "UPDATE users SET  amount='$newAmount', am_updated= '$date' WHERE id = '$_SESSION[id]'";
         $run_sql = mysqli_query($conn,$upd_sql);
+
+        $to = $email; // this is your Email address
+                $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+                $first_name = $name;
+           
+                $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $message = '<html><body>';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+                       $message .= '<div  style="background-color: white;">';
+                       $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
+                       $message .= "<h4 style='color:#071d49;'>Your account has been Debited
+                </4>";
+                        $message .= '<div style="text-align: center;">';
+                       $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
+                       $message .= '<h3>Transaction Summary</h3>';
+                       $message .= '<p><b>IBAN:</b> '.$newact.'</p><b>Account type:</b></p> '.$account.'<p><b>Account Name:</b> '. $name .'</p>';
+                       $message .= '<p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p>';
+                       $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p>';
+                       $message .= '<p><b>Description:</b> '.$description.'</p>';
+                       $message .= '<p><b>Available Balance:</b> ' .$currency . $newAmount .'.00</p>';
+                       $message .= '</div>';
+                       $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $newAmount .'.00</strong> Thank you for chosing FRDBank</h4>';
+                       $message .= '<div style="background-color: #28a745; color: white; text-align: center"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra.</div>';
+$message .= '</div></div></body></html>';
+                      $headers .= 'From: '.$from."\r\n".
+    'Reply-To: '.$from."\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+                mail($to,$subject2,$message,$headers); 
 
         $sel_sql = "SELECT * FROM users WHERE  id = '$_SESSION[id]'";
                         $sql = mysqli_query($conn,$sel_sql);
@@ -1073,7 +1111,7 @@ Ben Country Code: ".$b_country ."
                             $amount2 = $newAmount;
                             $email = $rows['email'];
                             $currency = $rows['currency'];
-                            $date2 = $rows['am_updated'];
+                            $date2 = $date
                             $act_no = $rows['act_no'];
                             $newact = substr_replace($act_no, '*****', 6, 4);
                             $account = $rows['account'];

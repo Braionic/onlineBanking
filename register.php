@@ -54,23 +54,23 @@ any escaped characters. */
                         if(mysqli_num_rows($run_sql) == 0){ //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
                              //TO SEND EMAIL BEGINS
                  $to = $email;
-                $from = "support@mycdfb.com"; // this is the sender's Email address
+                $from = "support@myfrdb.com"; // this is the sender's Email address
                 $first_name = $name;
            
                   $subject2 = "Verification Successful";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                    $message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="CDFBank" class="logo">';
-                       $message .= '<div style="background-color: #f3f3f3;">';
+                    $message .= '<div class="navbar-brand" style="text-align: center; background-color: green"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDBank" class="logo">';
+                       $message .= '<div style="background-color: white;">';
                        $message .= '<h2 style="text-align: left;">Hi <strong>'. $first_name . '</strong></h2>';
                        $message .= '<p>This is a notification email of your application with us</p>';
                        $message .= '<p>Your appication has been accepted and account created</p>';
                        $message .= '<p>Username '.$email.'</p>';
                        $message .= '<p>Default Password: '.$password.'</p>';
-                       $message .= '<p style="color: red;">for security reason, please sign into your account,</p>';
+                       $message .= '<p style="color: red;">for security reasons, please sign into your account, navigate to profile and change your preferred password</p>';
                        $message .= '<p>Don’t recognise this activity? Please ignore</p>';
-                       $message .= '<div style="background-color: #005eb8; color: white;"><a href="https://www.mycdfb.com" style="color: white"><b>CDFBank!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.mycdfb.com"><b>CDFBank</b></a>.</div>';
+                       $message .= '<div style="background-color: green; color: white;"><a href="https://www.myfrdb.com" style="color: white"><b>FRDBank!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com"><b>FRDBank</b></a>.</div>';
 $message .= '</div></div></body></html>';
                       $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -128,7 +128,7 @@ $message .= '</div></div></body></html>';
                                 <div>
                                     <label for="state" class="col-sm-3 col-xs-4" style="color: black">Full Name</label>
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" class="form-control input-md" placeholder="First & Last Name" tabindex="1" required>
+                                        <input type="text" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="name" id="name" class="form-control input-md" placeholder="First & Last Name" tabindex="1" required>
                                     </div>
                                 </div>
                                 <!--<div class="col-xs-12 col-sm-6 col-md-6">
@@ -139,14 +139,14 @@ $message .= '</div></div></body></html>';
                             </div>-->
                                 <div class="form-group">
                                 <label for='address' style="color: black">Home Address</label>
-                                <input type="text" name="address" id="act_no" class="form-control input-md" placeholder="Valid Address" tabindex="3">
+                                <input type="text" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="address" id="act_no" class="form-control input-md" placeholder="Valid Address" tabindex="3">
                             <div class="form-group">
                                 <label for='act_no' style="color: black">Account Number</label>
-                                <input type="text" name="act_no" id="act_no" class="form-control input-md" placeholder="Account Number" tabindex="3">
+                                <input type="text" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="act_no" id="act_no" class="form-control input-md" placeholder="Account Number" tabindex="3">
                             </div>
                             <div class="form-group">
                                 <label for="state" class="col-sm-3 col-xs-4" style="color: black">Valid Email</label>
-                                <input type="email" name="email" id="email" class="form-control input-md" placeholder="Email Address" tabindex="3" required>
+                                <input type="email" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="email" id="email" class="form-control input-md" placeholder="Email Address" tabindex="3" required>
                             </div>
                                 <div class="md-form md-outline input-with-post-icon datepicker">
                                     <label for="dob" class="col-sm-3 col-xs-4" style="color: black">DOB</label>
@@ -157,13 +157,13 @@ $message .= '</div></div></body></html>';
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for="state" class="col-sm-3 col-xs-4" style="color: black">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control input-md" placeholder="Password" tabindex="4" required>
+                                        <input type="password" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="password" id="password" class="form-control input-md" placeholder="Password" tabindex="4" required>
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                          <label for="state" class="col-sm-3 col-xs-4" style="color: black">Retype</label>
-                                        <input type="password" name="c_password" id="c_password" class="form-control input-md" placeholder="Confirm Password" tabindex="5" required>
+                                        <input type="password" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="c_password" id="c_password" class="form-control input-md" placeholder="Confirm Password" tabindex="5" required>
                                     </div>
                                     <p><i for="" class="help-block add lighter" style="color: red;">
                                             Minimum of 6 characters
@@ -173,7 +173,7 @@ $message .= '</div></div></body></html>';
                             </div>
                             <div class="form-group">
                                 <label for="state" class="col-sm-3 col-xs-4" style="color: black">Mobile Number</label>
-                                <input type="number" name="phone_no" id="phone_no" class="form-control input-md" placeholder="Mobile Number" tabindex="8" required>
+                                <input type="number" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="phone_no" id="phone_no" class="form-control input-md" placeholder="Mobile Number" tabindex="8" required>
                                  <i for="" class="help-block add lighter" style="color: red;">Format: +44 7123123456</i>
                             </div>
                             <div class="form-group">
@@ -187,7 +187,7 @@ $message .= '</div></div></body></html>';
                             <br>
                             <div class="form-group">
                     <label for="state" class="col-sm-3 col-xs-4" style="color: black">Country</label>
-                    <select class=" col-xs-7 form-control input-md" name="state" id="state" tabindex="9" required>
+                    <select style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" class="col-xs-7 form-control input-md" name="state" id="state" tabindex="9" required>
                                         <option value="af">Afghanistan</option>
                                                                             <option value="Albania">Albania</option>
                                                                             <option value="Algeria">Algeria</option>
@@ -445,7 +445,7 @@ $message .= '</div></div></body></html>';
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label for='gender' style="color: black">Account Type</label>
-                                        <select class=" col-xs-7 form-control input-md" name="account" id="account" tabindex="9" required>
+                                        <select style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" class=" col-xs-7 form-control input-md" name="account" id="account" tabindex="9" required>
                                         <option value="savings" selected>Savings Account</option>
                                             <option value="EveryDay account" selected>EveryDay Account</option>
                                       <option value="Current account">Current Account</option>
@@ -462,7 +462,7 @@ $message .= '</div></div></body></html>';
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label style="color: black">Currency</label>
-                                        <select class=" col-xs-7 form-control input-md" name="currency" id="state" tabindex="9">
+                                        <select style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" class=" col-xs-7 form-control input-md" name="currency" id="state" tabindex="9">
                                         <option value="$">US Dollar</option>
                                             <option value="€" selected>Euro</option>
                                             <option value="£">Great British Pounds</option>
@@ -472,13 +472,13 @@ $message .= '</div></div></body></html>';
                                     </div>
                                    <div class="form-group">
                                 <label for='act_no' style="color: black">SWIFT Code</label>
-                                <input type="text" name="swift_code" id="swift_code" class="form-control input-md" placeholder="SWIFT Code" tabindex="3">
+                                <input type="text" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="swift_code" id="swift_code" class="form-control input-md" placeholder="SWIFT Code" tabindex="3">
                             </div>
                             
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
                                     <label for="state" class="col-sm-3 col-xs-4" style="color: black">Passport</label>
-                                    <input type="file" name="image" accept="image/jpg, image/jpeg, image/png">
+                                    <input type="file" style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red" name="image" accept="image/jpg, image/jpeg, image/png">
 
                                 </div>
                             </div>
@@ -522,21 +522,21 @@ $message .= '</div></div></body></html>';
                                  <h2>Terms And Conditions</h2>
                     <h4 class="spc">
                     Terms and conditions</h4>
-                    <h3>Please read these terms and conditions carefully before your first use of the Website. If you do not agree to be bound by these terms and conditions, you should stop using the website. In these terms and conditions, User or Users means any third party that accesses the Website and is not either (I) employed by 34trade and acting in the course of their employment or (ii) engaged as a consultant or otherwise providing services to 34trade and accessing the Website in connection with the provision of such services. You must be at least 18 years of age to use this Website. By using the Website and agreeing to these terms and conditions, you represent and warrant that you are at least 18 years of age.
+                    <h3>Please read these terms and conditions carefully before your first use of the Website. If you do not agree to be bound by these terms and conditions, you should stop using the website. In these terms and conditions, User or Users means any third party that accesses the Website and is not either (I) employed by First Royal Digital Bank and acting in the course of their employment or (ii) engaged as a consultant or otherwise providing services to First Royal Digital Bank and accessing the Website in connection with the provision of such services. You must be at least 18 years of age to use this Website. By using the Website and agreeing to these terms and conditions, you represent and warrant that you are at least 18 years of age.
                         <br> Intellectual property and acceptable use
-                        <br> 1. All Content included on the Website, unless uploaded by Users, is the property of 34trade, our affiliates or other relevant third parties. In these terms and conditions, Content means any text, graphics, images, audio, video, software, data compilations,'page layout, underlying code and software and any other form of information capable of being stored in a computer that appears on or forms part of this Website, including any such content uploaded by Users. By continuing to use the Website you acknowledge that such Content is protected by copyright, trademarks, database rights and other intellectual property rights. Nothing on this site (trademark, logo or service mark displayed on the site) shall be used without the owner's prior written permission.
+                        <br> 1. All Content included on the Website, unless uploaded by Users, is the property of First Royal Digital Bank, our affiliates or other relevant third parties. In these terms and conditions, Content means any text, graphics, images, audio, video, software, data compilations,'page layout, underlying code and software and any other form of information capable of being stored in a computer that appears on or forms part of this Website, including any such content uploaded by Users. By continuing to use the Website you acknowledge that such Content is protected by copyright, trademarks, database rights and other intellectual property rights. Nothing on this site (trademark, logo or service mark displayed on the site) shall be used without the owner's prior written permission.
                         <br> 2. You may, for your own personal, non-commercial use only, do the following: Retrieve, display and view the Content on a computer screen.
                         <br> 3. You acknowledge that you are responsible for any Content you may submit via the Website, including the legality, reliability, appropriateness, originality and copyright of any such Content. You may not upload to, distribute or otherwise publish through the Website any Content that is (i) confidential, proprietary, false, fraudulent, libelous, defamatory, obscene, threatening, invasive of privacy or publicity rights, infringing on intellectual property rights, abusive, illegal or otherwise objectionable; (ii)may constitute or encourage a criminal offence, violate the rights of any party or otherwise give rise to liability or violate any law; or (iii)may contain software viruses, political campaigning, chain letters, mass mailings, or any form of spam. You may not use a false email address or other identifying information, impersonate any person or entity or otherwise mislead as to the origin of any content. You may not upload commercial content onto the Website.
-                        <br> 4. You represent and warrant that you own or otherwise control all the rights to the Content you post; that the Content is accurate; that use of the Content you supply does not violate any provision of these terms and conditions and will not cause injury to any person; and that you will indemnify 34trade for all claims resulting from Content you supply.
+                        <br> 4. You represent and warrant that you own or otherwise control all the rights to the Content you post; that the Content is accurate; that use of the Content you supply does not violate any provision of these terms and conditions and will not cause injury to any person; and that you will indemnify First Royal Digital Bank for all claims resulting from Content you supply.
                         <br> 5=5. You may not use the Website for any of the following purposes: (a) in any way which causes, or may cause, damage to the Website or interferes with any other person's use or enjoyment of the Website; (b). In any way which is harmful, unlawful, illegal, abusive, harassing, threatening or otherwise objectionable or in breach of any applicable law, regulation, governmental order; (c). making, transmitting or storing electronic copies of Content protected by copyright without the permission of the owner.
                         <br> 6. You must ensure that the details provided by you on registration or at any time are correct and complete.
                         <br> 7. You must inform us immediately of any changes to the information that you provide when registering by updating your personal details to ensure we can communicate with you effectively.
-                        <br> 8. Using the Website. Cancellation or suspension of your registration does not affect any statutory rights. Privacy Policy. Use of the Website is also governed by our Privacy Policy, which is incorporated into these terms and conditions by this reference To view the Privacy Policy, please click on the following: www.34trade.com/privacy-policy.php.
+                        <br> 8. Using the Website. Cancellation or suspension of your registration does not affect any statutory rights. Privacy Policy. Use of the Website is also governed by our Privacy Policy, which is incorporated into these terms and conditions by this reference To view the Privacy Policy, please click on the following: www.myfrdb.com/privacy-policy.php.
                         <br> Availability of the Website and disclaimers.
-                        <br> 9. Any online facilities, tools, services or information that 34trade makes available through the website(the Service) is provided as is on an as available basis. We give no warranty that the Service will be free of defects and/or faults. To the maximum extent permitted by the law, we provide no warranties(express or implied) of fairness for a particular purpose, accuracy of information, compatibility and satisfactory quality. 34trade is under no obligation to update information on the Website.
-                        <br> 10. Whilst 34trade uses reasonable endeavors to ensure that the Website is secure and free of errors, viruses and other malware, we give no warranty or guaranty in that regard and all Users take responsibility for their own security, that of their personal details and their computers.
-                        <br>11. 34trade accepts no liability for any disruption or non-availability of the Website.
-                        <br>12. 34trade reserves the right to alter, suspend or discontinue any part(or the whole of) the Website including, but not limited to, any products and/or services available. These terms and conditions shall continue to apply to any modified version of the Website unless it is expressly stated otherwise. Limitation of liability
+                        <br> 9. Any online facilities, tools, services or information that First Royal Digital Bank makes available through the website(the Service) is provided as is on an as available basis. We give no warranty that the Service will be free of defects and/or faults. To the maximum extent permitted by the law, we provide no warranties(express or implied) of fairness for a particular purpose, accuracy of information, compatibility and satisfactory quality. First Royal Digital Bank is under no obligation to update information on the Website.
+                        <br> 10. Whilst First Royal Digital Bank uses reasonable endeavors to ensure that the Website is secure and free of errors, viruses and other malware, we give no warranty or guaranty in that regard and all Users take responsibility for their own security, that of their personal details and their computers.
+                        <br>11. First Royal Digital Bank accepts no liability for any disruption or non-availability of the Website.
+                        <br>12. First Royal Digital Bank reserves the right to alter, suspend or discontinue any part(or the whole of) the Website including, but not limited to, any products and/or services available. These terms and conditions shall continue to apply to any modified version of the Website unless it is expressly stated otherwise. Limitation of liability
                         <br> 13. Nothing in these terms and conditions will: (a)limit or exclude our or your liability for death or personal injury resulting from our or your negligence, as applicable; (b)limit or exclude our or your liability for fraud or fraudulent misrepresentation; (c) limit or exclude any of our or your liabilities in any way that is not permitted under applicable law.
                         <br> 14. We will not be liable to you in respect of any losses arising out of events beyond our, reasonable control. We are not responsible for a any business losses, such as loss of profits, income, revenue, anticipated savings, business, contracts, goodwill or commercial opportunities; b. Loss or corruption of any data, database or software; c. any special, indirect or consequential loss or damage.
                         <br> General 15. You may not transfer any of your rights under these terms and conditions to any other person. We may transfer our rights under these terms and conditions where we reasonably believe your rights will not be affected.

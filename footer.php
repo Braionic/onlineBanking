@@ -5,7 +5,7 @@
    <footer id="footer" class="midnight-blue"  style="background-color: white;">
     <div class="text-center" style="color: black; font-size: 13px; margin-top: 20px;">
         <p>Legal notice | Security | Rates</p>
-        <p>&copy; 20<?php echo date('y'); ?>© CDFBanking, S.A. 2023. All rights reserved.</p>.</div>
+        <p>&copy; 20<?php echo date('y'); ?>© FRDBanking, S.A. 2023. All rights reserved.</p>.</div>
   </footer>
 
   <!--/#footer-->

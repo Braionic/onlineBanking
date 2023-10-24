@@ -24,7 +24,7 @@
 
     <div style="height:60px;"></div>
 
-    <img src="https://i.ibb.co/jJFBBBY/Header-Category-2-2-1400x788.jpg" alt="Girl in a jacket" style="width:100%;height:35%;">
+    <!--<img src="https://i.ibb.co/jJFBBBY/Header-Category-2-2-1400x788.jpg" alt="Girl in a jacket" style="width:100%;height:35%;">-->
 
     <?php if (isset($_GET['error'])) { ?>
 
@@ -221,7 +221,7 @@
 
 
 
-                <div style="background-color: #fdc600;" class="container alert alert-success">
+                <div style="background-color: #28a745;" class="container alert alert-success">
 
                             <form action="profile.php" method="post" class="form-horizontal"
 
@@ -337,7 +337,7 @@
 
                                             <div class="col-sm-10 col-sm-offset-2">
 
-                                                <button class="btn" name="submit_upload" style="background-color: #fdc600;">Upload Document</button>
+                                                <button class="btn" name="submit_upload" style="background-color: #28a745; color: white">Upload Document</button>
 
                                             </div>
 
@@ -423,7 +423,7 @@
 
                                     <div class="col-sm-10 col-sm-offset-2">
 
-                                        <button type="submit" class="btn" style="background-color: #fdc600;">Change Password</button>
+                                        <button type="submit" class="btn" style="background-color: #28a745;">Change Password</button>
 
                                     </div>
 
@@ -601,7 +601,7 @@
 
                             <div class="col-sm-10 col-sm-offset-2 text-center">
 
-                                <button type="submit" name="edit_submit" id="edit_submit" class="btn" style="background-color: #fdc600;">Update Mobile Number</button>
+                                <button type="submit" name="edit_submit" id="edit_submit" class="btn" style="background-color: #28a745; color: white">Update Mobile Number</button>
 
                             </div>
 

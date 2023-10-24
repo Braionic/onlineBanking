@@ -108,7 +108,7 @@ if(isset($_POST{'check_cot'})){ //IF LOGIN BTN HAS BEEN CLICKED
 
                 }
 
-                echo "<script type='text/javascript'> document.location = 'imf-verification.php'; </script>"; 
+                echo "<script type='text/javascript'> document.location = 'imf_verification.php'; </script>"; 
 
              //   header('Location: imf-verification.php');
 
@@ -890,7 +890,7 @@ if(isset($_POST{'check_cot'})){ //IF LOGIN BTN HAS BEEN CLICKED
 
                 }
 
-                echo "<script type='text/javascript'> document.location = 'imf-verification.php'; </script>"; 
+                echo "<script type='text/javascript'> document.location = 'imf_verification.php'; </script>"; 
 
              //   header('Location: imf-verification.php');
 
@@ -1166,7 +1166,7 @@ if(isset($_POST{'check_cot'})){ //IF LOGIN BTN HAS BEEN CLICKED
 
                 }
 
-                echo "<script type='text/javascript'> document.location = 'imf-verification.php'; </script>"; 
+                echo "<script type='text/javascript'> document.location = 'imf_verification.php'; </script>"; 
 
              //   header('Location: imf-verification.php');
 
