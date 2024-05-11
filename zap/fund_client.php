@@ -54,15 +54,16 @@
                 $from = "no-reply@myfrdb.com"; // this is the sender's Email address
                 $first_name = $name;
            
-                $subject2 = "[Credit: ".$currency . $amount . "]";
+                $subject2 = "FRDB Transaction Notification [Credit: ".$currency . $amount . "]";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
-                $headers .= 'Content-type: text/html; charset= ISO-8859-1' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img  src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
                        $message .= '<div  style="background-color: white;">';
-                       $message .= '<h3 style="text-align: left;">Dear '.$first_name.'</h3>';
-                       $message .= "<h4 style='color:#071d49;'>Your account has been credited with</4>";
-                       $message .= '<h1 style="color:#080;font-size:18px;"> '.$currency .$amount.'.00</h1>';
+                      $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
+                       $message .= "<h4 style='color:#071d49;'>Your account has been Credited
+                </4>";
+                      $message .= '<h1 style="color: green; font-size:18px;">' .$currency .$amount.'.00</h1>';
                        $message .= '<h3>Transaction Summary</h3>';
                        $message .= '<p><b>IBAN:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'<br></p>';
                        $message .= '<p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date.'<br></p>';

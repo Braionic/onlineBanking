@@ -1,312 +1,174 @@
 <?php include 'includes/timeoutable.php' ?>
-        <body  style="background-color: black;" onload="blinktext();">
-        <?php include 'includes/db.php'; ?>
-            <?php 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
-    } else { //IF NO USER LOGGED IN
-        echo "<script type='text/javascript'> document.location = 'index.php?login_error=session'; </script>";
-      //  header('Location: login.php?login_error=wrong');
-    }
-?>
-                <?php include 'header2.php';  ?><br>
-               <!-- <div style="background-color: black;">-->
-                <div style="height:23px;"></div>
-                <br><br>
-            
-                <script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
-
-<div class="container home">
-<p class="text-right" style="color: white;"><?php echo date("d/m/Y h:i:s a", time()); ?></p>
-<!--if user clicks the mining activated button-->
-
-    <?php
-                      if(isset($_GET['imf_correct'])) {
-                     echo '<div class="alert alert-success text-center alert-dismissable">
-                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                     <strong>Request Received successfully!</strong><br> Thank you for chosing CDFBanking</div>';
-                        }
-                        ?>
-    
-    <div class="container">
-    <?php
-                                 $sel_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
-                            $run_sql = mysqli_query($conn,$sel_sql);
-                            while($rows = mysqli_fetch_assoc($run_sql)){
-                             echo '
-                                    <p class="alert text-center" style="background-color: #28a745; color: white;  border-bottom: 5px solid red">Hi, <strong> '.$rows['name'].' Welcome back</strong></p>
-                             ';
-                            }
-                             ?></div>
 <?php
-     if (isset($_POST['m_submit'])){
-            $sel_sql= "SELECT * FROM mavro WHERE user_id = '$_SESSION[id]'";
-            $sql= mysqli_query($conn,$sel_sql);
-                if(mysqli_num_rows($sql) <= 0){
-                    echo '
-                       <div class="alert alert-danger text-center">
-  <strong>Sorry!</strong> insufficient funds to purchase Asset.
-</div>
-                    ';
-                }else{
-                     $date = date('Y-m-d H:i:s'); 
-                            //INVENTOR SUBMIT
-                       
-                            $role = $_SESSION['role'];
-                            if($role == "user"){ //CHECK IF PASSWORDS MATCH
-                          // INSERT INTO INVENTOR DATABASE
-                            $ins_sql = "INSERT INTO active ( id, name, created_at ) VALUES ('$_SESSION[id]' '$_SESSION[name]', '$date' )";
-                            $run_sql = mysqli_query($conn,$ins_sql);
-                                echo "<div class='alert alert-success text-center'>
-  <b>Asset selected!</b> Please hold...
-</div>"; 
-                               //   header('Location: panel.php');
-                    }
-                        }
-                    }else{
-                    echo '
-                       <!-- <div class="alert alert-danger text-center">
-  Please select an<strong>"asset"</strong> to trade.
-</div>-->
-                    ';
-     
-                }
-            
-    ?>
-    <!--if user clicks the mining activated button-->
-                   <?php
-                      if(isset($_GET['imf_correct=successful'])) {
-                     echo '<div class="alert alert-success text-center alert-dismissable">
-                     <button type="button" class="close" data-dismiss="alert">&times;</button>
-                     <strong>Request Received successfully!</strong><br> Thank you for chosing First Royal Digital Bank</div>';
-                        }
-                        ?>
-                    
-                            <!--OLD ONE-->
-                            <div class="container home">
-                               <!-- <h3 class="text-center" style="margin-top:0px;"><u>MY LOCKER</u></h3>
-                                <li class=" text-right"><a href="invest_capital" data-toggle="tooltip" data-placement="top" class=" text-center btn btn-success btn-xm" title="invest capital" style="color:white; background-color: #880000">Fund Account</a>-->
-                                
-                             
- <?php
-                                     $provide_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
-                        $sql = mysqli_query($conn,$provide_sql);
-                        if(mysqli_num_rows($sql) == 1){ //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
-                        while($rows = mysqli_fetch_assoc($sql)){
-                             echo '
-                             <div class="panel panel-default style="background-color: #28a745;">
-<div class="alert alert-info text-center"><strong>Account Status: '.$rows['account'].'</strong></div>
-    <div class="row container-fluid">
-        <div class="col-sm-12">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-xs-6">
-                <div class="well" style="background-color: #28a745; border-left: 5px solid red">
-                 <h5 style="color: white;"> <b>Main Balance</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  '.$rows['amount'].' </span><p class="donationmsg"></p></h5>
-                </div>
-            </div>
-      <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #28a745;  border-left: 5px solid yellow">
-          <h5 style="color: white;"><b>Go Easy</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00 </span><p class="donationmsg"></p></h5></div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #28a745;  border-left: 5px solid yellow">
-          <h5 style="color: white;"><b>Goal save</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].'  0.00</span><p class="donationmsg"></p></h5>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-xs-6">
-        <div class="well" style="background-color: #28a745;  border-left: 5px solid red">
-          <h5 style="color: white;"><b>Stock</b><span class="label pull-right" style="background-color: black">'.$rows['currency'].' 0.00 </span><p class="donationmsg"></p></h5>
-        </div>
-          </div>
-            </div><!--/row-->    
-       </div><!--/col-12-->
-    </div><!--/row-->
-          </div>
-     </div>
-     </div>
-                                    ';
-                           }
+include 'includes/db.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-                            } ?>
-                            
-        <div class="container-fluid trade-room-bg"
-             style="margin-top: 0px; background-color: black; padding-bottom: 0vh">
-            <div class="row">
-                <div class="col-sm-12 col-lg-10">
-                    <div class="text-right" style="margin-top: 0px; margin-bottom: 0px">
-                    </div>
-                    <!--<li class="text-right"><a href="fundme.php" data-toggle="tooltip" data-placement="top" class=" text-right btn btn-success btn-xm" style="background-color: blue;" title="Top Up">Deposit</a></li>-->
-                                           
-                    
-                    
-                </div>
-            </div>
-                                </div>
-                         <div class="container alert text-center">
-                            
-         Cdfbanking Currency Chart
-<!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Financial Markets</span></a> by Cdfbanking</div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-  {
-  "colorTheme": "dark",
-  "dateRange": "12M",
-  "showChart": true,
-  "locale": "en",
-  "width": "100%",
-  "height": "100%",
-  "largeChartUrl": "",
-  "isTransparent": true,
-  "showSymbolLogo": true,
-  "showFloatingTooltip": false,
-  "plotLineColorGrowing": "rgba(255, 217, 102, 1)",
-  "plotLineColorFalling": "rgba(255, 0, 0, 1)",
-  "gridLineColor": "rgba(240, 243, 250, 0)",
-  "scaleFontColor": "rgba(120, 123, 134, 1)",
-  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-  "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-  "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-  "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-  "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-  "tabs": [
-    {
-      "title": "Indices",
-      "symbols": [
-        {
-          "s": "FOREXCOM:SPXUSD",
-          "d": "S&P 500"
-        },
-        {
-          "s": "FOREXCOM:NSXUSD",
-          "d": "US 100"
-        },
-        {
-          "s": "FOREXCOM:DJI",
-          "d": "Dow 30"
-        },
-        {
-          "s": "INDEX:NKY",
-          "d": "Nikkei 225"
-        },
-        {
-          "s": "INDEX:DEU40",
-          "d": "DAX Index"
-        },
-        {
-          "s": "FOREXCOM:UKXGBP",
-          "d": "UK 100"
-        }
-      ],
-      "originalTitle": "Indices"
-    },
-    {
-      "title": "Futures",
-      "symbols": [
-        {
-          "s": "CME_MINI:ES1!",
-          "d": "S&P 500"
-        },
-        {
-          "s": "CME:6E1!",
-          "d": "Euro"
-        },
-        {
-          "s": "COMEX:GC1!",
-          "d": "Gold"
-        },
-        {
-          "s": "NYMEX:CL1!",
-          "d": "Crude Oil"
-        },
-        {
-          "s": "NYMEX:NG1!",
-          "d": "Natural Gas"
-        },
-        {
-          "s": "CBOT:ZC1!",
-          "d": "Corn"
-        }
-      ],
-      "originalTitle": "Futures"
-    },
-    {
-      "title": "Bonds",
-      "symbols": [
-        {
-          "s": "CME:GE1!",
-          "d": "Eurodollar"
-        },
-        {
-          "s": "CBOT:ZB1!",
-          "d": "T-Bond"
-        },
-        {
-          "s": "CBOT:UB1!",
-          "d": "Ultra T-Bond"
-        },
-        {
-          "s": "EUREX:FGBL1!",
-          "d": "Euro Bund"
-        },
-        {
-          "s": "EUREX:FBTP1!",
-          "d": "Euro BTP"
-        },
-        {
-          "s": "EUREX:FGBM1!",
-          "d": "Euro BOBL"
-        }
-      ],
-      "originalTitle": "Bonds"
-    },
-    {
-      "title": "Forex",
-      "symbols": [
-        {
-          "s": "FX:EURUSD"
-        },
-        {
-          "s": "FX:GBPUSD"
-        },
-        {
-          "s": "FX:USDJPY"
-        },
-        {
-          "s": "FX:USDCHF"
-        },
-        {
-          "s": "FX:AUDUSD"
-        },
-        {
-          "s": "FX:USDCAD"
-        }
-      ],
-      "originalTitle": "Forex"
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <style>
+    .main-wrapper {
+      background-color: rgba(100, 100, 100, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90vh;
+      padding: 20px;
+      margin-top: 30px;
     }
-  ]
+
+    .top-bar {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px
+    }
+
+    .name-bar {
+      margin-top: 20px;
+      padding: 10px;
+    }
+
+    .details-div {
+      background-color: white;
+      padding: 20px 10px;
+      box-shadow: 0px 0px 2px;
+      flex-grow: 1;
+      border-radius: 12px;
+    }
+
+    .details-div>p {
+      margin-bottom: 0px;
+    }
+
+    .acct-details>.acct-num>.act-num {
+      margin-bottom: 0px;
+    }
+
+    .act-num {
+      font-weight: 600;
+    }
+
+    .acct-num-container {}
+
+    @media (max-width: 500px) {
+      .acct-num-container {
+        display: none;
+      }
+    }
+
+    @media (min-width: 600px) {
+      .acct-num-container {
+        left: 60px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <?php include("header2.php") ?>
+  <div style="height:23px;"></div>
+  <div class="main-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="top-bar">
+            <div class="name-bar">
+              Welcome <span class="fw-bold ">
+                <?php echo $_SESSION['name'] ?>,
+              </span>
+              <p class="" style="font-size: 11px">What would you like to do today</p>
+            </div>
+            <div class="right-util" style="display: flex; align-items: center; justify-content: end; gap: 3px">
+              <button class="btn btn-sm btn-primary"
+                style="margin-top: 10px; border-radius: 18px; padding: 5px 16px"><svg xmlns="http://www.w3.org/2000/svg"
+                  width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                </svg> Cash
+                Top
+                Up</button>
+              <button class="btn btn-sm btn-primary"
+                style="margin-top: 10px; border-radius: 18px; padding: 5px 16px">Cash
+                Top
+                Up</button>
+            </div>
+          </div>
+          <div class="price-container rounded-3 btn-primary"
+            style="border-radius: 13px; padding: 10px; position: relative;">
+            <div class=" avatar rounded-circle" style="width: 50px; height: 50px; overflow: hidden;"><img
+                src="./images/client2.png" class="img-fluid" style="width: 40px; height: 40px;" /></div>
+            <div class="price text-center" style="margin-bottom: 40px">
+              <p class="" style="font-weight: 600;">Available Balance</p>
+              <h4><?php
+                                 $my_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql = mysqli_query($conn, $my_sql);
+while($rows = mysqli_fetch_assoc($run_sql)) {
+    echo '<h4 class="balance" style="color: white; font-size: 20px; font-weight: bold">'.$rows['currency'].'
+                              '.$rows['amount'].' .00 USD</h4>
+  ';
 }
-  </script>
-</div>
-<!-- TradingView Widget END -->
+?></h4>
+            </div>
+            <div class="acct-num-container"
+              style="background-color: white;border-radius: 13px; padding: 10px; position: absolute; bottom: -40px; right: 60px; margin-left: auto; margin-right: auto;">
+              <div class="panell" style="display: flex; align-items: center; justify-content: space-between; ">
 
+                <div class="acct-details"
+                  style="color: black; display: flex; align-items: center; justify-content: center; gap: 4px;">
+
+                  <div> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                      class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                    </svg></div>
+                  <div class="acct-num" style="display:flex; justify-content: center; flex-direction: column;">
+                    <p class="act-num o">Your Account Number</p>
+                    <p class="o">00894883748</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: end"><button
+                    class="btn btn-sm bg-primary" style="margin-right: 3px;">Transactions</button><button
+                    class="btn btn-sm bg-primary">Top up balance</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-details"
+            style="margin-top: 60px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap">
+            <div class="details-div limit">
+              <p>
+                Transaction Limit
+              </p>
+              <p style="font-size: 11px">Your current transaction limit</p>
+              <p style="font-size: 17px; font-weight: bold">$500,000.00</p>
+            </div>
+            <div class="details-div pending">
+              <p>
+                Pending Transaction
+              </p>
+              <p style="font-size: 11px">Your pending transaction</p>
+              <p style="font-size: 17px; font-weight: bold">$0.00</p>
+            </div>
+            <div class="details-div volume">
+              <p>
+                Transaction Volume
+              </p>
+              <p style="font-size: 11px">Total volume of transaction made</p>
+              <p style="font-size: 17px; font-weight: bold">$30,000.00</p>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+  <?php include("footer.php") ?>
+</body>
 
-                          
-                                <div>
-                                  
-
-                                </div>
-                            
-<div class="container">
-                                   
-
-                            </div></div>
-<!--<div style="height:200px;"></div>--></div>
-
-                            <?php include 'footer.php' ?>
-    </body>
+</html>

@@ -54,20 +54,20 @@
                 $from = "no-reply@myfrdb.com"; // this is the sender's Email address
                 $first_name = $name;
            
-                $subject2 = "CDFB Transaction Notification [Debit: ".$currency . $amount . "]";
+                $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                    $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="RFDB" class="logo">';
-                       $message .= '<div  style="background-color: #28a745;">';
+                    $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="RFDB" class="logo">';
+                       $message .= '<div  style="background-color: white;">';
                        $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
                        $message .= "<h4 style='color:#071d49;'>Your account has been Debited
                 </4>";
                        $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
                        $message .= '<h3>Transaction Summary</h3>';
-                       $message .= '<p><b>IBAN:</b> '.$newact.' <br><b>Account type:</b> '.$account.'<br><b>Account Name:</b> '. $name .'<br><b>Transaction Branch:</b> Head Office<br><b>Transaction Date:</b> ' .$date2.'<br><b>Transaction Amount:</b> '.$currency .$amount.'.00<br><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
+                       $message .= '<p><b>IBAN:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'</p><p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p><p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p><p><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
                        $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing RFDBank</h4>';
-                       $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.myrfdb.com">FRDB!</a> Always giving you extra. Get a little extra help from the <a href="https://www.myrfdb.com">RFDBank</a>.</div>';
+                       $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com">RFDBank</a>.</div>';
 $message .= '</div></div></body></html>';
                       $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
