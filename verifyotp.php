@@ -63,6 +63,7 @@ if(isset($_POST['otp_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                                 $_SESSION['act_no'] = $rows['act_no'];
                                 $_SESSION['phone_no'] = $rows['fone_no'];
                                 $_SESSION['state'] = $rows['state'];
+                                $_SESSION['limit_status'] = $rows['limit_status'];
                                 // $_SESSION['walletcode'] = $rows['walletcode'];
                                 $_SESSION['role'] = $rows['role'];
                                 
@@ -174,7 +175,6 @@ $trunck_email = (strlen($email) > 5) ? substr($email, 0, strlen($email)-8).'...'
 			flex-direction: column;
 			margin-top: 30px;
 			margin-bottom: 20px;
-
 		}
 
 		.otp-time {

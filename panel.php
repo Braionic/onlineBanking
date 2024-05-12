@@ -122,8 +122,20 @@ include 'includes/db.php';
 					</div>
 					<div class="price-container rounded-3 btn-primary"
 						style="border-radius: 13px; padding: 10px; position: relative; margin-top: 15px;">
-						<div class=" avatar rounded-circle" style="width: 50px; height: 50px; overflow: hidden;"><img
-								src="./images/client2.png" class="img-fluid" style="width: 40px; height: 40px;" /></div>
+						<div class=" avatar rounded-circle" style="width: 50px; height: 50px; overflow: hidden;">
+							<?php
+    $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$_SESSION[id]'") or die('query failed');
+if(mysqli_num_rows($select) > 0) {
+    $fetch = mysqli_fetch_assoc($select);
+    ?><?php
+    if($fetch['image'] == '') {
+        echo '<img src="./images/client2.png" class="img-fluid" style="width: 40px; height: 40px;">';
+    } else {
+        echo '<img src="uploaded_img/'.$fetch['image'].'" alt="profile pic" class="img-fluid" style="width: 40px; height: 40px;">';
+    }
+}?>
+
+						</div>
 						<div class="price text-center" style="margin-bottom: 40px">
 							<p class="" style="font-weight: 600;">Available Balance</p>
 							<h4><?php
@@ -152,7 +164,14 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
 									<div class="acct-num"
 										style="display:flex; justify-content: center; flex-direction: column;">
 										<p class="act-num o">Your Account Number</p>
-										<p class="o">00894883748</p>
+										<?php
+                                 $my_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql = mysqli_query($conn, $my_sql);
+while($rows = mysqli_fetch_assoc($run_sql)) {
+    echo '<p class="o">'.$rows['act_no'].'</p>
+  ';
+}
+?></p>
 									</div>
 								</div>
 								<div style="display: flex; align-items: center; justify-content: end"><a

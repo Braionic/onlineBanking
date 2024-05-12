@@ -324,7 +324,7 @@ THE SOFTWARE.
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/panel"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
+					<a class="navbar-brand" href="panel.php"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
 							style="height: 60px;"></a>
 				</div>
 
@@ -337,8 +337,8 @@ THE SOFTWARE.
             <li><a href="intrabank.php">Local Transfer</a></li>
             <li><a href="billing-process.php">International Transfer</a></li>
             <li><a href="history.php">Transaction</a></li>
-            <li><a href="secured_card.php">Secured Card</a></li>
-            <li><a href="profile.php">Profile</a></li>
+            
+            <li><a href="personaldetails.php">Personal Details</a></li>
             <li><a href="signout.php">Sign Out</a></li>
             ';
                   } else {
