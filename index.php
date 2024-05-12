@@ -18,7 +18,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
 </div>
 <div class="container">
 
-    <?php //WHAT HAPPENS AFTER CLICKING SEND PASSWORD BEGINS
+	<?php //WHAT HAPPENS AFTER CLICKING SEND PASSWORD BEGINS
        // if(isset($_GET['code'])){
        /* if(($_GET['email'] AND $_GET['code'] AND $_GET['user'])){
             $date = date('Y-m-d H:i:s');
@@ -38,21 +38,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
         }
          */
 ?>
-    <?php
+	<?php
                   if(isset($_GET['registered'])) {
                       echo '<div class="alert alert-success">
   <strong>Registration Successfull!</strong> Please signin to continue.
 </div>';
                   }
 ?>
-    <?php
+	<?php
                       if(isset($_GET['invalidrefer'])) {
                           echo '<p style="color:orange;">Successfully registered</p>
                         <p>Referral link not activated because it is spam</p>
                      ';
                       }
 ?>
-    <?php
+	<?php
                       if(isset($_GET['sent'])) {
                           echo '<div class="alert" style="color: black; background-color: #fdc600;">
   <strong>Application received!</strong> Thank you for choosing CDFBank, we will review your application and respond within 0-2 business days.
@@ -62,7 +62,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
                       }
 ?>
 
-    <?php
+	<?php
 if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
     if(!empty($_POST['user_email']) && !empty($_POST['user_password'])) { //CHECK IF EMAIL AND PASSWORD IS EMPTY
         
@@ -110,7 +110,7 @@ if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                 } else {
                     $ins_sql1 = "INSERT INTO otp (name, userid, email, code) VALUES ('$_SESSION[name]', '$_SESSION[id]', '$_SESSION[user_email]', '$code')";
                     $run_sql2 = mysqli_query($conn, $ins_sql1);
-                    $to = $_SESSION['user_email']; // this is your Email address
+                    $to = $_SESSION['email']; // this is your Email address
                     $from = "security@myrfdb.com"; // this is the sender's Email address
                     $first_name = $_SESSION['name'];
                     $subject2 = "OTP Verification | Do not share [OTP: ".$code. "]";
@@ -166,13 +166,13 @@ if(isset($_GET['login_error'])) { //TO OUTPUT LOGIN ERROR
 echo $login_err;
 ?>
 
-    <body class="homepage" style="background-color: #e8e8e8;">
+	<body class="homepage" style="background-color: #e8e8e8;">
 
 
-        <!--LOGIN INTRO-->
-        <!--FORM FOR LOGIN STARTS HERE-->
+		<!--LOGIN INTRO-->
+		<!--FORM FOR LOGIN STARTS HERE-->
 
-        <?php
+		<?php
                 //$to = 'trustedward@gmail.com';
 
                 //$subject = 'Job Offer';
@@ -196,66 +196,66 @@ echo $login_err;
                 //}
 
 ?>
-        <div class="container form-div">
-            <div class="row">
-                <div class="col-xs-12" style="background-color: white;">
-                    <form role="form" class="register-form" method="POST" action="index.php" class="form-vertical"
-                        enctype="multipart/form-data" role="form" name="myForm">
-                        <h4 style="font-weight: 600; font-size: 22px; margin-bottom: 35px">
-                            Log on to Online Banking</h4>
-                        <div class="alert alert-info alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true" data-dismiss="alert">&times;</span>
-                            </button>
-                            <span></span>
-                            <p style="color: black;">Please enter your username, if you can't remember your
-                                username, select "Forgotten your
-                                username?" below for more help.</p>
+		<div class="container form-div">
+			<div class="row">
+				<div class="col-xs-12" style="background-color: white;">
+					<form role="form" class="register-form" method="POST" action="index.php" class="form-vertical"
+						enctype="multipart/form-data" role="form" name="myForm">
+						<h4 style="font-weight: 600; font-size: 22px; margin-bottom: 35px">
+							Log on to Online Banking</h4>
+						<div class="alert alert-info alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true" data-dismiss="alert">&times;</span>
+							</button>
+							<span></span>
+							<p style="color: black;">Please enter your username, if you can't remember your
+								username, select "Forgotten your
+								username?" below for more help.</p>
 
-                        </div>
-                        <div class="form-group">
-                            <label>Identification</label>
-                            <input
-                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
-                                type="email" name="user_email" id="user_email" class="form-control input-md"
-                                tabindex="4">
-                        </div>
-                        <div class="form-group">
-                            <label>PIN</label>
-                            <input
-                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black"
-                                type="password" name="user_password" class="form-control input-md" id="user_password">
-                        </div>
-                        <div class="" style="display: flex; align-items: center; gap: 8px;">
-                            <input style="width: 20px; height:20px; margin-top: 0" class="form-check-input p-2"
-                                type="checkbox" value="" id="myCheck">
-                            <p class="mb-0" style="margin-bottom: 0; display: inline-block">Remember
-                                me</p>
-                        </div>
-                        <hr class="colorgraph">
-                        <div class="row">
-                            <div class="" style="display: flex; align-items: center; gap: 10px; justify-content: end">
-                                <div class="" style="align-self: end;"><button name="signin_submit" id="user_password"
-                                        class="index-loginbtn">Continue</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row index-btn2">
-                            <div class="col-lg-12 col-md-6"><input type="submit" name="signin_submit"
-                                    value="Enter CDFBanking" id="user_password" class="btn btn-block btn-md"
-                                    tabindex="7"
-                                    style="background-color: rgba(210, 0, 0, 0.4); color: white; padding: 15px;"></div>
-                        </div>
-                    </form>
-                    <div
-                        style="text-align: center; background-color: rgb(225, 232, 227); padding: 10px 20px; margin: 15px 0px">
+						</div>
+						<div class="form-group">
+							<label>Identification</label>
+							<input
+								style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+								type="email" name="user_email" id="user_email" class="form-control input-md"
+								tabindex="4">
+						</div>
+						<div class="form-group">
+							<label>PIN</label>
+							<input
+								style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black"
+								type="password" name="user_password" class="form-control input-md" id="user_password">
+						</div>
+						<div class="" style="display: flex; align-items: center; gap: 8px;">
+							<input style="width: 20px; height:20px; margin-top: 0" class="form-check-input p-2"
+								type="checkbox" value="" id="myCheck">
+							<p class="mb-0" style="margin-bottom: 0; display: inline-block">Remember
+								me</p>
+						</div>
+						<hr class="colorgraph">
+						<div class="row">
+							<div class="" style="display: flex; align-items: center; gap: 10px; justify-content: end">
+								<div class="" style="align-self: end;"><button name="signin_submit" id="user_password"
+										class="index-loginbtn">Continue</button>
+								</div>
+							</div>
+						</div>
+						<div class="row index-btn2">
+							<div class="col-lg-12 col-md-6"><input type="submit" name="signin_submit"
+									value="Enter CDFBanking" id="user_password" class="btn btn-block btn-md"
+									tabindex="7"
+									style="background-color: rgba(210, 0, 0, 0.4); color: white; padding: 15px;"></div>
+						</div>
+					</form>
+					<div
+						style="text-align: center; background-color: rgb(225, 232, 227); padding: 10px 20px; margin: 15px 0px">
 
-                    </div>
+					</div>
 
-                </div>
-                <img src="./images/images.jpeg" class="img-fluid" style="width: 100%; margin-top: 20px" />
-            </div>
-        </div>
+				</div>
+				<img src="./images/images.jpeg" class="img-fluid" style="width: 100%; margin-top: 20px" />
+			</div>
+		</div>
 </div>
 <div style="height:50px;"></div>
 

@@ -1,4 +1,14 @@
 <?php include 'includes/timeoutable.php' ?>
+
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
+    //  header('Location: panel.php');
+} else { //IF NO USER LOGGED IN
+    echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
+}
+?>
+
+
 <?php
 include 'includes/db.php';
 ?>
@@ -54,6 +64,10 @@ include 'includes/db.php';
       font-weight: 600;
     }
 
+    th {
+      background-color: aqua;
+    }
+
     .acct-num-container {}
 
     @media (max-width: 500px) {
@@ -97,8 +111,7 @@ include 'includes/db.php';
                 Up</button>
               <button class="btn btn-sm btn-primary"
                 style="margin-top: 10px; border-radius: 18px; padding: 5px 16px">Cash
-                Top
-                Up</button>
+                Send Money</button>
             </div>
           </div>
           <div class="price-container rounded-3 btn-primary"
@@ -134,8 +147,8 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                     <p class="o">00894883748</p>
                   </div>
                 </div>
-                <div style="display: flex; align-items: center; justify-content: end"><button
-                    class="btn btn-sm bg-primary" style="margin-right: 3px;">Transactions</button><button
+                <div style="display: flex; align-items: center; justify-content: end"><a href="history.php"><button
+                      class="btn btn-sm bg-primary" style="margin-right: 3px;">Transactions</button></a><button
                     class="btn btn-sm bg-primary">Top up balance</button></div>
               </div>
             </div>
@@ -163,6 +176,43 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
               <p style="font-size: 11px">Total volume of transaction made</p>
               <p style="font-size: 17px; font-weight: bold">$30,000.00</p>
             </div>
+          </div>
+          <div class="transaction-container" style="background-color: white; border-radius: 10px; margin-top: 30px;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>NO</th>
+                  <th style="font-weight: normal;"> Transaction:</th>
+                  <th style="font-weight: normal;">Amount:</th>
+                  <th style="font-weight: normal;">Date:</th>
+                  <th style="font-weight: normal;">Status:</th>
+              </thead>
+              <?php
+              $i = 1;
+$my_sql = "SELECT * FROM transaction WHERE user_id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql = mysqli_query($conn, $my_sql);
+while($rows = mysqli_fetch_assoc($run_sql)) { ?>
+              </tr>
+              <td><?php echo $i  ?></td>
+              <td style="">
+                <?php echo $rows['transaction']; ?>
+              </td>
+              <td style=""><i
+                  class="fa fa-bitcoin fa-1x"></i><?php echo $rows['amount']; ?>
+              </td>
+              <td style="">
+                <?php echo $rows['created_at']; ?>
+              </td>
+              <?php if($rows['Status'] == 'Successful') {
+                  echo '<td style="color: green; font-weight: bold" class="">';
+              } else {
+                  echo '<td style="">';
+              } ?> <?php echo $rows['Status'];
+    $i++;
+}
+?></td><br>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -312,7 +312,7 @@ THE SOFTWARE.
             <span class="icon-bar"></span>
           </button>
           <a href="transfer.php" class="header--logo navbar-brand"> <?php
-                                 $my_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+     $my_sql = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
     $run_sql = mysqli_query($conn, $my_sql);
     while($rows = mysqli_fetch_assoc($run_sql)) {
         echo '<h4 class="balance" style="color: white">'.$rows['currency'].'

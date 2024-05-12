@@ -1,15 +1,19 @@
 <?php include 'includes/timeoutable.php' ?>
+
+<?php
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
+    //  header('Location: panel.php');
+
+    echo "<script type='text/javascript'> document.location = 'panel.php'; </script>";
+} else { //IF NO USER LOGGED IN
+
+}
+?>
+
 <?php
 include 'includes/db.php';
 ?>
 
-<?php
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
-    echo "<script type='text/javascript'> document.location = 'panel.php'; </script>";
-    //  header('Location: panel.php');
-} else { //IF NO USER LOGGED IN
-}
-?>
 
 <?php
 if(isset($_GET['otp_error'])) { //TO OUTPUT LOGIN ERROR
@@ -151,103 +155,103 @@ $trunck_email = (strlen($email) > 5) ? substr($email, 0, strlen($email)-8).'...'
 <html lang="en">
 
 <head>
-    <?php include("header.php") ?>
+	<?php include("header.php") ?>
 
-    <style>
-        .main-wrapper {
+	<style>
+		.main-wrapper {
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 90vh;
-            padding: 20px;
-        }
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 90vh;
+			padding: 20px;
+		}
 
-        .form-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-direction: column;
-            margin-top: 30px;
-            margin-bottom: 20px;
+		.form-container {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: column;
+			margin-top: 30px;
+			margin-bottom: 20px;
 
-        }
+		}
 
-        .otp-time {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
+		.otp-time {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			margin-bottom: 10px;
+		}
 
-        .form {
-            padding: 20px 15px;
-            box-shadow: 2px 2px 5px grey;
-            margin-top: 20px;
-            text-align: center;
-            max-width: 70%;
-        }
+		.form {
+			padding: 20px 15px;
+			box-shadow: 2px 2px 5px grey;
+			margin-top: 20px;
+			text-align: center;
+			max-width: 70%;
+		}
 
-        .input {
-            padding: 10px 5px;
-        }
+		.input {
+			padding: 10px 5px;
+		}
 
-        @media (min-width: 600px) {
-            .form {
-                width: 30%;
-            }
-        }
-    </style>
+		@media (min-width: 600px) {
+			.form {
+				width: 30%;
+			}
+		}
+	</style>
 </head>
 
 <body>
 
-    <div class="main-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <?php
+	<div class="main-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<?php
                echo $login_err;
 ?>
-                    <div class="form-container">
-                        <div class="form">
-                            <div class="heading">
-                                <h3><b>OTP Verification</b></h3>
+					<div class="form-container">
+						<div class="form">
+							<div class="heading">
+								<h3><b>OTP Verification</b></h3>
 
-                                <p>please enter the one time password sent to your email
-                                    <?php echo $trunck_email ?>
-                                    to complete your
-                                    verification
-                                </p>
-                            </div>
-                            <form method="post" action="verifyotp.php">
+								<p>please enter the one time password sent to your email
+									<?php echo $trunck_email ?>
+									to complete your
+									verification
+								</p>
+							</div>
+							<form method="post" action="verifyotp.php">
 
-                                <div class="input">
-                                    <input type="text" class="form-form-control " name="otp"
-                                        placeholder="one time password" />
-                                </div>
-                                <div class="otp-time">
-                                    <p style="font-size: x-small;">Remaining time <span class="text-primary">12:23</p>
-                                    <p style="font-size: x-small;">Didn't get the code? <button name="resendotp"
-                                            style="background-color: none; padding: 0; border: none; cursor: pointer; text-primary">Resend</button>
-                                    </p>
-                                </div>
-                                <button class="btn btn-md btn-primary"
-                                    style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px"
-                                    name="otp_submit">Verify</button>
+								<div class="input">
+									<input type="text" class="form-form-control " name="otp"
+										placeholder="one time password" />
+								</div>
+								<div class="otp-time">
+									<p style="font-size: x-small;">Remaining time <span class="text-primary">12:23</p>
+									<p style="font-size: x-small;">Didn't get the code? <button name="resendotp"
+											style="background-color: none; padding: 0; border: none; cursor: pointer; text-primary">Resend</button>
+									</p>
+								</div>
+								<button class="btn btn-md btn-primary"
+									style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px"
+									name="otp_submit">Verify</button>
 
-                            </form>
-                            <a href="signout.php"><button class="btn text-primary border-primary"
-                                    style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px; background-color: white; border: 2px solid gray">Cancel</button></a>
-                        </div>
+							</form>
+							<a href="signout.php"><button class="btn text-primary border-primary"
+									style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px; background-color: white; border: 2px solid gray">Cancel</button></a>
+						</div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php include("footer.php") ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php include("footer.php") ?>
 </body>
 
 </html>

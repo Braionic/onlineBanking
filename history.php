@@ -93,13 +93,10 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
 										<th>Date</th>
 										<th>TXT_RX</th>
 										<th>Status</th>
-									</tr>
-								</thead>
-
-
-								<?php
+				</tr>
+			</thead>
+			<?php
                     $i = 1;
-
 $my_sql = "SELECT * FROM transaction WHERE user_id = '$_SESSION[id]'";
 $run_sql = mysqli_query($conn, $my_sql);
 if(mysqli_num_rows($run_sql) > 0) {
