@@ -238,9 +238,8 @@ $trunck_email = (strlen($email) > 5) ? substr($email, 0, strlen($email)-8).'...'
 									</p>
 								</div>
 								<button class="btn btn-md btn-primary"
-									style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px"
+									style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px;"
 									name="otp_submit">Verify</button>
-
 							</form>
 							<a href="signout.php"><button class="btn text-primary border-primary"
 									style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px; background-color: white; border: 2px solid gray">Cancel</button></a>
