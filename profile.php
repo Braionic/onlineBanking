@@ -6,7 +6,7 @@
 
     <?php include 'includes/db.php'; ?>
 
-<?php 
+    <?php
 
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
 
@@ -14,7 +14,7 @@
 
         echo "<script type='text/javascript'> document.location = 'index.php?login_error=session'; </script>";
 
-      //  header('Location: login.php?login_error=wrong');
+        //  header('Location: login.php?login_error=wrong');
 
     }
 
@@ -28,196 +28,210 @@
 
     <?php if (isset($_GET['error'])) { ?>
 
-     		<div class="alert alert-warning text-center"><?php echo $_GET['error']; ?></div>
+    <div class="alert alert-warning text-center">
+        <?php echo $_GET['error']; ?>
+    </div>
 
-     	<?php } ?>
+    <?php } ?>
 
 
 
-     	<?php if (isset($_GET['success'])) { ?>
+    <?php if (isset($_GET['success'])) { ?>
 
-            <p class="alert alert-success text-center"><?php echo $_GET['success']; ?></p>
+    <p class="alert alert-success text-center">
+        <?php echo $_GET['success']; ?>
+    </p>
 
-        <?php } ?>
+    <?php } ?>
 
     <?php
 
     // print file upload result based on outcome
 
-     if(isset($_GET['upload_status'])){ //TO OUTPUT LOGIN ERROR
+     if(isset($_GET['upload_status'])) { //TO OUTPUT LOGIN ERROR
 
-    if($_GET['upload_status'] == 'success'){  //LOGIN ERROR FOR EMPTY
+         if($_GET['upload_status'] == 'success') {  //LOGIN ERROR FOR EMPTY
 
-        $login_err = "<div class='alert alert-success text-center'>File uploaded succesfully</div>";
+             $login_err = "<div class='alert alert-success text-center'>File uploaded succesfully</div>";
 
-    }elseif($_GET['upload_status'] == 'too_large'){ //LOGIN ERROR FOR INVALID DETAILS
+         } elseif($_GET['upload_status'] == 'too_large') { //LOGIN ERROR FOR INVALID DETAILS
 
-        $login_err = "<div class='alert alert-warning text-center'>File too large please check file size!</div>";
+             $login_err = "<div class='alert alert-warning text-center'>File too large please check file size!</div>";
 
-    }elseif($_GET['upload_status'] == 'already_exist'){ //LOGIN ERROR FOR INVALID DETAILS
+         } elseif($_GET['upload_status'] == 'already_exist') { //LOGIN ERROR FOR INVALID DETAILS
 
-        $login_err = "<div class='alert alert-warning text-center'>File already exists</div>";
+             $login_err = "<div class='alert alert-warning text-center'>File already exists</div>";
 
-    }elseif($_GET['upload_status'] == 'unsupported_format'){ //LOGIN ERROR FOR INVALID DETAILS
+         } elseif($_GET['upload_status'] == 'unsupported_format') { //LOGIN ERROR FOR INVALID DETAILS
 
-        $login_err = "<div class='alert alert-danger text-center'>Unsupported file format</div>";
+             $login_err = "<div class='alert alert-danger text-center'>Unsupported file format</div>";
 
-    }
+         }
 
-         echo $login_err;   
+         echo $login_err;
 
-}
+     }
 
     
 
 // for otp resend
 
-    ?>
+?>
 
     <?php
 
-                if(isset($_POST["testimony_submit"])){        
+            if(isset($_POST["testimony_submit"])) {
 
-                            $date = date('Y-m-d h:1:s');
+                $date = date('Y-m-d h:1:s');
 
-                            $status = "pending";
+                $status = "pending";
 
-                            $ins_sql = "INSERT INTO testimony (body, name, user_id, status, created_at) VALUES ('$_POST[testimony_body]', '$_SESSION[name]', '$_SESSION[id]', '$status',  '$date')";
+                $ins_sql = "INSERT INTO testimony (body, name, user_id, status, created_at) VALUES ('$_POST[testimony_body]', '$_SESSION[name]', '$_SESSION[id]', '$status',  '$date')";
 
-                            $run_sql = mysqli_query($conn,$ins_sql);
+                $run_sql = mysqli_query($conn, $ins_sql);
 
-                            echo '
+                echo '
 
                                        <div class="container alert alert-info text-center"><strong>Verification:</strong> Your account is being reviewed</div>
 
-                                    ';  
+                                    ';
 
-                            }
+            }
 
-    ?>
+?>
 
-    <?php 
+    <?php
 
-                                $date = date('Y-m-d H:i:s'); 
+                            $date = date('Y-m-d H:i:s');
 
-                                    //INVENTOR SUBMIT
+//INVENTOR SUBMIT
 
-                                if (isset($_POST['edit_submit2'])){
+if (isset($_POST['edit_submit2'])) {
 
-                                    $role = "user";
+    $role = "user";
 
 
 
-                                  // UPDATE INTO USERS
+    // UPDATE INTO USERS
 
-                                     $ins_sql = "UPDATE users SET nickname='$_POST[nickname]', updated_at='$date' WHERE id = '$_SESSION[id]'";
+    $ins_sql = "UPDATE users SET nickname='$_POST[nickname]', updated_at='$date' WHERE id = '$_SESSION[id]'";
 
-                                    $run_sql = mysqli_query($conn,$ins_sql);
+    $run_sql = mysqli_query($conn, $ins_sql);
 
-                                    echo '<div class="alert alert-success text-center">We\'ve received your complaint and will act accordingly, Thank you for choosing Cdfbanking</div>';
+    echo '<div class="alert alert-success text-center">We\'ve received your complaint and will act accordingly, Thank you for choosing Cdfbanking</div>';
 
-                                         // header('Location: login.php');
+    // header('Location: login.php');
 
-                            }
+}
 
-                        ?>
+?>
 
-    <?php 
+    <?php
 
-                                $date = date('Y-m-d H:i:s'); 
+        $date = date('Y-m-d H:i:s');
 
-                                    //INVENTOR SUBMIT
+//INVENTOR SUBMIT
 
-                                if (isset($_POST['edit_submit'])){
+if (isset($_POST['edit_submit'])) {
 
-                                    $fone_no = $_POST['fone_no'];
+    $fone_no = $_POST['fone_no'];
 
-                                    $role = "user";
+    $role = "user";
 
-                                  // UPDATE INTO USERS
+    // UPDATE INTO USERS
 
-                                    $ssql = "SELECT * FROM users WHERE id='$_SESSION[id]'";
+    $ssql = "SELECT * FROM users WHERE id='$_SESSION[id]'";
 
-                                    $run_ssql = mysqli_query($conn, $ssql);
+    $run_ssql = mysqli_query($conn, $ssql);
 
-                                    if(mysqli_num_rows($run_ssql) == 1){
+    if(mysqli_num_rows($run_ssql) == 1) {
 
-                                     $ins_sql = "UPDATE users SET fone_no='$fone_no', updated_at='$date'";
+        $ins_sql = "UPDATE users SET fone_no='$fone_no', updated_at='$date'";
 
-                                    $run_sql = mysqli_query($conn,$ins_sql);
+        $run_sql = mysqli_query($conn, $ins_sql);
 
-                                    echo '<div class="alert alert-success text-center">Your Mobile number has been updated Successful</div>';
+        echo '<div class="alert alert-success text-center">Your Mobile number has been updated Successful</div>';
 
-                                         // header('Location: login.php');
+        // header('Location: login.php');
 
-                            }else{
+    } else {
 
-                                        echo 'no file to update';
+        echo 'no file to update';
 
-                                    }
+    }
 
-                                }
+}
 
-                        ?>
+?>
 
 
 
     <div style="min-height: 80vh;  margin-top: 20px ">
 
-                                        <section>
+        <section>
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                    <div class="text-center add margin-bottom-20px">
-                        <?php
+                        <div class="text-center add margin-bottom-20px">
+                            <?php
     $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$_SESSION[id]'") or die('query failed');
-         if(mysqli_num_rows($select) > 0){
-            $fetch = mysqli_fetch_assoc($select);
-      ?><?php
-                                 if($fetch['image'] == ''){
-            echo '<img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img">';
-         }else{
-            echo '<img src="uploaded_img/'.$fetch['image'].'" alt="profile pic" style="max-width: 100px; max-height: 100px;">';
-         } }?>
-                       
+if(mysqli_num_rows($select) > 0) {
+    $fetch = mysqli_fetch_assoc($select);
+    ?><?php
+    if($fetch['image'] == '') {
+        echo '<img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img">';
+    } else {
+        echo '<img src="uploaded_img/'.$fetch['image'].'" alt="profile pic" style="max-width: 100px; max-height: 100px;">';
+    }
+}?>
 
-                        <h4 class="remove margin-bottom"><?php echo $_SESSION['name']; ?></h4>
 
-                        <small class="text-warning"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6dbd3dad9d8cf8685868ff6d1dbd7dfda98d5d9db"><?php echo $_SESSION['email']; ?></a></small>
+                            <h4 class="remove margin-bottom">
+                                <?php echo $_SESSION['name']; ?>
+                            </h4>
 
-                        <br>
+                            <small class="text-warning"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                    data-cfemail="b6dbd3dad9d8cf8685868ff6d1dbd7dfda98d5d9db"><?php echo $_SESSION['email']; ?></a></small>
 
-                        <span class="flag flag-za"></span><p> <?php echo $_SESSION['state']; ?></p>
+                            <br>
+
+                            <span class="flag flag-za"></span>
+                            <p> <?php echo $_SESSION['state']; ?>
+                            </p>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
+                <div style="background-color: 57916" class="container alert alert-info text-center alert-dismissable">
 
-            <div style="background-color: 57916" class="container alert alert-info text-center alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
 
-                     <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <p style="color: white">Dear
+                        <strong><?php echo $_SESSION['name']; ?></strong>,
+                        Thank you for banking with us, if you feel your account may have been compromised, quickly
+                        notify us via this section so we can suspend all activities pending verification. Thank you.
+                    </p>
 
-                            <p style="color: white">Dear <strong><?php echo $_SESSION['name']; ?></strong>, Thank you for banking with us, if you feel your account may have been compromised, quickly notify us via this section so we can suspend all activities pending verification. Thank you.</p>
+                </div>
 
-                                </div>
+                <?php
 
-            <?php
+           $user_id = $_SESSION['id'];
 
-                    $user_id = $_SESSION['id'];
+$sel_sql= "SELECT * FROM users WHERE id ='$user_id'";
 
-                     $sel_sql= "SELECT * FROM users WHERE id ='$user_id'";
+$sql= mysqli_query($conn, $sel_sql);
 
-            $sql= mysqli_query($conn,$sel_sql);
+while($rows = mysqli_fetch_assoc($sql)) {
 
-            while($rows = mysqli_fetch_assoc($sql)){
-
-                echo '
+    echo '
 
 
 
@@ -621,15 +635,15 @@
 
                           ';
 
-            }
+}
 
-                       ?>
-
-                </div>
+?>
 
             </div>
 
-                    </div>
+    </div>
+
+    </div>
 
     </section>
 
@@ -644,4 +658,3 @@
     <?php include 'footer.php' ?>
 
 </body>
-
