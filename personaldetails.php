@@ -30,6 +30,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
 						<p>Account Reveiw</p>
 						<p>Your Personal Details</p>
 					</div>
+					<?php
+                    if(isset($_GET['success'])) {
+                        echo "<div class='alert alert-success text-center'>Details were updated successfully!</div>";
+                    }
+?>
 					<h3>Your Profile</h3>
 					<p>Here you can review and update your profile information</p>
 					<h3>Your Personal Details</h3>
@@ -62,6 +67,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
 						<p style="flex-grow: 1;">Yes</p>
 					</div>
 					<hr>
+					<p class="text-right"><a href="profile_edit.php"><i style='font-size:24px'
+								class='fas'>&#xf044;</i></a></p>
 					<h3>Contact Details</h3>
 					<div style="display: flex; align-items: center; justify-content: between; gap: 40px;">
 						<p style="flex-grow: 1">Mobile Number</p>

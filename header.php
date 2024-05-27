@@ -19,9 +19,9 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link href="css/animate.min.css" rel="stylesheet">
 	<link href="css/prettyPhoto.css" rel="stylesheet">
-	<!--<link href="css/style.css" rel="stylesheet">-->
-	<link rel="stylesheet"
-		href="css/style.css?v=<?php echo time(); ?>">
+	<link href="css/style.css" rel="stylesheet">
+	<!--<link rel="stylesheet"
+		href="css/style.css?v=<?php echo time(); ?>">-->
 	<link href="css/responsive.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!-- Start WOWSlider.com HEAD section -->

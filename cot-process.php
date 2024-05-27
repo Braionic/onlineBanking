@@ -995,28 +995,21 @@ if(isset($_POST{'check_cot'})){ //IF LOGIN BTN HAS BEEN CLICKED
                         </div>
 
                         <div class="panel-body panel-table">
-
                                                             <div class="table-responsive">
-
                                     <table class="table table-hover table-bordered">
-
                                         <thead>
-
                                         <tr>
-
                                             <th class="text-center" id="announcement">AMOUNT</th>
 
                                             <th class="text-center">TIME</th>
 
                                             <th class="text-center">STATUS</th>
-
                                         </tr>
 
                                         </thead>
 
                                         <tbody>
-
-                                                                                    <tr class="text-center  blink ">
+                                                <tr class="text-center  blink ">
 
                                                                                         <?php
 
@@ -1037,18 +1030,12 @@ if(isset($_POST{'check_cot'})){ //IF LOGIN BTN HAS BEEN CLICKED
                                                         <span class="text-uppercase" id="announcement"><i class="fa fa-dollar fa-1x" id="announcement"></i> <?php echo $rows['amount']; ?></span>
 
                                                     </a>
-
                                                 </td>
-
                                                 <td>
-
                                                     <span class="add price dollar"><?php echo $rows['created_at']; ?></span>
-
                                                 </td>
-
                                                 <td>
-
-                                                                                                            <span class="text-info"><?php echo $status; 
+                                                      <span class="text-info"><?php echo $status; 
 
                             ;}
 

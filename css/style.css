@@ -76,10 +76,11 @@ a:hover, a:focus {
   color: #d43133;
 }
 
-input:focus {
-  background-color: #007eae;
-    color: white;
-}
+/*input:focus {
+  background-color: red;
+    color: white !important;
+} */
+
 input[type=text] {
   width: 100%;
   padding: 12px 20px;

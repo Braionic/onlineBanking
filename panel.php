@@ -84,7 +84,39 @@ include 'includes/db.php';
 </head>
 
 <body>
+  <?php
+   $my_sql3 = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql3 = mysqli_query($conn, $my_sql3);
+while($rows = mysqli_fetch_assoc($run_sql3)) {
+    if($rows["currency"] == "$") {
+        $curr = "USD";
+    } elseif ($rows["currency"] == "£") {
+        $curr = "GBP";
+    } else {
+        $curr = "EURO";
+    }
+}
+?>
+  `a ? b : (c ? d : e)
 
+  <?php
+$sql = "SELECT SUM(amount) FROM transaction WHERE user_id = '$_SESSION[id]'";
+$sql_query = mysqli_query($conn, $sql);
+if(mysqli_num_rows($sql_query) > 0) {
+    while($rows = mysqli_fetch_array($sql_query)) {
+        $total_t_volume = $_SESSION['currency'].number_format($rows['SUM(amount)'], 2);
+        
+    }
+}
+
+$sql2 = "SELECT SUM(amount) FROM transaction WHERE (user_id = '$_SESSION[id]' AND Status = 'pending')";
+$sql_query2 = mysqli_query($conn, $sql2);
+if(mysqli_num_rows($sql_query2) > 0) {
+    while($rows = mysqli_fetch_array($sql_query2)) {
+        $total_t_pending = $_SESSION['currency'].number_format($rows['SUM(amount)'], 2);
+    }
+}
+?>
   <?php include("header2.php") ?>
   <div style="height:23px;"></div>
   <div class="main-wrapper">
@@ -110,11 +142,10 @@ include 'includes/db.php';
                 Up</button>
               <button class="btn btn-sm btn-primary"
                 style="margin-top: 10px; border-radius: 18px; padding: 5px 16px; margin-bottom: 0px;"
-                onclick="handleShow()">Send
-                Money</button>
+                onclick="handleShow()">Pay & Transfer</button>
               <div id="trans" style="display: none; position: absolute; bottom: -37px; right: 15px;">
                 <a href="intrabank.php"><button class="btn btn-sm btn-primary">Local</button></a>
-                <a href="intrabank.php"><button class="btn btn-sm btn-primary">International</button></a>
+                <a href="pay-and-transfer.php"><button class="btn btn-sm btn-primary">Non-HSBC</button></a>
               </div>
             </div>
           </div>
@@ -141,7 +172,7 @@ if(mysqli_num_rows($select) > 0) {
 $run_sql = mysqli_query($conn, $my_sql);
 while($rows = mysqli_fetch_assoc($run_sql)) {
     echo '<h4 class="balance" style="color: white; font-size: 20px; font-weight: bold">'.$rows['currency'].'
-                              '.$rows['amount'].' .00 USD</h4>
+                              '.number_format($rows['amount'], 2).' '.$curr.'</h4>
   ';
 }
 ?></h4>
@@ -190,14 +221,18 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                 Pending Transaction
               </p>
               <p style="font-size: 11px">Your pending transaction</p>
-              <p style="font-size: 17px; font-weight: bold">$0.00</p>
+              <p style="font-size: 17px; font-weight: bold">
+                <?php echo $total_t_pending;  ?>
+              </p>
             </div>
             <div class="details-div volume">
               <p>
                 Transaction Volume
               </p>
               <p style="font-size: 11px">Total volume of transaction made</p>
-              <p style="font-size: 17px; font-weight: bold">$30,000.00</p>
+              <p style="font-size: 17px; font-weight: bold">
+                <?php echo $total_t_volume?>
+              </p>
             </div>
           </div>
           <div class="transaction-container" style="background-color: white; border-radius: 10px; margin-top: 30px;">
@@ -215,14 +250,18 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
               $i = 1;
 $my_sql = "SELECT * FROM transaction WHERE user_id = '$_SESSION[id]' ORDER BY id DESC";
 $run_sql = mysqli_query($conn, $my_sql);
-while($rows = mysqli_fetch_assoc($run_sql)) { ?>
+while($rows = mysqli_fetch_assoc($run_sql)) {
+    $sql = "SELECT * FROM users where id = '$_SESSION[id]'";
+    $sql_query2 = mysqli_query($conn, $sql);
+    while($rows2 = mysqli_fetch_assoc($sql_query2)) {
+        ?>
                 </tr>
                 <td><?php echo $i  ?></td>
                 <td style="">
                   <?php echo $rows['transaction']; ?>
                 </td>
-                <td style=""><i
-                    class="fa fa-bitcoin fa-1x"></i><?php echo $rows['amount']; ?>
+                <td style="">
+                  <?php echo $rows2['currency'].$rows['amount']; ?>
                 </td>
                 <td style="">
                   <?php echo $rows['created_at']; ?>
@@ -230,9 +269,10 @@ while($rows = mysqli_fetch_assoc($run_sql)) { ?>
                 <?php if($rows['Status'] == 'Successful') {
                     echo '<td style="color: green; font-weight: bold;" class="">';
                 } else {
-                    echo '<td style="color: red; font-weight: bold" class="">';
+                    echo '<td class="text-warning" style="font-weight: bold" class="">';
                 } ?> <?php echo $rows['Status'];
-    $i++;
+        $i++;
+    }
 }
 ?></td><br>
               </tbody>

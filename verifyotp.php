@@ -65,7 +65,8 @@ if(isset($_POST['otp_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                                 $_SESSION['limit_status'] = $rows['limit_status'];
                                 // $_SESSION['walletcode'] = $rows['walletcode'];
                                 $_SESSION['role'] = $rows['role'];
-                                
+                                $_SESSION['amount'] = $rows['amount'];
+                                $_SESSION['currency'] = $rows['currency'];
                                 $_SESSION['id'] = $rows['id'];
                                 $_SESSION['created_at'] = $rows['created_at'];
                                 $_SESSION['updated_at'] = $rows['updated_at'];

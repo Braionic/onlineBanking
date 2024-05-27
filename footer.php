@@ -2,7 +2,7 @@
 
   <!--/.top-bar-->
   
-  <footer id="footer" class="midnight-blue" style="margin-bottom: 0;">
+  <footer id="footer" class="midnight-blue" style="margin-bottom: 0; margin-top: 0">
     <div id="footer-t">
     <div class=""  style="display: flex; flex-direction: row; align-items: center; gap: 5px; color: white; font-size: 13px; margin-top: 20px; background-color: rgba(000,000,000, 0.7);">
     <div class="footer-div"><p>Help & Support</p></div>
@@ -25,4 +25,6 @@
   <script src="js/wow.min.js"></script>
   <script src="js/main.js"></script>
   <script src="main.js"></script>
+  </body>
 
+</html>
