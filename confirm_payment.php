@@ -18,6 +18,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
     <title>Pay & Transfer</title>
 </head>
 
+
+<?php
+        //make the IBAN on account number dynamic
+
+   $my_sql3 = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql3 = mysqli_query($conn, $my_sql3);
+while($rows = mysqli_fetch_assoc($run_sql3)) {
+    if($rows["currency"] == "$") {
+        $cur_symb = "";
+    } else {
+        $cur_symb = "/ IBAN";
+    }
+}
+?>
+
 <?php
 
 $date = date('Y-m-d H:i:s');
@@ -94,7 +109,7 @@ if(mysqli_num_rows($inter_q) > 0) {
                                                     style="display: flex; align-items: center; justify-content: space-between">
                                                     <p><?php echo $_SESSION['account'] ?>
                                                     </p>
-                                                    <p>(<?php echo $_SESSION['currency'] ?><?php echo $_SESSION['amount'] ?>)
+                                                    <p>(<?php echo $_SESSION['currency'] ?><?php echo number_format($_SESSION['amount'], 2) ?>)
                                                     </p>
                                                 </div>
                                             </option>
@@ -129,7 +144,8 @@ if(mysqli_num_rows($inter_q) > 0) {
                             <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
                                 <label for="id_company" class="control-label col-md-4  requiredField"
                                     style="flex-grow: 1"> Account
-                                    number</label>
+                                    number
+                                    <?php echo $cur_symb ?></label>
                                 <div class="controls col-md-8" style="flex-grow: 1">
                                     <input class="input-md textinput textInput form-control" id="amount" name="b_acct"
                                         placeholder=<?php echo $rows['b_acct']; ?>
@@ -188,33 +204,8 @@ if(mysqli_num_rows($inter_q) > 0) {
                                 <hr>
                             </div>
                             <h3>Transfer method</h3>
-                            <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
-                                <label for="method" class="control-label col-lg-4  requiredField" style="flex-grow: 1">
-                                    Method</label>
-                                <div class="controls col-lg-8 " style="flex-grow: 1">
-                                    <form method="post" action="pay-and-transfer.php">
-                                        <select name="acct_type" id="method" class="form-control" disabled>
-                                            <option value="saving" selected>
-                                                <?php echo $_SESSION['account'] ?>
-                                            </option>
-                                            <option value="current">Current Account</option>
-                                        </select>
-                                </div>
-                                <hr>
-                            </div>
-                            <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
-                                <label for="id_company" class="control-label col-lg-4  requiredField"
-                                    style="flex-grow: 1"> Payee
-                                    Reference</label>
-                                <div class="controls col-lg-8" style="flex-grow: 1">
-                                    <input class="input-md textinput textInput form-control" id="refrence"
-                                        name="description"
-                                        placeholder=<?php echo $rows['refrence'] ?>
-                                    style="margin-bottom: 10px"
-                                    type="text" disabled />
-                                </div>
-                                <hr>
-                            </div>
+
+
                             <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
                                 <label for="amount" class="control-label col-md-4  requiredField" style="flex-grow: 1">
                                     Reason for

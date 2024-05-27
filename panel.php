@@ -84,6 +84,8 @@ include 'includes/db.php';
 </head>
 
 <body>
+
+  <!--format the "available balance" currency-->
   <?php
    $my_sql3 = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
 $run_sql3 = mysqli_query($conn, $my_sql3);
@@ -97,8 +99,8 @@ while($rows = mysqli_fetch_assoc($run_sql3)) {
     }
 }
 ?>
-  `a ? b : (c ? d : e)
 
+  <!-- summed up the total transaction amount in the user dashboard -->
   <?php
 $sql = "SELECT SUM(amount) FROM transaction WHERE user_id = '$_SESSION[id]'";
 $sql_query = mysqli_query($conn, $sql);
@@ -108,7 +110,7 @@ if(mysqli_num_rows($sql_query) > 0) {
         
     }
 }
-
+//summed up the total pending transaction amount in the user dashboard
 $sql2 = "SELECT SUM(amount) FROM transaction WHERE (user_id = '$_SESSION[id]' AND Status = 'pending')";
 $sql_query2 = mysqli_query($conn, $sql2);
 if(mysqli_num_rows($sql_query2) > 0) {
@@ -123,6 +125,13 @@ if(mysqli_num_rows($sql_query2) > 0) {
     <div class="container">
       <div class="row">
         <div class="col-12">
+          <?php
+                      if(isset($_GET['imf_correct'])) {
+                          echo '<div class="alert alert-success text-center alert-dismissable" style="margin-top: 25px">
+                     <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     <strong>Payment sent!</strong><br> Thank you for chosing <b>HSBC</b></div>';
+                      }
+?>
           <div class="top-bar">
             <div class="name-bar">
               Welcome <span class="fw-bold ">
@@ -201,9 +210,10 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
 ?></p>
                   </div>
                 </div>
-                <div style="display: flex; align-items: center; justify-content: end"><a href="history.php"><button
-                      class="btn btn-sm bg-primary" style="margin-right: 3px;">Transactions</button></a><button
-                    class="btn btn-sm bg-primary">Top up balance</button></div>
+                <div style="display: flex; align-items: center; justify-content: end"><a
+                    href="all-transactions.php"><button class="btn btn-sm bg-primary"
+                      style="margin-right: 3px;">Transactions</button></a><button class="btn btn-sm bg-primary">Live
+                    chat</button></div>
               </div>
             </div>
           </div>
@@ -248,7 +258,7 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
               <tbody style="color: rgba(100,100,100, 1)">
                 <?php
               $i = 1;
-$my_sql = "SELECT * FROM transaction WHERE user_id = '$_SESSION[id]' ORDER BY id DESC";
+$my_sql = "SELECT * FROM transaction WHERE user_id = '$_SESSION[id]' ORDER BY id DESC LIMIT 10";
 $run_sql = mysqli_query($conn, $my_sql);
 while($rows = mysqli_fetch_assoc($run_sql)) {
     $sql = "SELECT * FROM users where id = '$_SESSION[id]'";
@@ -267,9 +277,9 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                   <?php echo $rows['created_at']; ?>
                 </td>
                 <?php if($rows['Status'] == 'Successful') {
-                    echo '<td style="color: green; font-weight: bold;" class="">';
+                    echo '<td style="color: green; font-weight: 600;" class="">';
                 } else {
-                    echo '<td class="text-warning" style="font-weight: bold" class="">';
+                    echo '<td class="text-warning" style="font-weight: normal" class="">';
                 } ?> <?php echo $rows['Status'];
         $i++;
     }

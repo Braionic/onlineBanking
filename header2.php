@@ -159,6 +159,11 @@ THE SOFTWARE.
 			background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
 		}
 
+		/* table header color */
+		th {
+			background-color: aqua;
+		}
+
 		@media (max-width: 450px) {
 			.margins {
 				margin-right: 1rem;
@@ -217,12 +222,12 @@ THE SOFTWARE.
 						<?php
                   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
                       echo '
-            <li class="#"><a href="panel.php">Dashboard</a></li>
-            <li><a href="intrabank.php">Local Transfer</a></li>
-            <li><a href="billing-process.php">International Transfer</a></li>
+            <li class="#"><a href="panel.php">Customer Dashboard</a></li>
+            <li><a href="pay-and-transfer.php">Pay and Transfer</a></li>
+           <!-- <li><a href="billing-process.php">International Transfer</a></li>-->
             
             <li><a href="personaldetails.php">Personal Details</a></li>
-            <li><a href="signout.php">Sign Out</a></li>
+            <li><a href="signout.php">Leave</a></li>
             ';
                   } else {
                       echo '

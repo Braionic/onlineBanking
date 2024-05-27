@@ -19,18 +19,35 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
 </head>
 
 <?php
+        //make the IBAN on account number dynamic
+
+   $my_sql3 = "SELECT * FROM users WHERE id = '$_SESSION[id]' ORDER BY id DESC";
+$run_sql3 = mysqli_query($conn, $my_sql3);
+while($rows = mysqli_fetch_assoc($run_sql3)) {
+    if($rows["currency"] == "$") {
+        $cur_symb = "";
+    } else {
+        $cur_symb = "/ IBAN";
+    }
+}
+?>
+
+<?php
 
 $date = date('Y-m-d H:i:s');
 
 //INVENTOR SUBMIT
 
-if(isset($_POST['check_imf'])) {
+if(isset($_POST['check_imf_code'])) {
     $name = $_SESSION['name'];
     $imf = mysqli_real_escape_string($conn, $_POST['imf']);
 
+    $user_imf = 'TCC61084139';
+    if($user_imf !== $imf) {
+        echo "<script type='text/javascript'> document.location = 'imf_confirmation.php?imf_error=wrong'; </script>";
+    }
 
-
-    //$imf = 'TCC61084139';
+    
 
     $inter_sql = "SELECT * FROM int_transfer WHERE id ='$_SESSION[id]'";
 
@@ -64,7 +81,7 @@ if(isset($_POST['check_imf'])) {
         $sel_sql1 = "SELECT * FROM transaction WHERE id = '$_SESSION[id]'";
         $sql1 = mysqli_query($conn, $sel_sql1);
         if(mysqli_num_rows($sql1) >= 0) {
-            $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Debit', '$currency$_SESSION[debited_amount]', '$details', '$_SESSION[id]', '$date', 'pending')";
+            $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Debit', '$_SESSION[debited_amount]', '$details', '$_SESSION[id]', '$date', 'pending')";
             $run_sql = mysqli_query($conn, $ins_sql);
             //$_SESSION['debited_amount'] = "";
             $_SESSION['amount'] = $newAmount;
@@ -118,7 +135,7 @@ if(isset($_POST['check_imf'])) {
             }  // sends a copy of the message to the sender
             //TO SEND EMAIL ENDS
            
-            echo "<script type='text/javascript'> document.location = 'panel.php?updated_successfuly'; </script>";
+            echo "<script type='text/javascript'> document.location = 'panel.php?imf_correct'; </script>";
         }
     } else {
         $sql2 = "SELECT * FROM users WHERE id = '$_SESSION[id]'";
@@ -155,7 +172,7 @@ if(isset($_POST['check_imf'])) {
         $message .= '<div style="text-align: center;">';
         $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
         $message .= '<h3>Transaction Summary</h3>';
-        $message .= '<p><b>IBAN:</b> '.$newact.'</p><b>Account type:</b></p> '.$account.'<p><b>Account Name:</b> '. $name .'</p>';
+        $message .= '<p><b>Account Number:</b> '.$newact.'</p><b>Account type:</b></p> '.$account.'<p><b>Account Name:</b> '. $name .'</p>';
         $message .= '<p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p>';
         $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p>';
         $message .= '<p><b>Description:</b> '.$description.'</p>';
@@ -224,8 +241,6 @@ if(isset($_POST['check_imf'])) {
                                 money between your accounts or to another person's account, whether at home or overseas.
                                 you can also send money to companies</p>
                             <h3>From</h3>
-                            <p><?php echo $_SESSION['debited_amount']; ?>
-                            </p>
                             <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
                                 <label for="id_company" class="control-label col-md-4  requiredField"
                                     style="flex-grow: 1">Account type</label>
@@ -243,7 +258,7 @@ if(mysqli_num_rows($inter_q) > 0) {
                                                     style="display: flex; align-items: center; justify-content: space-between">
                                                     <p><?php echo $_SESSION['account'] ?>
                                                     </p>
-                                                    <p>(<?php echo $_SESSION['currency'] ?><?php echo $_SESSION['amount'] ?>)
+                                                    <p>(<?php echo $_SESSION['currency'] ?><?php echo number_format($_SESSION['amount'], 2) ?>)
                                                     </p>
                                                 </div>
                                             </option>
@@ -278,7 +293,8 @@ if(mysqli_num_rows($inter_q) > 0) {
                             <div style="display: flex; align-items: center; justify-content: between; padding: 20px;">
                                 <label for="id_company" class="control-label col-md-4  requiredField"
                                     style="flex-grow: 1"> Account
-                                    number</label>
+                                    number
+                                    <?php echo $cur_symb; ?></label>
                                 <div class="controls col-md-8" style="flex-grow: 1">
                                     <input class="input-md textinput textInput form-control" id="amount" name="b_acct"
                                         placeholder=<?php echo $rows['b_acct']; ?>
@@ -396,7 +412,8 @@ if(mysqli_num_rows($inter_q) > 0) {
                                 <hr>
                             </div>
                             <div style="text-align: end; margin: 10px; position: relative">
-                                <button class="btn btn-sm btn-danger" form="myform" name="check_imf">Continue</button>
+                                <button class="btn btn-sm btn-danger" form="myform"
+                                    name="check_imf_code">Continue</button>
                                 </form>
                                 <?php  ;
     }
