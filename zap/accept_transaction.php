@@ -1,5 +1,6 @@
 <?php include '../includes/db.php'; ?>
 
+
 <?php
 if(isset($_GET['id'])  && $_GET['id'] !== null) {
     $transaction_id = $_GET['id'];

@@ -32,6 +32,8 @@ if(isset($_GET['message']) && $_GET['message'] ==  'transaction_reversed') {
     <strong>transaction has been reversed!</strong></div>';
 }
 ?>
+
+
         <div class="top-bar">
             <div class="name-bar">
                 Welcome <span class="fw-bold ">
@@ -140,7 +142,7 @@ while($rows = mysqli_fetch_assoc($sql)) {
                 <tbody style="color: rgba(100,100,100, 1)">
                     <?php
               $i = 1;
-$my_sql = "SELECT * FROM transaction ORDER BY created_at DESC LIMIT 10";
+$my_sql = "SELECT * FROM transaction ORDER BY created_at DESC";
 $run_sql = mysqli_query($conn, $my_sql);
 while($rows = mysqli_fetch_assoc($run_sql)) {
     $sql = "SELECT * FROM users WHERE id='$rows[user_id]'";
@@ -162,6 +164,9 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                         <?php echo $rows['created_at']; ?>
                     </td>
                     <td style="">
+                        <?php
+                       if($rows['Status'] !== 'Success' && $rows['Status'] !== 'reversed') {
+                           ?>
                         <div>
                             <a
                                 href='accept_transaction.php?id=<?php echo $rows["id"] ?>'><button
@@ -171,6 +176,12 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                                     onclick="return confirm('reject transaction?')"
                                     class="btn btn-danger">Reject</button></a>
                         </div>
+                        <?php
+                       } else {
+                           echo"<div style='background-color: green; color: white; border-radius: 10%; width: 90px; text-align: center; padding: 0px;'><p style=''>Finalised</p></div>";
+                       }
+
+        ?>
                     </td>
                     <?php if($rows['Status'] == 'Success') {
                         echo '<td style="color: green; font-weight: 600;" class="">';

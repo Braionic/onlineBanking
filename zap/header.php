@@ -635,7 +635,7 @@
   <header>
 
     <nav class="navbar navbar-inverse" style="background-color: grey;">
-      <div class="container-fluid">
+      <div class="container-fluid;">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -645,16 +645,17 @@
           <a class="navbar-brand" href="index.php"><img src="../images/HSBC_UK.png" width="100px" height="50px"
               style="margin-top: -14;" alt="CDFB" class="logo"></a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
 
-            <?php
+
+
+        <?php
                     if (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
                         echo '
-        
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
         <li><a href="index.php" class="btn">Home</a></li>
         <li><a href="fund_client.php" class="btn">Fund Client</a></li>
-      <li><a href="debit_client.php" class="btn">Debit Client</a></li>
+      <!--<li><a href="debit_client.php" class="btn">Debit Client</a></li>-->
       <li><a href="blockuser.php" class="btn">Restrict Client</a></li>
       <li><a href="addtransaction.php" class="btn">Add Transactions</a></li>
       <li><a href="all_users.php" class="btn">View Users</a></li>
@@ -673,9 +674,9 @@
           <li ><a href="../">Users Area</a></li>
         </ul>';
                     }
-            ?>
+        ?>
 
-        </div>
+      </div>
       </div>
     </nav>
   </header>
