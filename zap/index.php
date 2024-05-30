@@ -1,21 +1,4 @@
 <?php
-/*883a7*/
-
-
-
-/*883a7*/
-
-
-
-
-
-
-
-
-
-
-
-
 
 include '../includes/timeoutable.php' ?>
 
@@ -42,6 +25,13 @@ include '../includes/timeoutable.php' ?>
     <?php include 'header.php';  ?>
 
     <div class="container">
+        <?php
+if(isset($_GET['message']) && $_GET['message'] ==  'transaction_reversed') {
+    echo '<div class="alert alert-warning text-center alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>transaction has been reversed!</strong></div>';
+}
+?>
         <div class="top-bar">
             <div class="name-bar">
                 Welcome <span class="fw-bold ">
@@ -142,6 +132,7 @@ while($rows = mysqli_fetch_assoc($sql)) {
                         <th>NO</th>
                         <th style="font-weight: normal;"> Transaction:</th>
                         <th style="font-weight: normal;">Amount:</th>
+                        <th style="font-weight: normal;">Customer ID:</th>
                         <th style="font-weight: normal;">Date:</th>
                         <th style="font-weight: normal;">Action:</th>
                         <th style="font-weight: normal;">Status:</th>
@@ -165,18 +156,23 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                         <?php echo $rows2['currency'].$rows['amount']; ?>
                     </td>
                     <td style="">
+                        <?php echo $rows['user_id']; ?>
+                    </td>
+                    <td style="">
                         <?php echo $rows['created_at']; ?>
                     </td>
                     <td style="">
                         <div>
                             <a
                                 href='accept_transaction.php?id=<?php echo $rows["id"] ?>'><button
-                                    class="btn btn-success" style="margin-right: 3px;">Accept</button></a><a
+                                    onclick=" return confirm('Do you want to accept this transaction')"
+                                    class="btn btn-success" style="margin: 3px;">Accept</button></a><a
                                 href='reject_transaction.php?id=<?php echo $rows["id"] ?>'><button
+                                    onclick="return confirm('reject transaction?')"
                                     class="btn btn-danger">Reject</button></a>
                         </div>
                     </td>
-                    <?php if($rows['Status'] == 'Successful') {
+                    <?php if($rows['Status'] == 'Success') {
                         echo '<td style="color: green; font-weight: 600;" class="">';
                     } else {
                         echo '<td class="text-warning" style="font-weight: normal" class="">';
@@ -190,6 +186,7 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
             </table>
         </div>
         <ul style="list-style:none;" class="text-center">
+            <li><a href="create_account.php" class="btn">Create an Account</a></li>
             <li><a href="fund_client.php" class="btn">Fund Client account</a></li>
             <li><a href="debit_client.php" class="btn">Debit Client account</a></li>
             <li><a href="blockuser.php" class="btn">Restrict User</a></li>

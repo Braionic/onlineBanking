@@ -169,8 +169,6 @@ THE SOFTWARE.
 			}
 		}
 
-
-
 		@media (max-width: 740px) {
 
 			.full-height,
@@ -180,7 +178,6 @@ THE SOFTWARE.
 				height: 1040px;
 			}
 		}
-
 
 		input:focus {
 			color: green;

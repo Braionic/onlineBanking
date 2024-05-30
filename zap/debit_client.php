@@ -151,7 +151,7 @@ while($data = mysqli_fetch_array($records)) {
         if($data['image'] == '') {
             echo '<td><img src="https://i.ibb.co/18PZkVk/tymebank-thumbnail-05-1080x1080-1.jpg" class="jarallax-img" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
         } else {
-            echo '<td><img src="../uploaded_img/'.$data['image'].'" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
+            echo '<td><img src="images/'.$data['image'].'" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
         }
     ?>
         <td><?php echo $data['name']; ?></td>

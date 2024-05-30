@@ -49,6 +49,7 @@
     font-family: 'Roboto', sans-serif;
   }
 
+  /*
   input[type=text],
   select {
     width: 45%;
@@ -61,6 +62,15 @@
     border-radius: 4px;
     color: #45a049;
     outline: none;
+  } */
+
+  input[type=text],
+  select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
   }
 
   input[type=text]:focus {

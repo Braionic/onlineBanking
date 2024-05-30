@@ -169,7 +169,7 @@ if(mysqli_num_rows($select) > 0) {
     if($fetch['image'] == '') {
         echo '<img src="./images/client2.png" class="img-fluid" style="width: 40px; height: 40px;">';
     } else {
-        echo '<img src="uploaded_img/'.$fetch['image'].'" alt="profile pic" class="img-fluid" style="width: 40px; height: 40px;">';
+        echo '<img src="zap/images/'.$fetch['image'].'" alt="profile pic" class="img-fluid" style="width: 50px; height: 40px;">';
     }
 }?>
 
@@ -224,7 +224,9 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                 Transaction Limit
               </p>
               <p style="font-size: 11px">Your current transaction limit</p>
-              <p style="font-size: 17px; font-weight: bold">$500,000.00</p>
+              <p style="font-size: 17px; font-weight: bold">
+                <?php echo $_SESSION['currency']; ?>500,000.00
+              </p>
             </div>
             <div class="details-div pending">
               <p>
