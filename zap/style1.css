@@ -369,6 +369,7 @@ nav#nav-mobile a:hover {
 }
 .navbar-inverse {
     background-color: black !important;
+    color: white;
     text-align: left;
 }
 .navbar-inverse a {
@@ -394,7 +395,7 @@ nav#nav-mobile a:hover {
     background-color: maroon!important;
 }
 .form-horizontal {
-    background-color: white !importanr;
+    background-color: white !important;
 }
 .btn {
     background-color: black;

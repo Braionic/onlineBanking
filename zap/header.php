@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>CDF Banking | Always giving you extra</title>
+  <title>HSBCA | Always giving you extra</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style.css">
@@ -47,6 +47,12 @@
 
   body {
     font-family: 'Roboto', sans-serif;
+  }
+
+  .resend-otp:disabled {
+    color: red;
+    padding: 10px;
+    background-color: blue;
   }
 
   /*
@@ -168,7 +174,7 @@
   }
 
   th {
-    background-color: red;
+    background-color: rgba(220, 0, 0, 0.5);
     color: white
   }
 
@@ -211,7 +217,6 @@
     margin-top: 10px;
   }
 
-  .details {}
 
   .earning {
     margin-bottom: 5px;
@@ -643,7 +648,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php"><img src="../images/HSBC_UK.png" width="100px" height="50px"
-              style="margin-top: -14;" alt="CDFB" class="logo"></a>
+              style="margin-top: -14;" alt="HSBCA" class="logo"></a>
         </div>
 
 
@@ -654,25 +659,17 @@
                         <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
         <li><a href="index.php" class="btn">Home</a></li>
-        <li><a href="fund_client.php" class="btn">Fund Client</a></li>
+        <li><a href="fund_client.php" class="btn" style="color: white">Fund Client</a></li>
       <!--<li><a href="debit_client.php" class="btn">Debit Client</a></li>-->
-      <li><a href="blockuser.php" class="btn">Restrict Client</a></li>
-      <li><a href="addtransaction.php" class="btn">Add Transactions</a></li>
-      <li><a href="all_users.php" class="btn">View Users</a></li>
-      <li><a href="gh.php" class="btn">Withdrawal Request</a></li>
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">More <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li><a href="transfers.php">Transfer Requests</a></li>
-          </ul>
-        </li>
+      <li><a href="blockuser.php" class="btn" style="color: white">Restrict Client</a></li>
+      <li><a href="addtransaction.php" class="btn" style="color: white">Add Transactions</a></li>
+      <li><a href="all_users.php" class="btn" style="color: white">View Users</a></li>
+      <li><a href="transfers.php" class="btn" style="color: white">Withdrawal Request</a></li>
+      <li><a href="logout.php" style="color: white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      
       </ul>
       ';
                     } else {
-                        echo'<ul class="nav navbar-nav navbar-right">
-          <li ><a href="../">Users Area</a></li>
-        </ul>';
                     }
         ?>
 

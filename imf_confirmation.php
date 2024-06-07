@@ -157,14 +157,14 @@ if(isset($_POST['check_imf_code'])) {
        
         
         $to = $email; // this is your Email address
-        $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+        $from = "no-reply@hsbca.com"; // this is the sender's Email address
         $first_name = $name;
            
-        $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
+        $subject2 = "HSBCA Transaction Notification [Debit: ".$currency . $amount . "]";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+        $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="HSBCA" class="logo">';
         $message .= '<div  style="background-color: white;">';
         $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your account has been Debited
@@ -178,8 +178,8 @@ if(isset($_POST['check_imf_code'])) {
         $message .= '<p><b>Description:</b> '.$description.'</p>';
         $message .= '<p><b>Available Balance:</b> ' .$currency . $newAmount .'.00</p>';
         $message .= '</div>';
-        $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $newAmount .'.00</strong> Thank you for chosing FRDBank</h4>';
-        $message .= '<div style="background-color: #28a745; color: white; text-align: center"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra.</div>';
+        $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $newAmount .'.00</strong> Thank you for chosing HSBCA</h4>';
+        $message .= '<div style="background-color: #28a745; color: white; text-align: center"><a href="https://www.hsbca.com">HSBCA!</a> Always giving you extra.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

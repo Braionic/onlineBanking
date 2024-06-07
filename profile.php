@@ -291,9 +291,7 @@ while($rows = mysqli_fetch_assoc($sql)) {
 
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                                     <form action="upload.php" enctype="multipart/form-data"
-
-        method="post"
+                                     <form action="upload.php" enctype="multipart/form-data" method="post"
 
                                           class="form-horizontal add margin-top-30px">
 
@@ -328,10 +326,7 @@ while($rows = mysqli_fetch_assoc($sql)) {
                                             </div>
 
                                         </div>
-
-
-
-                                                                                    <div class="form-group">
+                                                  <div class="form-group">
 
                                                 <label for="" class="col-sm-2 control-label">Additional Details</label>
 
@@ -358,33 +353,16 @@ while($rows = mysqli_fetch_assoc($sql)) {
                                         </div>
 
                                     </form>
-
-                                                                                    </div>
-
+                                    </div>
                     </div>
-
-                    
-
-                    
-
                     <div class="row">
-
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
                             <form action="np.php" method="post" class="form-horizontal"
-
                                   role="form">
-
                                 <input type="hidden" name="_token" value="KCiSz5g26RwvWIWWXlOPCwXIUIONvWzyiv8U4mY8">
-
                                 <div class="form-group">
-
                                     <legend>Change Password</legend>
-
                                 </div>
-
-
-
                                 <div class="form-group">
 
                                     <label for="" class="col-sm-2 control-label">Current Password</label>
@@ -398,9 +376,6 @@ while($rows = mysqli_fetch_assoc($sql)) {
                                     </div>
 
                                 </div>
-
-
-
                                 <div class="form-group">
 
                                     <label for="" class="col-sm-2 control-label">New Password</label>

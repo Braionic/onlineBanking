@@ -43,7 +43,7 @@ if (isset($_POST['fund_client'])) {
     $sel_sql1 = "SELECT * FROM transaction WHERE id = '$_POST[user_id]'";
     $sql1 = mysqli_query($conn, $sel_sql1);
     if(mysqli_num_rows($sql1) >= 0) {
-        $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Credit', '$currency $amount', '$details', '$_POST[user_id]', '$date', 'Successful')";
+        $ins_sql = "INSERT INTO transaction (name, transaction, amount, description, user_id, created_at, status) VALUES ('$name', 'Credit', '$amount', '$details', '$_POST[user_id]', '$date', 'Success')";
         $run_sql = mysqli_query($conn, $ins_sql);
     }
     if($d_amount >= 0) {
@@ -51,25 +51,25 @@ if (isset($_POST['fund_client'])) {
         $upd_sql = "UPDATE users SET  amount='$amount2', am_updated= '$date' WHERE id = '$_POST[user_id]'";
         $run_sql = mysqli_query($conn, $upd_sql);
         $to = $email; // this is your Email address
-        $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+        $from = "no-reply@hsbca.com"; // this is the sender's Email address
         $first_name = $name;
            
-        $subject2 = "FRDB Transaction Notification [Credit: ".$currency . $amount . "]";
+        $subject2 = "HSBCA Transaction Notification [Credit: ".$currency . $amount . "]";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDB" class="logo">';
+        $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="HSBCA" class="logo">';
         $message .= '<div  style="background-color: white;">';
         $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your account has been Credited
                 </4>";
         $message .= '<h1 style="color: green; font-size:18px;">' .$currency .$amount.'.00</h1>';
         $message .= '<h3>Transaction Summary</h3>';
-        $message .= '<p><b>IBAN:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'<br></p>';
+        $message .= '<p><b>ACCT:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'<br></p>';
         $message .= '<p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date.'<br></p>';
         $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p><p><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
-        $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing FRDBank</h4>';
-        $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.myfrdb.com">FRDBank!</a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com">FRDBank</a>.</div>';
+        $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing HSBC</h4>';
+        $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbca.com">HSBC!</a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbacc.com">HSBC</a>.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -78,7 +78,6 @@ if (isset($_POST['fund_client'])) {
         echo '<div class="success alert-success text-center">
                     Customer account has been updated <strong>successfully</strong>
                   </div';
-                    
     }
 }
 ?>
@@ -89,40 +88,51 @@ if (isset($_POST['fund_client'])) {
                      <strong>User ballance has been cleared successfully!</strong></div>';
               }
 ?>
-  <h2 class="text-center">Fund Client</h2>
-  <div ng-app="">
-    <form method="POST" action="fund_client.php" class="form-horizontal well text-center" enctype="multipart/form-data"
-      role="form" name="myForm">
-      <div class="form-group">
-        <label for="user_id">
-          <p>Customer ID</p>
-        </label>
-        <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" required>
+  <h2 class="text-center">Fund Customer</h2>
+  <div class="container">
+    <div class="rows">
+      <form method="POST" action="fund_client.php" class="form-horizontal well text-center"
+        enctype="multipart/form-data" role="form" name="myForm">
+        <div class="form-group" class="col-xs-12 col-sm-6 col-md-6">
+          <select style="background-color: aqua; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+            class=" col-xs-7 form-control input-md" name="user_id" id="user_id" tabindex="9">
+            <?php
+$sel_user = "SELECT * FROM users";
+$sel_query = mysqli_query($conn, $sel_user);
+if(mysqli_num_rows($sel_query) >0) {
+    while($rows = mysqli_fetch_assoc($sel_query)) {
+        
+        echo '<option value="'.$rows['id'].'">'.$rows['name'].'</option>';
+    }
+} else {
+    echo "<p>No level</p>";
+}
+?>
+          </select>
+        </div>
+        <div class="form-group" class="col-xs-12 col-sm-6 col-md-6">
+          <label for="amount">
+            <P>Amount</P>
+          </label>
+          <input type="text" name="amount" id="amount" placeholder="enter amount" required>
 
 
-      </div>
-      <div class="form-group">
-        <label for="amount">
-          <P>Amount</P>
-        </label>
-        <input type="text" name="amount" id="amount" placeholder="enter amount" required>
-
-
-      </div>
-      <div class="form-group">
-        <label for="amount">
-          <P>Description</P>
-        </label>
-        <textarea id="details" name="details" rows="4" cols="50">
+        </div>
+        <div class="form-group" class="col-xs-12 col-sm-6 col-md-6">
+          <label for="amount">
+            <P>Description</P>
+          </label>
+          <textarea id="details" name="details" rows="4" cols="50">
                                         </textarea>
-      </div>
-      <div class="form-group">
-        <label for="match_amount">
-        </label>
-        <input type="submit" name="fund_client" id="fund_client" value="Fund"
-          style="background-color: #007eae; color: white;" class="btn cc" class="col-sm-6 col-xs-6">
-      </div>
-    </form>
+        </div>
+        <div class="form-group">
+          <label for="fund_client">
+          </label>
+          <input type="submit" name="fund_client" id="fund_client" value="Fund"
+            style="background-color: #007eae; color: white;" class="btn cc" class="col-sm-6 col-xs-6">
+        </div>
+      </form>
+    </div>
   </div>
   <h2 class="">Customers</h2>
   <div class="container" style="overflow: auto;">

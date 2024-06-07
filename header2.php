@@ -225,7 +225,7 @@ THE SOFTWARE.
             <li class="#"><a href="panel.php">Customer Dashboard</a></li>
             <li><a href="pay-and-transfer.php">Pay and Transfer</a></li>
            <!-- <li><a href="billing-process.php">International Transfer</a></li>-->
-            
+		   <li><a href="account-scurity.php">Account Security</a></li>
             <li><a href="personaldetails.php">Personal Details</a></li>
             <li><a href="signout.php">Leave</a></li>
             ';

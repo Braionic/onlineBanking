@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="uri-translation" content="on" />
-	<title>Canadian Digital Financial Bank | Always giving you extra.</title>
+	<title>HSBCA | Always giving you extra.</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -71,6 +71,16 @@ THE SOFTWARE.
 	</script>
 
 	<style type="text/css">
+		.resend-otp:disabled {
+			color: red !important;
+			cursor: auto;
+		}
+
+		.resend-otp {
+			background-color: #424f95;
+			color: blue !important;
+		}
+
 		.homepage {
 			display: flex;
 			flex-direction: column;
@@ -197,7 +207,7 @@ THE SOFTWARE.
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/panel"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
+				<a class="navbar-brand" href="index.php"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
 						style="height: 60px;"></a>
 			</div>
 
@@ -210,6 +220,7 @@ THE SOFTWARE.
             <li><a href="fundme.php">Deposit</a></li>
             <li><a href="withdraw.php">Payout</a></li>
             <li><a href="history.php">History</a></li>
+			<li><a href="modify_password.php">Security</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="signout.php">Sign Out</a></li>
             ';

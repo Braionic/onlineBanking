@@ -12,50 +12,71 @@
     <?php include 'header.php';  ?>
     <?php
                     //MATCH SUBMIT
-               if (isset($_POST['block_user'])) {
-                   $role = "admin";
-                   $user_id = $_POST['user_id'];
-                   if (!empty($_POST['status'])) {
-                       $status = $_POST['status'];
-                   } else {
-                       $status = ".";
-                   }
+if (isset($_POST['block_user'])) {
+    $role = "admin";
+    $user_id = $_POST['user_id'];
+    if (!empty($_POST['status']) && !empty($_POST['user_id'])) {
+        $status = $_POST['status'];
+    } else {
+        $status = ".";
+    }
 
-                   //select
-                   $sel_sql = "SELECT * FROM users WHERE id = '$_POST[user_id]'";
-                   $sql = mysqli_query($conn, $sel_sql);
-                   while($rows = mysqli_fetch_assoc($sql)) {
-                       //so get the user details you want to save here
-                       $name = $rows['name'];
-                       //etc etc etc.......
-                   }
-                   // INSERT INTO INVENTOR DATABASE
-                   $ins_sql = "INSERT INTO blocked (firstname, user_id, status) VALUES ('$name', '$_POST[user_id]', '$status')";
-                   $run_sql = mysqli_query($conn, $ins_sql);
-                   echo '<h4 style="color:white">user successfully placed on dormancy</h4>';
-                    
-               }
+    //select
+    $sel_sql = "SELECT * FROM users WHERE id = '$_POST[user_id]'";
+    $sql = mysqli_query($conn, $sel_sql);
+    while($rows = mysqli_fetch_assoc($sql)) {
+        //so get the user details you want to save here
+        $name = $rows['name'];
+        //etc etc etc.......
+    }
+    if(mysqli_num_rows($sql) < 1) {
+        // INSERT INTO INVENTOR DATABASE
+        $ins_sql = "INSERT INTO blocked (firstname, user_id, status) VALUES ('$name', '$_POST[user_id]', '$status')";
+        $run_sql = mysqli_query($conn, $ins_sql);
+        echo '<h4 class="alert alert-success text-center" style="color:green">'.$name. ' has successfully been placed on COT FCC Restriction</h4>';
+    } else {
+        echo "<div class='alert alert-danger text-center'>".$name." account has already been restricted</div>'";
+    }
+}
 ?>
     <h3 class="text-center">Restrict Customer to COT Interface</h3>
-    <div class="form">
-        <form method="POST" action="blockuser.php" class="form-horizontal well text-center"
-            enctype="multipart/form-data" role="form" name="myForm">
-            <div class="form-group">
-                <input type="text" name="user_id" id="user_id" placeholder="Customer ID" required>
-            </div>
-          
-            <div class="form-group">
-             
-            <select class="col-xs-7 form-control input-sm" name="status" id="status"
-                                            tabindex="10" required>
-                                            <option value="FCC & IMF" selected>COT or IMF</option>
-                                        </select>
-                                        
-            </div>
-            <div class="form-group">
-                <input type="submit" name="block_user" id="block_user" value="Restrict User" class="btn btn-primary cc">
-            </div>
-        </form>
+    <div class="container">
+        <div class="form">
+            <form method="POST" action="blockuser.php" class="form-horizontal well text-center"
+                enctype="multipart/form-data" role="form" name="myForm">
+                <div class="form-group" class="col-xs-12 col-sm-6 col-md-6">
+                    <select
+                        style="background-color: aqua; color: black; height: 50px; border-bottom: 2px solid black;"
+                        class=" col-xs-7 form-control input-md" name="user_id" id="user_id" tabindex="9" required>
+                        <option value="">Please select</option>
+                        <?php
+$sel_user = "SELECT * FROM users";
+$sel_query = mysqli_query($conn, $sel_user);
+if(mysqli_num_rows($sel_query) >0) {
+    while($rows = mysqli_fetch_assoc($sel_query)) {
+        
+        echo '<option value="'.$rows['id'].'">'.$rows['name'].'</option>';
+    }
+} else {
+    echo "<p>No level</p>";
+}
+?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+
+                    <select class="col-xs-7 form-control input-sm" name="status" id="status" tabindex="10" required>
+                        <option value="FCC & IMF" selected>COT or IMF</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="block_user" id="block_user" value="Restrict User"
+                        class="btn btn-primary cc">
+                </div>
+            </form>
+        </div>
     </div>
     <div class="container">
         <h2 class="">Customers</h2>

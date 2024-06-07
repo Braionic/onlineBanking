@@ -26,14 +26,14 @@
                     if($_POST['forgot_email'] == $rows['email']) {
                          //TO SEND EMAIL BEGINS
                  $to = $_POST['forgot_email']; // this is your Email address
-                $from = "crackfunds.com"; // this is the sender's Email address
+                $from = "hsbca.com"; // this is the sender's Email address
                 $first_name = $rows['name'];
                // $last_name = $_POST['last_name'];
                 $password = $rows['password'];
                // $subject = "Form submission";
-                $subject2 = "Crackfunds Password";
+                $subject2 = "HSBCA Password";
                // $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
-                $message2 = "" . $first_name ." this is your password for Crackfunds: " . $password . ". Do not disclose to anyone!";
+                $message2 = "" . $first_name ." this is your password for HSBCA: " . $password . ". Do not disclose to anyone!";
 
                 $headers = "From:" . $from;
               //  $headers2 = "From:" . $to;

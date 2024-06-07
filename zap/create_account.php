@@ -62,10 +62,9 @@ if (isset($_POST['signup_submit'])) {
             if(mysqli_num_rows($run_sql) == 0) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
                 //TO SEND EMAIL BEGINS
                 $to = $email;
-                $from = "support@myfrdb.com"; // this is the sender's Email address
+                $from = "info@hsbca.com"; // this is the sender's Email address
                 $first_name = $name;
-           
-                $subject2 = "Verification Successful";
+                $subject2 = "Account Opening";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
@@ -78,7 +77,7 @@ if (isset($_POST['signup_submit'])) {
                 $message .= '<p>Default Password: '.$password.'</p>';
                 $message .= '<p style="color: red;">for security reasons, please sign into your account, navigate to profile and change your preferred password</p>';
                 $message .= '<p>Don’t recognise this activity? Please ignore</p>';
-                $message .= '<div style="background-color: green; color: white;"><a href="https://www.myfrdb.com" style="color: white"><b>FRDBank!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com"><b>FRDBank</b></a>.</div>';
+                $message .= '<div style="background-color: green; color: white;"><a href="https://www.hsbca.com" style="color: white"><b>HSBC!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbca.com"><b>HSBCA</b></a>.</div>';
                 $message .= '</div></div></body></html>';
                 $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

@@ -94,7 +94,7 @@
                              <h4>Full Name: '.$rows['name'].'</h4>
                              <h4>Email Address: '.$rows['email'].'</h4>
                              <h4>Gender: '.$rows['gender'].'</h4>
-                             <h4>Bank: '.$rows['bank'].'</h4>
+                            <!-- <h4>Bank: '.$rows['bank'].'</h4>-->
                              <h4>Account Number: '.$rows['act_no'].'</h4>
                              <h4>Phone: '.$rows['fone_no'].'</h4>
                              <h4>Country: '.$rows['state'].'</h4>

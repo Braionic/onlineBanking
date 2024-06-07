@@ -278,7 +278,7 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                 <td style="">
                   <?php echo $rows['created_at']; ?>
                 </td>
-                <?php if($rows['Status'] == 'Successful') {
+                <?php if($rows['Status'] == 'Success') {
                     echo '<td style="color: green; font-weight: 600;" class="">';
                 } else {
                     echo '<td class="text-warning" style="font-weight: normal" class="">';

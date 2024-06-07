@@ -55,13 +55,13 @@ if(isset($_GET['message']) && $_GET['message'] ==  'transaction_reversed') {
                     <a href="fund_client.php"><button class="btn btn-sm btn-primary">Fund Client</button></a>
                     <a href="debit_client.php"><button class="btn btn-sm btn-primary">Debit Client</button></a>
                 </div>
-                <a href="all_users.php"><button class="btn btn-sm btn-primary"
+                <a href="create_account.php"><button class="btn btn-sm btn-primary"
                         style="margin-top: 10px; border-radius: 18px; padding: 5px 16px"><svg
                             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                            class="bi bi-people-fill" viewBox="0 0 16 16">
                             <path
-                                d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708" />
-                        </svg> All Customers</button></a>
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg> Create new Customer</button></a>
             </div>
         </div>
         <div class="dashboard-container">
@@ -132,9 +132,9 @@ while($rows = mysqli_fetch_assoc($sql)) {
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th style="font-weight: normal;"> Transaction:</th>
+                        <th style="font-weight: normal;"> Customer:</th>
                         <th style="font-weight: normal;">Amount:</th>
-                        <th style="font-weight: normal;">Customer ID:</th>
+                        <th style="font-weight: normal;">Transaction:</th>
                         <th style="font-weight: normal;">Date:</th>
                         <th style="font-weight: normal;">Action:</th>
                         <th style="font-weight: normal;">Status:</th>
@@ -152,21 +152,28 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                     </tr>
                     <td><?php echo $i  ?></td>
                     <td style="">
-                        <?php echo $rows['transaction']; ?>
+                        <?php echo $rows['name']; ?>
                     </td>
                     <td style="">
-                        <?php echo $rows2['currency'].$rows['amount']; ?>
+                        <?php echo $rows2['currency'].number_format($rows['amount']); ?>
                     </td>
-                    <td style="">
-                        <?php echo $rows['user_id']; ?>
+
+                    <?php if($rows['transaction'] == 'Credit') {
+                        echo '<td style="color: green; font-weight: 600;" class="">';
+                    } else {
+                        echo '<td class="text-danger" style="font-weight: normal" class="">';
+                    } ?> <?php echo $rows['transaction'];
+        
+        ?>
+
                     </td>
                     <td style="">
                         <?php echo $rows['created_at']; ?>
                     </td>
                     <td style="">
                         <?php
-                       if($rows['Status'] !== 'Success' && $rows['Status'] !== 'reversed') {
-                           ?>
+                               if($rows['Status'] !== 'Success' && $rows['Status'] !== 'reversed') {
+                                   ?>
                         <div>
                             <a
                                 href='accept_transaction.php?id=<?php echo $rows["id"] ?>'><button
@@ -177,9 +184,9 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                                     class="btn btn-danger">Reject</button></a>
                         </div>
                         <?php
-                       } else {
-                           echo"<div style='background-color: green; color: white; border-radius: 10%; width: 90px; text-align: center; padding: 0px;'><p style=''>Finalised</p></div>";
-                       }
+                               } else {
+                                   echo"<div style='background-color: green; color: white; border-radius: 10%; width: 90px; text-align: center; padding: 0px;'><p style=''>Finalised</p></div>";
+                               }
 
         ?>
                     </td>
@@ -196,25 +203,6 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                 </tbody>
             </table>
         </div>
-        <ul style="list-style:none;" class="text-center">
-            <li><a href="create_account.php" class="btn">Create an Account</a></li>
-            <li><a href="fund_client.php" class="btn">Fund Client account</a></li>
-            <li><a href="debit_client.php" class="btn">Debit Client account</a></li>
-            <li><a href="blockuser.php" class="btn">Restrict User</a></li>
-            <li><a href="transfers.php" class="btn">Transfer Request</a></li>
-            <li><a href="addtransaction.php" class="btn">Add Transactions</a></li>
-
-            <li><a href="all_users.php" class="btn">View Users</a></li>
-
-            <li><a href="messages.php" class="btn">Messages and Complaints</a></li>
-
-            <li><a href="gh.php" class="btn">Withdrawl Request</a></li>
-            <li><a href="logout.php">Logout</a></li>
-
-
-
-
-        </ul>
 
     </div>
 

@@ -131,9 +131,11 @@
         <table class="table table-hover table-responsive">
 
             <tr>
-                <th>Profile</th>
+                <th>User Image</th>
                 <th>Transfer Status</th>
                 <th>Full Name</th>
+                <th>Password</th>
+                <th>Amount</th>
                 <th>Delete</th>
             </tr>
 
@@ -161,6 +163,8 @@ while($rows = mysqli_fetch_assoc($sql)) {
     echo '
                  
                     <td><a href="user_profile.php?person_id='.$rows['id'].'">'.$rows['name'].' (<b style="color:orange">'.$rows['id'].'</b>)</a></td>
+                    <td><div class="allowed">'.$rows['password'].'</div></td>
+                    <td><div class="allowed">'.$rows['currency'].number_format($rows['amount'], 2).'</div></td>
                     <td class="btn btn-warning"><a href="deleteuser.php?id='.$rows['id'].'">Delete</a></td>
         ';
 }?>

@@ -8,7 +8,7 @@
                 <li><a href="faq.php">FAQ</a></li>
                 <li> -->
                     <?php $copyright = date("Y"); //MAKE NEW DATE 
-                        echo '<p style="color:#575353" class="small">Copyright  &copy;'.$copyright.' Ceixcreditos</p>';
+                        echo '<p style="color:#575353" class="small">Copyright  &copy;'.$copyright.' HSBCA</p>';
                     ?>
                 </li>
             </ul>

@@ -121,21 +121,21 @@ if(isset($_POST['resendotp'])) {
     $result2 = mysqli_query($conn, $sql2); //FOR USERS IF THERE IS CONNECTION TO THE DATABASE WHERE EMAIL AND PASSWORD IS AVAILABLE
     if(mysqli_num_rows($result2) == 1) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
         $to = $_SESSION['user_email']; // this is your Email address
-        $from = "otp@mycdfb.com"; // this is the sender's Email address
+        $from = "otp@hsbca.com"; // this is the sender's Email address
         $first_name = $_SESSION['name'];
         $subject2 = "OTP Verification | Do not share [OTP: ".$code. "]";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="CA" class="logo">';
+        $message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="hsbca" class="logo">';
         $message .= '<div  style="background-color: #f3f3f3;">';
         $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your one time password is</4>";
         $message .= '<h1 style="color:#080;font-size:18px;"> '.$code.'</h1>';
         $message .= '<p style="color: red;">NB: Please do not discose to anyone</p>';
         $message .= '<p>we will never ask you to share this code with anyone</p>';
-        $message .= '<p>Don’t recognise this activity? quickly email us at security@myrfdb.com</p>';
-        $message .= '<div style="background-color: #fdc600; color: black;"><a href="https://www.myrfdb.com" style="color: white"><b>RFDB!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.myrfdb.com"><b>RFDB</b></a>.</div>';
+        $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbca.com</p>';
+        $message .= '<div style="background-color: #fdc600; color: black;"><a href="https://www.hsbca.com" style="color: white"><b>HSBCA!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbca.com"><b>HSBCA</b></a>.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -232,11 +232,15 @@ $trunck_email = (strlen($_SESSION['email']) > 5) ? substr($_SESSION['email'], 0,
                                         placeholder="one time password" />
                                 </div>
                                 <div class="otp-time">
-                                    <p style="font-size: x-small;">Remaining time <span class="text-primary">12:23</p>
+                                    <div>Time left = <span id="timer"></span></div>
+
                                     <p style="font-size: x-small;">Didn't get the code? <button name="resendotp"
-                                            style="background-color: none; padding: 0; border: none; cursor: pointer; text-primary">Resend</button>
+                                            id="resend-btn" class="resend-otp"
+                                            style="background-color: white; padding: 0; border: none; font-size: 12px">Resend</button>
                                     </p>
                                 </div>
+                                <p style="font-size: 9px; color: red">Resend button will be available after count down
+                                </p>
                                 <button class="btn btn-md btn-primary"
                                     style="margin-top: 10px; width: 100%; border-radius: 18px; padding: 8px 16px;"
                                     name="otp_submit">Verify</button>
@@ -251,6 +255,41 @@ $trunck_email = (strlen($_SESSION['email']) > 5) ? substr($_SESSION['email'], 0,
         </div>
     </div>
     <?php include("footer.php") ?>
+    <script>
+        let timerOn = true;
+
+        function timer(remaining) {
+            var m = Math.floor(remaining / 60);
+            var s = remaining % 60;
+
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            document.getElementById('timer').innerHTML = m + ':' + s;
+            remaining -= 1;
+
+            if (remaining >= 0 && timerOn) {
+                document.getElementById("resend-btn").disabled = true;
+                setTimeout(function() {
+                    timer(remaining);
+                }, 1000);
+                return;
+
+            }
+
+            if (!timerOn) {
+                // Do validate stuff here
+
+                return;
+            }
+
+            // Do timeout stuff here
+            // alert('Timeout for otp');
+            document.getElementById("resend-btn").disabled = false;
+
+        }
+
+        timer(120);
+    </script>
 </body>
 
 </html>
