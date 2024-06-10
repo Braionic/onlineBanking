@@ -1,5 +1,15 @@
 <?php include '../includes/timeoutable.php' ?>
-
+<style>
+    .main-wrapper {
+      background-color: rgba(100, 100, 100, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90vh;
+      padding: 20px;
+      margin-top: 30px;
+    }
+</style>
 <body>
     <?php include '../includes/db.php'; ?>
     <?php
@@ -40,6 +50,9 @@
                  //DELETE FROM PROVIDE TABLE ENDS
              }
 ?>
+<div class="main-wrapper">
+
+
     <div class="container">
         <div style="height:20px;"></div>
         <!--SCRIPT FOR LIVE SEARCH USERS BEGINS-->
@@ -128,11 +141,11 @@
                                         </form>-->
         <!--SEARCH USERS ENDS-->
         <h3 class="text-center">All existing Customers</h3>
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover table-responsive" style="table-layout: fixed; width: 100%; background-color: white">
 
             <tr>
                 <th>User Image</th>
-                <th>Transfer Status</th>
+                <th>Status</th>
                 <th>Full Name</th>
                 <th>Password</th>
                 <th>Amount</th>
@@ -155,10 +168,10 @@ while($rows = mysqli_fetch_assoc($sql)) {
         echo '<td><img src="images/'.$rows['image'].'" alt="profile pic" style="max-width: 50px; max-height: 50px;"></td>';
     }
 
-    if($rows['limit_status'] == 'restricted') {
-        echo '<td><div class="restricted">User Restricted</div></td>';
+    if($rows['status'] == 'blocked') {
+        echo '<td><div class="restricted">Blocked</div></td>';
     } else {
-        echo '<td><div class="allowed">Limit allowed</div></td>';
+        echo '<td><div class="allowed">Active</div></td>';
     }
     echo '
                  
@@ -172,7 +185,7 @@ while($rows = mysqli_fetch_assoc($sql)) {
 
 
         </table>
-    </div>
+    </div></div>
 
     <?php include 'footer.php' ?>
 </body>

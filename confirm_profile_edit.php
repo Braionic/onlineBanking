@@ -107,22 +107,22 @@ if(isset($_POST['resendotp'])) {
     $sql2 = "SELECT * FROM otp WHERE userid = '$_SESSION[id]'"; //FOR USERS
     $result2 = mysqli_query($conn, $sql2); //FOR USERS IF THERE IS CONNECTION TO THE DATABASE WHERE EMAIL AND PASSWORD IS AVAILABLE
     if(mysqli_num_rows($result2) == 1) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
-        $to = $_SESSION['user_email']; // this is your Email address
-        $from = "otp@mycdfb.com"; // this is the sender's Email address
+        $to = $_SESSION['email']; // this is your Email address
+        $from = "otp@hsbacc.com"; // this is the sender's Email address
         $first_name = $_SESSION['name'];
         $subject2 = "OTP Verification | Do not share [OTP: ".$code. "]";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="CA" class="logo">';
-        $message .= '<div  style="background-color: #f3f3f3;">';
+        //$message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="hsbacc" class="logo">';
+        $message .= '<div>';
         $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your one time password is</4>";
         $message .= '<h1 style="color:#080;font-size:18px;"> '.$code.'</h1>';
         $message .= '<p style="color: red;">NB: Please do not discose to anyone</p>';
         $message .= '<p>we will never ask you to share this code with anyone</p>';
-        $message .= '<p>Don’t recognise this activity? quickly email us at security@myrfdb.com</p>';
-        $message .= '<div style="background-color: #fdc600; color: black;"><a href="https://www.myrfdb.com" style="color: white"><b>RFDB!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.myrfdb.com"><b>RFDB</b></a>.</div>';
+        $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
+        $message .= '<div style="background-color: #fdc600; color: black;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBACC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>RFDB</b></a>.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

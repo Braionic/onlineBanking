@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="uri-translation" content="on" />
 	<title>HSBCA | Always giving you extra.</title>
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -95,7 +95,6 @@ THE SOFTWARE.
 		.index-loginbtn {
 			background-color: rgba(210, 0, 0, 0.4);
 			color: white;
-
 			padding-top: 15px;
 			padding-bottom: 15px;
 			padding-left: 30px;
@@ -104,6 +103,19 @@ THE SOFTWARE.
 			border: none;
 
 		}
+
+		.fp-continue-btn {
+			background-color: rgba(210, 0, 0, 0.4);
+			color: white;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			padding-left: 30px;
+			padding-right: 30px;
+			margin-right: 30px;
+			border: none;
+
+		}
+
 
 		/* banner with image */
 		.intro-2 {
@@ -116,15 +128,19 @@ THE SOFTWARE.
 		}
 
 		.top-nav-collapse {
-			background-color: #424f95 !important;
+			background-color: white !important;
 		}
 
 
 
 		@media (max-width: 768px) {
 			.navbar:not(.top-nav-collapse) {
-				background: #424f95 !important;
+				background: white !important;
+				color: black !important;
 			}
+
+
+
 		}
 
 		@media (max-width: 600px) {
@@ -173,7 +189,7 @@ THE SOFTWARE.
 			}
 		}
 
-		@media (max-width: 760px) {
+		@media (max-width: 970px) {
 			.form-div {
 				width: 100%;
 			}
@@ -197,7 +213,7 @@ THE SOFTWARE.
 
 
 <header id="header" ;>
-	<nav class="navbar navbar-fixed-top" role="banner"
+	<nav class="navbar navbar-fixed-top navbar-light" role="banner"
 		style="background-color: white; padding-top: 1px; padding-bottom: 9px; padding-left: 20px">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -207,8 +223,8 @@ THE SOFTWARE.
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.php"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
-						style="height: 60px;"></a>
+				<a class="navbar-brand" href="index.php"><img id="logo" class="img-fluid"
+						src="https://i.ibb.co/6sp8xWF/logo-HSBC-1024.png" style="height: 110px; margin-top: -25px"></a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-right">

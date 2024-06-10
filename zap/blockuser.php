@@ -1,7 +1,18 @@
 <?php include '../includes/timeoutable.php' ?>
-
+<style>
+    .main-wrapper {
+      background-color: rgba(100, 100, 100, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 90vh;
+      padding: 20px;
+      margin-top: 30px;
+    }
+</style>
 <body>
     <?php include '../includes/db.php'; ?>
+    <div class="main-wrapper">
     <?php
     if (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
     } else { //IF NO USER LOGGED IN
@@ -55,7 +66,7 @@ $sel_query = mysqli_query($conn, $sel_user);
 if(mysqli_num_rows($sel_query) >0) {
     while($rows = mysqli_fetch_assoc($sel_query)) {
         
-        echo '<option value="'.$rows['id'].'">'.$rows['name'].'</option>';
+        echo '<option style="font-size: 14px" value="'.$rows['id'].'">'.$rows['name'].'</option>';
     }
 } else {
     echo "<p>No level</p>";

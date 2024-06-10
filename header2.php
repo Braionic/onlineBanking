@@ -4,15 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>CaixaBank | Always giving you extra</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>HSBCA | Always giving you extra</title>
 
 	<!-- Bootstrap -->
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link href="css/animate.min.css" rel="stylesheet">
-	<link href="css/prettyPhoto.css" rel="stylesheet">
 	<link rel="stylesheet"
 		href="css/style.css?v=<?php echo time(); ?>">
 	<link href="css/responsive.css" rel="stylesheet">
@@ -122,7 +120,8 @@ THE SOFTWARE.
 	<style type="text/css">
 		@media (max-width: 768px) {
 			.navbar:not(.top-nav-collapse) {
-				background: #424f95 !important;
+				background: white !important;
+				color: white !important;
 			}
 		}
 
@@ -207,14 +206,16 @@ THE SOFTWARE.
 		<nav class="navbar navbar-fixed-top" role="banner">
 			<div class="container">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+						style="background-color: red">
 						<span class="sr-only">Toggle navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="panel.php"><img id="logo" class="img-fluid" src="./images/HSBC_UK.png"
-							style="height: 60px;"></a>
+					<a class="navbar-brand" href="panel.php"><img id="logo" class="img-fluid"
+							src="https://i.ibb.co/6sp8xWF/logo-HSBC-1024.png"
+							style="height: 100px; margin-top: -30px"></a>
 				</div>
 
 				<div class="collapse navbar-collapse navbar-right">
@@ -225,9 +226,8 @@ THE SOFTWARE.
             <li class="#"><a href="panel.php">Customer Dashboard</a></li>
             <li><a href="pay-and-transfer.php">Pay and Transfer</a></li>
            <!-- <li><a href="billing-process.php">International Transfer</a></li>-->
-		   <li><a href="account-scurity.php">Account Security</a></li>
             <li><a href="personaldetails.php">Personal Details</a></li>
-            <li><a href="signout.php">Leave</a></li>
+            <li><a href="signout.php">Log off</a></li>
             ';
                   } else {
                       echo '

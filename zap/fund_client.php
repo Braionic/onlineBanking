@@ -51,14 +51,14 @@ if (isset($_POST['fund_client'])) {
         $upd_sql = "UPDATE users SET  amount='$amount2', am_updated= '$date' WHERE id = '$_POST[user_id]'";
         $run_sql = mysqli_query($conn, $upd_sql);
         $to = $email; // this is your Email address
-        $from = "no-reply@hsbca.com"; // this is the sender's Email address
+        $from = "no-reply@hsbacc.com"; // this is the sender's Email address
         $first_name = $name;
            
-        $subject2 = "HSBCA Transaction Notification [Credit: ".$currency . $amount . "]";
+        $subject2 = "HSBC Transaction Notification [Credit: ".$currency . $amount . "]";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="HSBCA" class="logo">';
+        $message = '<div class="navbar-brand"  style="text-align: center; background-color: white" href="">';
         $message .= '<div  style="background-color: white;">';
         $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your account has been Credited
@@ -69,7 +69,7 @@ if (isset($_POST['fund_client'])) {
         $message .= '<p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date.'<br></p>';
         $message .= '<p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p><p><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
         $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing HSBC</h4>';
-        $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbca.com">HSBC!</a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbacc.com">HSBC</a>.</div>';
+        $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbacc.com">HSBC!</a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbacc.com">HSBC</a>.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -101,8 +101,7 @@ $sel_user = "SELECT * FROM users";
 $sel_query = mysqli_query($conn, $sel_user);
 if(mysqli_num_rows($sel_query) >0) {
     while($rows = mysqli_fetch_assoc($sel_query)) {
-        
-        echo '<option value="'.$rows['id'].'">'.$rows['name'].'</option>';
+        echo '<option style="font-size: 14px" value="'.$rows['id'].'">'.$rows['name'].'</option>';
     }
 } else {
     echo "<p>No level</p>";

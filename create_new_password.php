@@ -96,17 +96,40 @@ if(isset($_GET['otp_error'])) { //TO OUTPUT LOGIN ERROR
 
                             </div>
                             <input type="text" name="new_pwd" style="padding: 5px;" required>
-                            <p style="margin-bottom: 0px; margin-left: px; font-weight: bold; font-size: 12px">Confirm
-                                new password
-                            </p>
-                            <div class="alert alert-warning alert-dismissible" role="alert">
+
+                            <div class="alert alert-info alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true" data-dismiss="alert">&times;</span>
                                 </button>
                                 <span></span>
-                                <p style="font-weight: bold; font-size: 13px;">One time password</p>
-                                <p style="color: black;">Please enter the one time password sent to your email</p>
+                                <div
+                                    style="display:flex; align-items: center; justify-content: space-between; flex-direction: column; padding-right: 10px; gap: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 20px;">
+                                        <i style="font-size:24px;" class="fa">&#xf06a;</i>
+                                        <p style="margin-bottom: 0px; font-size: 13px">Password should be 8-10
+                                            characters long</p>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <i style="font-size:24px;" class="fa">&#xf06a;</i>
+                                        <p style="margin-bottom: 0px; font-size: 13px">It can only contain letters,
+                                            numbers or any of these special characters '@ ? = _ - *</p>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <i style="font-size:24px;" class="fa">&#xf06a;</i>
+                                        <p style="margin-bottom: 0px; font-size: 13px">It can't include common patters
+                                            or words e.g. password, 12345, qwerty </p>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <i style="font-size:24px;" class="fa">&#xf06a;</i>
+                                        <p style="margin-bottom: 0px; font-size: 13px">It must contain at least 1 letter
+                                            and 1 number.</p>
+                                    </div>
+
+                                </div>
                             </div>
+                            <p style="margin-bottom: 0px; margin-left: px; font-weight: bold; font-size: 12px">Confirm
+                                new password
+                            </p>
                             <input type="text" name="new_pwdc" style="padding: 5px;" required>
                             <hr class="colorgraph">
 
@@ -114,7 +137,7 @@ if(isset($_GET['otp_error'])) { //TO OUTPUT LOGIN ERROR
                                 <div
                                     style="display: flex; align-items: center; justify-content: end; margin: 15px 0px; position: relative">
                                     <div><button name="submit" id="user_password"
-                                            class="index-loginbtn">Continue</button>
+                                            class="fp-continue-btn">Continue</button>
                                     </div>
                     </form>
                     <div style="position: absolute; right: 200px;">
@@ -122,15 +145,9 @@ if(isset($_GET['otp_error'])) { //TO OUTPUT LOGIN ERROR
                             class="">Cancel</a>
                     </div>
                 </div>
-
             </div>
-
-
-
-
         </div>
 </div>
-
 </div>
 </div>
 <div style="height:50px;"></div>

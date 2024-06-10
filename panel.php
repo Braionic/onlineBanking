@@ -64,7 +64,7 @@ include 'includes/db.php';
     }
 
     th {
-      background-color: aqua;
+      background-color: red;
     }
 
 
@@ -77,6 +77,18 @@ include 'includes/db.php';
     @media (min-width: 600px) {
       .acct-num-container {
         left: 60px;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+      .acct-num-container {
+        left: 43px;
+        width: 80%;
+      }
+
+      .o {
+        font-size: 12px;
       }
 
     }
@@ -132,6 +144,13 @@ if(mysqli_num_rows($sql_query2) > 0) {
                      <strong>Payment sent!</strong><br> Thank you for chosing <b>HSBC</b></div>';
                       }
 ?>
+          <?php
+                      if(isset($_GET['successfull'])) {
+                          echo '<div class="alert alert-success text-center alert-dismissable" style="margin-top: 25px">
+                     <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     <strong>Payment sent!</strong><br> Thank you for chosing <b>HSBC</b></div>';
+                      }
+?>
           <div class="top-bar">
             <div class="name-bar">
               Welcome <span class="fw-bold ">
@@ -141,7 +160,7 @@ if(mysqli_num_rows($sql_query2) > 0) {
             </div>
             <div class="right-util"
               style="display: flex; align-items: center; justify-content: end; gap: 3px; position: relative;">
-              <button class="btn btn-sm btn-primary"
+              <button class="btn btn-sm btn-danger"
                 style="margin-top: 10px; border-radius: 18px; padding: 5px 16px"><svg xmlns="http://www.w3.org/2000/svg"
                   width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
                   <path
@@ -149,16 +168,16 @@ if(mysqli_num_rows($sql_query2) > 0) {
                 </svg> Cash
                 Top
                 Up</button>
-              <button class="btn btn-sm btn-primary"
+              <button class="btn btn-sm btn-danger"
                 style="margin-top: 10px; border-radius: 18px; padding: 5px 16px; margin-bottom: 0px;"
-                onclick="handleShow()">Pay & Transfer</button>
+                onclick="handleShow()"><i class="fa fa-handshake-o" aria-hidden="true"></i>Pay & Transfer</button>
               <div id="trans" style="display: none; position: absolute; bottom: -37px; right: 15px;">
-                <a href="intrabank.php"><button class="btn btn-sm btn-primary">Local</button></a>
-                <a href="pay-and-transfer.php"><button class="btn btn-sm btn-primary">Non-HSBC</button></a>
+                <!-- <a href="intrabank.php"><button class="btn btn-sm btn-primary">Local</button></a>-->
+                <a href="pay-and-transfer.php"><button class="btn btn-sm btn-danger">Non-HSBC</button></a>
               </div>
             </div>
           </div>
-          <div class="price-container rounded-3 btn-primary"
+          <div class="price-container rounded-3 btn-danger"
             style="border-radius: 13px; padding: 10px; position: relative; margin-top: 15px;">
             <div class=" avatar rounded-circle" style="width: 50px; height: 50px; overflow: hidden;">
               <?php
@@ -187,9 +206,8 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
 ?></h4>
             </div>
             <div class="acct-num-container"
-              style="background-color: white;border-radius: 13px; padding: 10px; position: absolute; bottom: -40px; right: 60px; margin-left: auto; margin-right: auto;">
+              style="background-color: white;border-radius: 13px; padding: 10px; position: absolute; bottom: -45px; right: 60px; margin-left: auto; margin-right: auto;">
               <div class="panell" style="display: flex; align-items: center; justify-content: space-between; ">
-
                 <div class="acct-details"
                   style="color: black; display: flex; align-items: center; justify-content: center; gap: 4px;">
 
@@ -211,8 +229,10 @@ while($rows = mysqli_fetch_assoc($run_sql)) {
                   </div>
                 </div>
                 <div style="display: flex; align-items: center; justify-content: end"><a
-                    href="all-transactions.php"><button class="btn btn-sm bg-primary"
-                      style="margin-right: 3px;">Transactions</button></a><button class="btn btn-sm bg-primary">Live
+                    href="all-transactions.php"><button class="btn btn-danger btn-sm" style="margin-right: 3px;">
+                      <i class="fa fa-bar-chart" aria-hidden="true"></i>Transactions
+                    </button></a><button class="btn btn-danger btn-sm"><i class="fa fa-comments" aria-hidden="true"></i>
+                    Live
                     chat</button></div>
               </div>
             </div>

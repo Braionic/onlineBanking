@@ -11,13 +11,11 @@
        </div>
     </div>
        <div class="" style="display: flex; align-items: center; gap: 5px; color: gray; font-size: 16px; padding: 8px 16px; background-color: black;">
-         <p>HSBC Group |  @ Copyright HSBC Group 2002-2024. All rights reserved</p>
+         <!--<p>HSBC Group |  @ Copyright HSBC Group 2002-2024. All rights reserved</p>-->
        </div>
   </footer>
 
   <!--/#footer-->
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.prettyPhoto.js"></script>
@@ -25,6 +23,8 @@
   <script src="js/wow.min.js"></script>
   <script src="js/main.js"></script>
   <script src="main.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 
 </html>

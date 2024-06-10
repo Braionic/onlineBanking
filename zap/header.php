@@ -98,6 +98,8 @@
     outline: none;
   }
 
+
+
   input[type=submit] {
     width: 30%;
     background-color: #4CAF50;
@@ -204,6 +206,8 @@
       width: 100%;
       margin-right: 3px;
     }
+
+
 
     .dashboard-container {
       flex-direction: column;
@@ -405,51 +409,51 @@
     margin-bottom: 0.75rem;
   }
 
-  @media (min-width: 576px) {
-    .card-group {
-      display: flex;
-      flex-flow: row wrap;
+  @media (min-width: 700px) {
+    .txt {
+      text-align: left;
     }
+  }
 
-    .card-group>.card {
-      flex: 1 0 0%;
-      margin-bottom: 0;
-    }
+  .card-group>.card {
+    flex: 1 0 0%;
+    margin-bottom: 0;
+  }
 
-    .card-group>.card+.card {
-      margin-left: 0;
-      border-left: 0;
-    }
+  .card-group>.card+.card {
+    margin-left: 0;
+    border-left: 0;
+  }
 
-    .card-group>.card:not(:last-child) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+  .card-group>.card:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
-    .card-group>.card:not(:last-child) .card-img-top,
-    .card-group>.card:not(:last-child) .card-header {
-      border-top-right-radius: 0;
-    }
+  .card-group>.card:not(:last-child) .card-img-top,
+  .card-group>.card:not(:last-child) .card-header {
+    border-top-right-radius: 0;
+  }
 
-    .card-group>.card:not(:last-child) .card-img-bottom,
-    .card-group>.card:not(:last-child) .card-footer {
-      border-bottom-right-radius: 0;
-    }
+  .card-group>.card:not(:last-child) .card-img-bottom,
+  .card-group>.card:not(:last-child) .card-footer {
+    border-bottom-right-radius: 0;
+  }
 
-    .card-group>.card:not(:first-child) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+  .card-group>.card:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 
-    .card-group>.card:not(:first-child) .card-img-top,
-    .card-group>.card:not(:first-child) .card-header {
-      border-top-left-radius: 0;
-    }
+  .card-group>.card:not(:first-child) .card-img-top,
+  .card-group>.card:not(:first-child) .card-header {
+    border-top-left-radius: 0;
+  }
 
-    .card-group>.card:not(:first-child) .card-img-bottom,
-    .card-group>.card:not(:first-child) .card-footer {
-      border-bottom-left-radius: 0;
-    }
+  .card-group>.card:not(:first-child) .card-img-bottom,
+  .card-group>.card:not(:first-child) .card-footer {
+    border-bottom-left-radius: 0;
+  }
   }
 
   .card-columns .card {
@@ -639,16 +643,17 @@
 
   <header>
 
-    <nav class="navbar navbar-inverse" style="background-color: grey;">
+    <nav class="navbar navbar-inverse" style="background-color: white;">
       <div class="container-fluid;">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"
+            style="background-color: red;">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php"><img src="../images/HSBC_UK.png" width="100px" height="50px"
-              style="margin-top: -14;" alt="HSBCA" class="logo"></a>
+          <!-- <a class="navbar-brand" href="index.php"><img src="../images/HSBC_UK.png" width="100px" height="50px"
+              style="margin-top: -14;" alt="HSBCA" class="logo"></a>-->
         </div>
 
 
@@ -658,14 +663,14 @@
                         echo '
                         <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-        <li><a href="index.php" class="btn">Home</a></li>
-        <li><a href="fund_client.php" class="btn" style="color: white">Fund Client</a></li>
+        <li><a href="index.php" class="btn" style="color: black">Dashboard</a></li>
+        <li><a href="fund_client.php" class="btn" style="color: black">Fund Client</a></li>
       <!--<li><a href="debit_client.php" class="btn">Debit Client</a></li>-->
-      <li><a href="blockuser.php" class="btn" style="color: white">Restrict Client</a></li>
-      <li><a href="addtransaction.php" class="btn" style="color: white">Add Transactions</a></li>
-      <li><a href="all_users.php" class="btn" style="color: white">View Users</a></li>
-      <li><a href="transfers.php" class="btn" style="color: white">Withdrawal Request</a></li>
-      <li><a href="logout.php" style="color: white"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a href="blockuser.php" class="btn" style="color: black">Restrict Client</a></li>
+      <li><a href="addtransaction.php" class="btn" style="color: black">Add Transactions</a></li>
+      <li><a href="all_users.php" class="btn" style="color: black">View Users</a></li>
+      <li><a href="transfers.php" class="btn" style="color: black">Withdrawal Request</a></li>
+      <li><a href="logout.php" style="color: black"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       
       </ul>
       ';

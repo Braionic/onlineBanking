@@ -62,22 +62,21 @@ if (isset($_POST['signup_submit'])) {
             if(mysqli_num_rows($run_sql) == 0) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
                 //TO SEND EMAIL BEGINS
                 $to = $email;
-                $from = "info@hsbca.com"; // this is the sender's Email address
+                $from = "info@hsbacc.com"; // this is the sender's Email address
                 $first_name = $name;
                 $subject2 = "Account Opening";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                $message .= '<div class="navbar-brand" style="text-align: center; background-color: green"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="FRDBank" class="logo">';
+                $message .= '<div class="navbar-brand" style="text-align: center; background-color: white">';
                 $message .= '<div style="background-color: white;">';
                 $message .= '<h2 style="text-align: left;">Hi <strong>'. $first_name . '</strong></h2>';
                 $message .= '<p>This is a notification email of your application with us</p>';
                 $message .= '<p>Your appication has been accepted and account created</p>';
-                $message .= '<p>Username '.$email.'</p>';
-                $message .= '<p>Default Password: '.$password.'</p>';
-                $message .= '<p style="color: red;">for security reasons, please sign into your account, navigate to profile and change your preferred password</p>';
+                $message .= '<p>Email '.$email.'</p>';
+                $message .= '<p style="color: red;">To set-up a password, click on <a href="https://www.hsbacc.com/forgot-password.php" style="color: white"><b>Password Reset</b></a> or the link below and follow the prompt</p>';
                 $message .= '<p>Don’t recognise this activity? Please ignore</p>';
-                $message .= '<div style="background-color: green; color: white;"><a href="https://www.hsbca.com" style="color: white"><b>HSBC!</b></a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbca.com"><b>HSBCA</b></a>.</div>';
+                $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBC!</b></a>.Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBC</b></a>.</div>';
                 $message .= '</div></div></body></html>';
                 $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -126,7 +125,7 @@ if (isset($_POST['signup_submit'])) {
                             <div class="row">
                                 <div class="form-group">
                                     <input type="text"
-                                        style="background-color: #EEEEEE; color: black; height: 50px; flex-grow: 1; border-bottom: 2px solid black; blur:red"
+                                        style="background-color: #EEEEEE; color: black; height: 50px; flex-grow: 1; border-bottom: 2px solid black; font-size: 16px"
                                         name="name" id="name" class="form-control input-md"
                                         placeholder="First & Last Name" tabindex="1" required>
                                 </div>
@@ -140,28 +139,28 @@ if (isset($_POST['signup_submit'])) {
                                 <div class="form-group">
                                     <div class="form-group">
                                         <input type="email"
-                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                             name="email" id="email" class="form-control input-md"
                                             placeholder="Email Address" tabindex="3" required>
                                     </div>
 
                                     <div class="form-group">
                                         <input type="text"
-                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                             name="act_no" id="act_no" class="form-control input-md"
                                             placeholder="Account Number" tabindex="3" required>
                                     </div>
                                     <div class="form-group">
                                         <input type="text"
-                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                             name="address" id="act_no" class="form-control input-md"
                                             placeholder="Valid Address" tabindex="3">
                                     </div>
                                     <div class="md-form md-outline input-with-post-icon datepicker"
                                         style="color: black; height: 50px; margin-bottom: 10px;">
 
-                                        <input style="height: 50px;" placeholder="Select date" type="date" id="dob"
-                                            name="dob" class="form-control" required>
+                                        <input style="height: 50px; font-size: 16px" placeholder="Select date"
+                                            type="date" id="dob" name="dob" class="form-control" required>
 
                                     </div>
                                     <div class="row">
@@ -169,7 +168,7 @@ if (isset($_POST['signup_submit'])) {
                                             <div class="form-group">
 
                                                 <input type="password"
-                                                    style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                    style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                     name="password" id="password" class="form-control input-md"
                                                     placeholder="Password" tabindex="4" required>
                                             </div>
@@ -178,7 +177,7 @@ if (isset($_POST['signup_submit'])) {
                                             <div class="form-group">
 
                                                 <input type="password"
-                                                    style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                    style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                     name="c_password" id="c_password" class="form-control input-md"
                                                     placeholder="Confirm Password" tabindex="5" required>
                                             </div>
@@ -191,7 +190,7 @@ if (isset($_POST['signup_submit'])) {
                                     <div class="form-group">
 
                                         <input type="number"
-                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                            style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                             name="phone_no" id="phone_no" class="form-control input-md"
                                             placeholder="Mobile Number" tabindex="8" required>
                                         <i for="" class="help-block add lighter" style="color: red;">Format: +44
@@ -210,7 +209,7 @@ if (isset($_POST['signup_submit'])) {
                                 <div class="form-group">
 
                                     <select
-                                        style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                        style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                         class="col-xs-7 form-control input-md" name="state" id="state" tabindex="9"
                                         required>
                                         <option value="af">Afghanistan</option>
@@ -308,46 +307,47 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="Guernsey">Guernsey</option>
                                         <option value="Guinea">Guinea</option>
                                         <option value="Guinea-Bissau">Guinea-Bissau</option>
-                                        <option value="gy">Guyana</option>
-                                        <option value="ht">Haiti</option>
-                                        <option value="hm">Heard Island and McDonald Islands</option>
-                                        <option value="hn">Honduras</option>
-                                        <option value="hk">Hong Kong</option>
-                                        <option value="hu">Hungary</option>
-                                        <option value="is">Iceland</option>
-                                        <option value="in">India</option>
-                                        <option value="id">Indonesia</option>
-                                        <option value="ir">Iran</option>
-                                        <option value="iq">Iraq</option>
-                                        <option value="ie">Ireland</option>
-                                        <option value="im">Isle of Man</option>
-                                        <option value="il">Israel</option>
-                                        <option value="it">Italy</option>
-                                        <option value="ci">Ivory Coast</option>
-                                        <option value="jm">Jamaica</option>
-                                        <option value="jp">Japan</option>
-                                        <option value="je">Jersey</option>
-                                        <option value="jo">Jordan</option>
-                                        <option value="kz">Kazakhstan</option>
-                                        <option value="ke">Kenya</option>
-                                        <option value="ki">Kiribati</option>
-                                        <option value="xk">Kosovo</option>
-                                        <option value="kw">Kuwait</option>
-                                        <option value="kg">Kyrgyzstan</option>
-                                        <option value="la">Laos</option>
-                                        <option value="lv">Latvia</option>
-                                        <option value="lb">Lebanon</option>
+                                        <option value="Guyana">Guyana</option>
+                                        <option value="Haiti">Haiti</option>
+                                        <option value="Heard Island and McDonald Islands">Heard Island and McDonald
+                                            Islands</option>
+                                        <option value="Honduras">Honduras</option>
+                                        <option value="Hong Kong">Hong Kong</option>
+                                        <option value="Hungary">Hungary</option>
+                                        <option value="Iceland">Iceland</option>
+                                        <option value="India">India</option>
+                                        <option value="Indonesia">Indonesia</option>
+                                        <option value="Iran">Iran</option>
+                                        <option value="Iraq">Iraq</option>
+                                        <option value="Ireland">Ireland</option>
+                                        <option value="Isle of Man">Isle of Man</option>
+                                        <option value="Israel">Israel</option>
+                                        <option value="Italy">Italy</option>
+                                        <option value="Ivory Coast">Ivory Coast</option>
+                                        <option value="Jamaica">Jamaica</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Jersey">Jersey</option>
+                                        <option value="Jordan">Jordan</option>
+                                        <option value="Kazakhstan">Kazakhstan</option>
+                                        <option value="Kenya">Kenya</option>
+                                        <option value="Kiribati">Kiribati</option>
+                                        <option value="Kosovo">Kosovo</option>
+                                        <option value="Kuwait">Kuwait</option>
+                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="Lebanon">Lebanon</option>
                                         <option value="ls">Lesotho</option>
                                         <option value="lr">Liberia</option>
                                         <option value="ly">Libya</option>
                                         <option value="li">Liechtenstein</option>
-                                        <option value="lt">Lithuania</option>
-                                        <option value="lu">Luxembourg</option>
-                                        <option value="mo">Macao</option>
-                                        <option value="mk">Macedonia</option>
-                                        <option value="mg">Madagascar</option>
+                                        <option value="Lithuania">Lithuania</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Macao">Macao</option>
+                                        <option value="Macedonia">Macedonia</option>
+                                        <option value="Madagascar">Madagascar</option>
                                         <option value="mw">Malawi</option>
-                                        <option value="my">Malaysia</option>
+                                        <option value="Malaysia">Malaysia</option>
                                         <option value="mv">Maldives</option>
                                         <option value="ml">Mali</option>
                                         <option value="mt">Malta</option>
@@ -356,7 +356,7 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="mr">Mauritania</option>
                                         <option value="mu">Mauritius</option>
                                         <option value="yt">Mayotte</option>
-                                        <option value="mx">Mexico</option>
+                                        <option value="Mexico">Mexico</option>
                                         <option value="fm">Micronesia</option>
                                         <option value="md">Moldova</option>
                                         <option value="mc">Monaco</option>
@@ -374,13 +374,13 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="nz">New Zealand</option>
                                         <option value="ni">Nicaragua</option>
                                         <option value="ne">Niger</option>
-                                        <option value="ng">Nigeria</option>
+                                        <option value="Nigeria">Nigeria</option>
                                         <option value="nu">Niue</option>
                                         <option value="nf">Norfolk Island</option>
-                                        <option value="kp">North Korea</option>
+                                        <option value="North Korea">North Korea</option>
                                         <option value="mp">Northern Mariana Islands</option>
-                                        <option value="no">Norway</option>
-                                        <option value="om">Oman</option>
+                                        <option value="Norway">Norway</option>
+                                        <option value="Oman">Oman</option>
                                         <option value="pk">Pakistan</option>
                                         <option value="pw">Palau</option>
                                         <option value="ps">Palestine</option>
@@ -390,13 +390,13 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="pe">Peru</option>
                                         <option value="ph">Philippines</option>
                                         <option value="pn">Pitcairn Islands</option>
-                                        <option value="pl">Poland</option>
-                                        <option value="pt">Portugal</option>
+                                        <option value="Poland">Poland</option>
+                                        <option value="Portugal">Portugal</option>
                                         <option value="pr">Puerto Rico</option>
                                         <option value="qa">Qatar</option>
                                         <option value="cg">Republic of the Congo</option>
-                                        <option value="ro">Romania</option>
-                                        <option value="ru">Russia</option>
+                                        <option value="Romania">Romania</option>
+                                        <option value="Russia">Russia</option>
                                         <option value="rw">Rwanda</option>
                                         <option value="re">Réunion</option>
                                         <option value="bl">Saint Barthélemy</option>
@@ -413,9 +413,9 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="rs">Serbia</option>
                                         <option value="sc">Seychelles</option>
                                         <option value="sl">Sierra Leone</option>
-                                        <option value="sg">Singapore</option>
+                                        <option value="Singapore">Singapore</option>
                                         <option value="sx">Sint Maarten</option>
-                                        <option value="sk">Slovakia</option>
+                                        <option value="Slovakia">Slovakia</option>
                                         <option value="si">Slovenia</option>
                                         <option value="sb">Solomon Islands</option>
                                         <option value="so">Somalia</option>
@@ -433,7 +433,7 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="ch">Switzerland</option>
                                         <option value="sy">Syria</option>
                                         <option value="st">São Tomé and Príncipe</option>
-                                        <option value="tw">Taiwan</option>
+                                        <option value="Taiwan">Taiwan</option>
                                         <option value="tj">Tajikistan</option>
                                         <option value="tz">Tanzania</option>
                                         <option value="th">Thailand</option>
@@ -442,7 +442,7 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="to">Tonga</option>
                                         <option value="tt">Trinidad and Tobago</option>
                                         <option value="tn">Tunisia</option>
-                                        <option value="tr">Turkey</option>
+                                        <option value="Turkey">Turkey</option>
                                         <option value="tm">Turkmenistan</option>
                                         <option value="tc">Turks and Caicos Islands</option>
                                         <option value="tv">Tuvalu</option>
@@ -450,7 +450,7 @@ if (isset($_POST['signup_submit'])) {
                                         <option value="vi">U.S. Virgin Islands</option>
                                         <option value="ug">Uganda</option>
                                         <option value="ua">Ukraine</option>
-                                        <option value="ae">United Arab Emirates</option>
+                                        <option value="Ukraine">United Arab Emirates</option>
                                         <option value="United Kingdom">United Kingdom</option>
                                         <option value="United States" selected>United States</option>
                                         <option value="uy">Uruguay</option>
@@ -473,7 +473,7 @@ if (isset($_POST['signup_submit'])) {
                                         <div class="form-group">
 
                                             <select
-                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                 class=" col-xs-7 form-control input-md" name="account" id="account"
                                                 tabindex="9" required>
                                                 <option value="savings" selected>Savings Account</option>
@@ -493,7 +493,7 @@ if (isset($_POST['signup_submit'])) {
                                         <div class="form-group">
 
                                             <select
-                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                 class=" col-xs-7 form-control input-md" name="currency" id="state"
                                                 tabindex="9">
                                                 <option value="$">US Dollar</option>
@@ -506,7 +506,7 @@ if (isset($_POST['signup_submit'])) {
                                         <div class="form-group">
 
                                             <input type="text"
-                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                style="background-color: #EEEEEE; color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                 name="swift_code" id="swift_code" class="form-control input-md"
                                                 placeholder="SWIFT Code" tabindex="3">
                                         </div>
@@ -515,7 +515,7 @@ if (isset($_POST['signup_submit'])) {
                                             <div class="form-group">
 
                                                 <input type="file"
-                                                    style="color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                                                    style="color: black; height: 50px; border-bottom: 2px solid black; font-size: 16px"
                                                     name="image" accept="image/jpg, image/jpeg, image/png">
 
                                             </div>

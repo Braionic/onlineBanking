@@ -30,26 +30,27 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
         $query = mysqli_query($conn, $sql);
         
         if(mysqli_num_rows($query) > 0) {
-            $_SESSION['email'] = $email;
-
+            //$_SESSION['email'] = $email;
             while($rows = mysqli_fetch_assoc($query)) { //RETRIEVE INVENTOR DETAILS
                 $_SESSION['email'] = $rows['email'];
+                $_SESSION['name'] = $rows['name'];
+                $_SESSION['id'] = $rows['id'];
             }
             $digits = 5;
             $code = rand(pow(10, $digits-1), pow(10, $digits)-1);
             $_SESSION['code'] = $code;
             $sql2 = "SELECT * FROM otp WHERE userid = '$_SESSION[id]'"; //FOR USERS
             $result2 = mysqli_query($conn, $sql2); //FOR USERS IF THERE IS CONNECTION TO THE DATABASE WHERE EMAIL AND PASSWORD IS AVAILABLE
-            if(mysqli_num_rows($result2) == 1) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
+            if(mysqli_num_rows($result2) > 0) { //IF NO. OF ROWS WITH ABOVE QUERY IS JUST ONE
                 
-                $to = $my_email; // this is your Email address
-                $from = "otp@hsbca.com"; // this is the sender's Email address
+                $to = $email; // this is your Email address
+                $from = "otp@hsbacc.com"; // this is the sender's Email address
                 $first_name = $_SESSION['name'];
                 $subject2 = "Password reset | Do not share [OTP: ".$code."] ";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="hsbca" class="logo">';
+                $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="hsbacc" class="logo">';
                 ;
                 $message .= '<div  style="background-color: #28a745;">';
                 $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
@@ -57,8 +58,8 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                 $message .= '<h1 style="color:#080;font-size:18px;"> '.$code.'</h1>';
                 $message .= '<p style="color: red;">NB: Please do not discose to anyone</p>';
                 $message .= '<p>we will never ask you to share this code with anyone</p>';
-                $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbca.com</p>';
-                $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbca.com" style="color: white"><b>HSBCA!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbca.com"><b>HSBCA</b></a>.</div>';
+                $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
+                $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBACC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBACC</b></a>.</div>';
                 $message .= '</div></div></body></html>';
                 $headers .= 'From: '.$from."\r\n".
 'Reply-To: '.$from."\r\n" .
@@ -67,16 +68,16 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                 $upd_sql = "UPDATE otp SET code='$code' WHERE userid = '$_SESSION[id]'";
                 $run_sql = mysqli_query($conn, $upd_sql);
             } else {
-                $ins_sql1 = "INSERT INTO otp (name, userid, email, code) VALUES ('$_SESSION[name]', '$_SESSION[id]', '$get_user_email', '$code')";
+                $ins_sql1 = "INSERT INTO otp (name, userid, email, code) VALUES ('$_SESSION[name]', '$_SESSION[id]', '$email', '$code')";
                 $run_sql2 = mysqli_query($conn, $ins_sql1);
                 $to = $_SESSION['email']; // this is your Email address
-                $from = "security@hsbca.com"; // this is the sender's Email address
+                $from = "security@hsbacc.com"; // this is the sender's Email address
                 $first_name = $_SESSION['name'];
                 $subject2 = "OTP Verification | Do not share [OTP: ".$code. "]";
                 $headers  = 'MIME-Version: 1.0' . "\r\n";
                 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                 $message = '<html><body>';
-                $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="hsbca" class="logo">';
+                $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="hsbacc" class="logo">';
                 $message .= '<div  style="background-color: #28a745;">';
                 $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
                 $message .= "<h4 style='color:#071d49;'>Your one time password is
@@ -84,8 +85,8 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                 $message .= '<h1 style="color:#080;font-size:18px;"> '.$code.'</h1>';
                 $message .= '<p style="color: red;">NB: Please do not discose to anyone, We will never request for this code</p>';
                 $message .= '<p>we will never ask you to share this code with anyone</p>';
-                $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbca.com</p>';
-                $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbca.com" style="color: white"><b>RFDbank!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbca.com"><b>HSBCA</b></a>.</div>';
+                $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
+                $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>RFDbank!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBACC</b></a>.</div>';
                 $message .= '</div></div></body></html>';
                 $headers .= 'From: '.$from."\r\n".
 'Reply-To: '.$from."\r\n" .
@@ -153,7 +154,7 @@ if(isset($_GET['error'])) { //TO OUTPUT LOGIN ERROR
                             <div class="row">
                                 <div
                                     style="display: flex; align-items: center; justify-content: end; margin: 15px 0px; position: relative">
-                                    <div><button name="submit" class="index-loginbtn">Continue</button>
+                                    <div><button name="submit" class="fp-continue-btn">Continue</button>
                                     </div>
                     </form>
                     <div style="position: absolute; right: 200px;">
@@ -163,11 +164,11 @@ if(isset($_GET['error'])) { //TO OUTPUT LOGIN ERROR
                 </div>
 
             </div>
-
-
-
-
         </div>
+
+
+
+</div>
 </div>
 
 </div>

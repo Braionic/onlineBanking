@@ -103,7 +103,7 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                                 <div
                                     style="display: flex; align-items: center; justify-content: end; margin: 15px 0px; position: relative">
                                     <div><button name="submit" id="user_password"
-                                            class="index-loginbtn">Continue</button>
+                                            class="fp-continue-btn">Continue</button>
                                     </div>
                                     <div style="position: absolute; right: 200px;">
                                         <a href="index.php" style="background-color: white; color: black; border: none"
@@ -114,11 +114,11 @@ if(isset($_POST['submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                             </div>
 
                     </form>
-
-
                 </div>
+
             </div>
         </div>
+</div>
 </div>
 <div style="height:50px;"></div>
 

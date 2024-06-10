@@ -39,18 +39,32 @@ if (isset($_POST['add_transastion'])) {
     $ins_sql = "INSERT INTO transaction (name, transaction, amount, user_id, created_at, status, description) VALUES ('$name', '$_POST[transaction]', '$_POST[amount]', '$_POST[user_id]', '$date', '$_POST[status]', '$sender')";
     $run_sql = mysqli_query($conn, $ins_sql);
     echo '<h4>Transaction Inserted Successfully</h4>';
-                    
+
 }
 ?>
-    <h3 class="text-center">Add Transaction</h3>
-    <div class="container">
+    <h3 class="text-center" >Add Transaction</h3>
+    <div class="container" >
         <form method="POST" action="addtransaction.php" class="form-horizontal well text-center"
-            enctype="multipart/form-data" role="form" name="myForm">
+            enctype="multipart/form-data" role="form" name="myForm" style="background-color: white;">
             <div class="form-group">
                 <label for="user_id">
                     <p>User ID</p>
                 </label>
-                <input type="text" name="user_id" id="user_id" placeholder="Enter Receiver" required>
+                <select
+                    style="background-color: aqua; color: black; height: 50px; border-bottom: 2px solid black; blur:red"
+                    class=" col-xs-7 form-control input-md" name="user_id" id="user_id" tabindex="9">
+                    <?php
+$sel_user = "SELECT * FROM users";
+$sel_query = mysqli_query($conn, $sel_user);
+if(mysqli_num_rows($sel_query) >0) {
+    while($rows = mysqli_fetch_assoc($sel_query)) {
+        echo '<option name="user_id" style="font-size: 14px" value="'.$rows['id'].'">'.$rows['name'].'</option>';
+    }
+} else {
+    echo "<p>No level</p>";
+}
+?>
+                </select>
 
 
             </div>

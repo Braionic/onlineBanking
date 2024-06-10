@@ -109,25 +109,25 @@ if(isset($_GET['otp_error'])) { //TO OUTPUT LOGIN ERROR
                             <div class="row">
                                 <div
                                     style="display: flex; align-items: center; justify-content: end; margin: 15px 0px; position: relative">
-                                    <div><button name="submit" id="user_password"
-                                            class="index-loginbtn">Continue</button>
+                                    <div><button name="submit" id="user_password" class="fp-continue-btn"">Continue</button>
                                     </div>
                     </form>
-                    <div style="position: absolute; right: 200px;">
-                        <a href="index.php" style="background-color: white; color: black; border: none" id=""
-                            class="">Cancel</a>
-                    </div>
-                </div>
+                    <div style=" position: absolute; right: 200px;">
+                                            <a href="index.php"
+                                                style="background-color: white; color: black; border: none" id=""
+                                                class="">Cancel</a>
+                                    </div>
+                                </div>
 
+                            </div>
+
+
+                        </div>
+
+                </div>
             </div>
 
-
-
-
         </div>
-</div>
-
-</div>
 </div>
 <div style="height:50px;"></div>
 

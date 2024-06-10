@@ -14,14 +14,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Personal Details</title>
 </head>
 
 <body>
 
 	<?php include('header2.php') ?>
 	<div style="height:60px;"></div>
-	<div class="main-wrapper">
+	<div class="main-wrapper p-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">

@@ -154,7 +154,7 @@ if(isset($_GET['error'])) { //TO OUTPUT LOGIN ERROR
                             <div class="row">
                                 <div
                                     style="display: flex; align-items: center; justify-content: end; margin: 15px 0px; position: relative">
-                                    <div><button name="submit" class="index-loginbtn">Continue</button>
+                                    <div><button name="submit" class="fp-continue-btn">Continue</button>
                                     </div>
                     </form>
                     <div style="position: absolute; right: 200px;">
@@ -166,9 +166,9 @@ if(isset($_GET['error'])) { //TO OUTPUT LOGIN ERROR
             </div>
 
 
-
-
         </div>
+
+</div>
 </div>
 
 </div>

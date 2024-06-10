@@ -9,7 +9,7 @@
 
 
 /*************************
-*******Typography******
+*******Typography******input-md
 **************************/
 
 .main-wrapper {
@@ -82,8 +82,8 @@ a:hover, a:focus {
 } */
 
 input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
+  width: 90%;
+  padding: 10px 20px;
   margin: 8px 0;
   box-sizing: border-box;
 }
