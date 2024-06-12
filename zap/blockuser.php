@@ -12,7 +12,7 @@
 </style>
 <body>
     <?php include '../includes/db.php'; ?>
-    <div class="main-wrapper">
+    <div>
     <?php
     if (isset($_SESSION['admin_loggedin']) && $_SESSION['admin_loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
     } else { //IF NO USER LOGGED IN
@@ -35,18 +35,21 @@ if (isset($_POST['block_user'])) {
     //select
     $sel_sql = "SELECT * FROM users WHERE id = '$_POST[user_id]'";
     $sql = mysqli_query($conn, $sel_sql);
+    $sel_blocked = "SELECT * FROM blocked WHERE user_id = '$_POST[user_id]'";
+    $query_sql = mysqli_query($conn, $sel_blocked);
     while($rows = mysqli_fetch_assoc($sql)) {
         //so get the user details you want to save here
         $name = $rows['name'];
         //etc etc etc.......
     }
-    if(mysqli_num_rows($sql) < 1) {
+    if(mysqli_num_rows($query_sql) > 0) {
         // INSERT INTO INVENTOR DATABASE
+        echo "<div class='alert alert-danger text-center'>".$name." account has already been restricted</div>'";
+       
+    } else {
         $ins_sql = "INSERT INTO blocked (firstname, user_id, status) VALUES ('$name', '$_POST[user_id]', '$status')";
         $run_sql = mysqli_query($conn, $ins_sql);
         echo '<h4 class="alert alert-success text-center" style="color:green">'.$name. ' has successfully been placed on COT FCC Restriction</h4>';
-    } else {
-        echo "<div class='alert alert-danger text-center'>".$name." account has already been restricted</div>'";
     }
 }
 ?>

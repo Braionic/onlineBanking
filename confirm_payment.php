@@ -50,7 +50,7 @@ $date = date('Y-m-d H:i:s');
 
         } elseif($_GET['fcc_error'] == 'wrong') { //LOGIN ERROR FOR INVALID DETAILS
 
-            $fcc_err = "<div class='alert alert-warning'>Invalid FCC code, please contact your account officer!</div>";
+            $fcc_err = "<div class='alert alert-danger text-center'>Invalid FCC Token, please contact your account officer!</div>";
 
         }
 
@@ -222,7 +222,8 @@ if(mysqli_num_rows($inter_q) > 0) {
                             <hr>
                             <h2>important information</h2>
                             <div style="padding: 20px;">
-                                <p>Your details will be uploaded in real time.</p>
+                                <p>You may be required to authenticate this transaction via your mobile number or email
+                                    address.</p>
                                 <p>All correspondences including statements and marketing materials will be sent to the
                                     email address and contact number in the bank's records. To update your prefrences,
                                     please visit online banking </p>
@@ -239,6 +240,11 @@ if(mysqli_num_rows($inter_q) > 0) {
                                 <hr>
                             </div>
                             <div style="text-align: end; margin: 10px; position: relative">
+                                <div id="myProgress">
+
+                                    <div id="myBar" style="background-color: red; width: 50%">50%</div>
+
+                                </div><br>
                                 <button class="btn btn-sm btn-danger" form="myform" name="check_cot">Continue</button>
                                 </form>
                                 <?php  ;

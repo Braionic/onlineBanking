@@ -52,14 +52,14 @@ if (isset($_POST['debit_client'])) {
             $upd_sql = "UPDATE users SET  amount='$amount2', am_updated= '$date' WHERE id = '$_POST[user_id]'";
             $run_sql = mysqli_query($conn, $upd_sql);
             $to = $email; // this is your Email address
-            $from = "no-reply@myfrdb.com"; // this is the sender's Email address
+            $from = "no-reply@hsbacc.com"; // this is the sender's Email address
             $first_name = $name;
            
             $subject2 = "FRDB Transaction Notification [Debit: ".$currency . $amount . "]";
             $headers  = 'MIME-Version: 1.0' . "\r\n";
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
             $message = '<html><body>';
-            $message = '<div class="navbar-brand"  style="text-align: center; background-color: green" href=""><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="RFDB" class="logo">';
+            $message = '<div class="navbar-brand"  style="text-align: center; background-color: white;" href=""><img style"height: 75px; width: 100px;" src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="HSBAC" class="logo">';
             $message .= '<div  style="background-color: white;">';
             $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
             $message .= "<h4 style='color:#071d49;'>Your account has been Debited
@@ -67,8 +67,8 @@ if (isset($_POST['debit_client'])) {
             $message .= '<h1 style="color: red; font-size:18px;">' .$currency .$amount.'.00</h1>';
             $message .= '<h3>Transaction Summary</h3>';
             $message .= '<p><b>IBAN:</b> '.$newact.' </p><p><b>Account type:</b> '.$account.'</p><p><b>Account Name:</b> '. $name .'</p><p><b>Transaction Branch:</b> Head Office</p><p><b>Transaction Date:</b> ' .$date2.'</p><p><b>Transaction Amount:</b> '.$currency .$amount.'.00</p><p><b>Available Balance:</b> ' .$currency . $amount2 .'.00</p>';
-            $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing RFDBank</h4>';
-            $message .= '<div style="background-color: #28a745; color: white;"><a href="https://www.myfrdb.com">FRDB!</a> Always giving you extra. Get a little extra help from the <a href="https://www.myfrdb.com">RFDBank</a>.</div>';
+            $message .= '<h4>Your balance at the time of this transaction is <strong>' .$currency . $amount2 .'.00</strong> Thank you for chosing HSBC</h4>';
+            $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com">HSBC!</a> Always giving you extra. Get a little extra help from the <a href="https://www.hsbacc.com">HSBC</a>.</div>';
             $message .= '</div></div></body></html>';
             $headers .= 'From: '.$from."\r\n".
             'Reply-To: '.$from."\r\n" .
@@ -154,16 +154,20 @@ while($data = mysqli_fetch_array($records)) {
             echo '<td><img src="images/'.$data['image'].'" alt="profile pic" style="max-width: 40px; max-height: 40px;"></td>';
         }
     ?>
-        <td><?php echo $data['name']; ?></td>
-        <td><?php echo $data['email']; ?></td>
-        <td><?php echo $data['account']; ?></td>
+        <td><?php echo $data['name']; ?>
+        </td>
+        <td><?php echo $data['email']; ?>
+        </td>
+        <td><?php echo $data['account']; ?>
+        </td>
         <td>
           <?php echo $data['currency']. $data['amount']; ?>
         </td>
         <td><?php echo $data['am_updated']; ?>
         </td>
 
-        <td><?php echo $data['id']; ?></td>
+        <td><?php echo $data['id']; ?>
+        </td>
       </tr>
       <?php
 }

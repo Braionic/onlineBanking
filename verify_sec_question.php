@@ -111,7 +111,7 @@ if(isset($_GET['error'])) { //TO OUTPUT LOGIN ERROR
     if($_GET['error'] == 'empty') {  //LOGIN ERROR FOR EMPTY
         $login_err = "<div class='alert alert-danger text-center'>Sorry! field was empty!</div>";
     } elseif($_GET['error'] == 'wrong_question') { //LOGIN ERROR FOR INVALID DETAILS
-        $login_err = "<div class='alert alert-danger text-center'>Invalid security question! please try again of select the email option</div>";
+        $login_err = "<div class='alert alert-danger text-center'>Invalid security question! please try again or select the email option</div>";
     }
 }
 ?>

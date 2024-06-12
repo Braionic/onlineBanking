@@ -170,7 +170,8 @@ if(mysqli_num_rows($sql_query2) > 0) {
                 Up</button>
               <button class="btn btn-sm btn-danger"
                 style="margin-top: 10px; border-radius: 18px; padding: 5px 16px; margin-bottom: 0px;"
-                onclick="handleShow()"><i class="fa fa-handshake-o" aria-hidden="true"></i>Pay & Transfer</button>
+                onclick="handleShow()"><i class="fa fa-handshake-o" aria-hidden="true"></i>Pay &
+                Transfer</button>
               <div id="trans" style="display: none; position: absolute; bottom: -37px; right: 15px;">
                 <!-- <a href="intrabank.php"><button class="btn btn-sm btn-primary">Local</button></a>-->
                 <a href="pay-and-transfer.php"><button class="btn btn-sm btn-danger">Non-HSBC</button></a>
@@ -179,16 +180,16 @@ if(mysqli_num_rows($sql_query2) > 0) {
           </div>
           <div class="price-container rounded-3 btn-danger"
             style="border-radius: 13px; padding: 10px; position: relative; margin-top: 15px;">
-            <div class=" avatar rounded-circle" style="width: 50px; height: 50px; overflow: hidden;">
+            <div class=" avatar" style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%">
               <?php
     $select = mysqli_query($conn, "SELECT * FROM `users` WHERE id = '$_SESSION[id]'") or die('query failed');
 if(mysqli_num_rows($select) > 0) {
     $fetch = mysqli_fetch_assoc($select);
     ?><?php
     if($fetch['image'] == '') {
-        echo '<img src="./images/client2.png" class="img-fluid" style="width: 40px; height: 40px;">';
+        echo '<img src="./images/client2.png" class="img-fluid" style="width: 50px; height: 50px;">';
     } else {
-        echo '<img src="zap/images/'.$fetch['image'].'" alt="profile pic" class="img-fluid" style="width: 50px; height: 40px;">';
+        echo '<img src="zap/images/'.$fetch['image'].'" alt="profile pic" class="img-fluid" style="width: 60px; height: 60px;">';
     }
 }?>
 

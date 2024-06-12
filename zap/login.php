@@ -80,7 +80,7 @@ echo $login_err;
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="row">
-							<div class="col-lg-6 d-none d-lg-block bg-login-image" style="margin-top: 90px;"><img src="../images/HSBC_UK.png"
+							<div class="col-lg-6 d-none d-lg-block bg-login-image" style="margin-top: 40px;"><img src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png"
 									width="40%"
 									style="border-radius: 50%; margin-left: auto; margin-right: auto; display: block">
 							</div>

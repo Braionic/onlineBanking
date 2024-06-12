@@ -33,6 +33,28 @@
 	<script type="text/javascript">
 		//handle hide button
 
+		var i = 0;
+
+		function move() {
+			if (i == 0) {
+				i = 1;
+				var elem = document.getElementById("myBar");
+				var width = 10;
+				var id = setInterval(frame, 10);
+
+				function frame() {
+					if (width >= 56) {
+						clearInterval(id);
+						i = 0;
+					} else {
+						width++;
+						elem.style.width = width + "%";
+						elem.innerHTML = width + "%";
+					}
+				}
+			}
+		}
+
 		function handleShow() {
 			const btn = document.getElementById("trans");
 			btn.style.display = "block"
@@ -90,7 +112,7 @@ THE SOFTWARE.
 				var id = setInterval(frame, 10);
 
 				function frame() {
-					if (width >= 56) {
+					if (width >= 50) {
 						clearInterval(id);
 						i = 0;
 					} else {
@@ -135,6 +157,22 @@ THE SOFTWARE.
 			.index-btn2 {
 				display: none;
 			}
+		}
+
+		#myProgress {
+			width: 100%;
+			background-color: #ddd;
+
+		}
+
+		#myBar {
+			width: 1%;
+			height: 30px;
+			background-color: red;
+			text-align: center;
+			line-height: 30px;
+			color: white;
+			border: 16px;
 		}
 
 		h6 {

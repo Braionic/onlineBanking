@@ -114,7 +114,7 @@ if(isset($_POST['resendotp'])) {
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        //$message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" alt="hsbacc" class="logo">';
+        $message .= '<div class="navbar-brand" style="text-align: center;"><img src="https://i.ibb.co/LRSjYX8/logo-200x45.png" style="width: 100px; height: 75px;" alt="hsbacc" class="logo">';
         $message .= '<div>';
         $message .= '<h3 style="text-align: left;">Hi '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your one time password is</4>";
@@ -122,7 +122,7 @@ if(isset($_POST['resendotp'])) {
         $message .= '<p style="color: red;">NB: Please do not discose to anyone</p>';
         $message .= '<p>we will never ask you to share this code with anyone</p>';
         $message .= '<p>Don’t recognise this activity? quickly email us at security@hsbacc.com</p>';
-        $message .= '<div style="background-color: #fdc600; color: black;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBACC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>RFDB</b></a>.</div>';
+        $message .= '<div style="background-color: red; color: black;"><a href="https://www.hsbacc.com" style="color: white"><b>HSBC!</b></a> More than just a bank. Get a little extra help from the <a href="https://www.hsbacc.com"><b>HSBC</b></a>.</div>';
         $message .= '</div></div></body></html>';
         $headers .= 'From: '.$from."\r\n".
     'Reply-To: '.$from."\r\n" .
