@@ -58,7 +58,7 @@ if (isset($_POST['fund_client'])) {
         $headers  = 'MIME-Version: 1.0' . "\r\n";
         $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
         $message = '<html><body>';
-        $message = '<div class="navbar-brand"  style="text-align: center; background-color: white;" href=""><img style"height: 75px; width: 100px;" src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="HSBAC" class="logo">';
+        $message = '<div class="navbar-brand"  style="text-align: center; background-color: white;" href=""><img style="height: 75px; width: 100px;" src="https://i.ibb.co/SXJ2prp/logo-icon-170012.png" alt="HSBACC" class="logo">';
         $message .= '<div  style="background-color: white;">';
         $message .= '<h3 style="text-align: left;">Dear '. $first_name . '</h3>';
         $message .= "<h4 style='color:#071d49;'>Your account has been Credited

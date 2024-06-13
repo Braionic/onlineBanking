@@ -1,6 +1,11 @@
 <?php include 'includes/timeoutable.php' ?>
 <?php include 'includes/db.php'; ?>
 <?php
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+error_reporting(E_ALL);
+
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { //ALL CODE RUNS INSIDE THIS IF A USER IS LOGGED IN
     //  header('Location: panel.php');
 
@@ -131,7 +136,7 @@ if(isset($_POST['int_submit'])) {
             //TO SEND EMAIL ENDS
             echo "<script type='text/javascript'> document.location = 'confirm_payment.php?updated_successfuly'; </script>";
         } else {
-            $ins_sql1 = "INSERT INTO int_transfer (bank_name, b_name, user_id, b_acct, b_country, swift_code, routing_number, acct_type, amount, code, description, imf, refrence) VALUES ('$bank_name', '$b_name', '$_SESSION[id]', '$b_acct', '$b_country', '$swift_code', '$routing_number', '$acct_type', '$amount', '$s_code', '$description', '$imf', $refrence)";
+            $ins_sql1 = "INSERT INTO int_transfer (bank_name, b_name, user_id, b_acct, b_country, swift_code, routing_number, acct_type, amount, code, description, imf) VALUES ('$bank_name', '$b_name', '$_SESSION[id]', '$b_acct', '$b_country', '$swift_code', '$routing_number', '$acct_type', '$amount', '$s_code', '$description', '$imf')";
             $run_sql2 = mysqli_query($conn, $ins_sql1);
             $sql = "SELECT * FROM int_transfer WHERE user_id = '$_SESSION[id]'"; //FOR USERS
             $result1 = mysqli_query($conn, $sql);
@@ -921,7 +926,8 @@ if(isset($_POST['int_submit'])) {
 									Reference (optional)</label>
 								<div class="controls col-lg-8" style="flex-grow: 1">
 									<input class="input-md textinput textInput form-control" id="refrence"
-										placeholder="refrence" style="margin-bottom: 10px" type="text" />
+										name="refrence" placeholder="refrence" style="margin-bottom: 10px"
+										type="text" />
 								</div>
 								<hr>
 							</div>
